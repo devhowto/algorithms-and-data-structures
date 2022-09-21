@@ -1,0 +1,2 @@
+* xref:problem-solving-patterns.adoc[]
+** xref:problem-solving-patterns/frequency-counter-examples.adoc[]

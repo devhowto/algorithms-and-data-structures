@@ -1,0 +1,64 @@
+= Frequency Counter Examples
+
+Some examples tha make use of the “frequency counter pattern” or “frequency counter approach”.
+
+== same()
+
+Write a function called `same`, which accepts two arrays.
+It should return true if every value in the array has it's corresponding value
+squared in the second array.
+The frequency of values must be the same.
+The order doesn't matter.
+
+.Unit Tests
+[source,ts]
+----
+include::example$src/05-problem-solving-patterns/same.test.ts[]
+----
+
+=== v1
+
+**TIME COMPLEXITY**: `O(n²)`.
+We have only one explicit `for` loop, but `indexOf()` is also a loop which can potentially go over the entire array.
+We actually have nested loops in this implementation.
+
+**SPACE COMPLEXITY**: `O(1)`.
+We just store the found index each time.
+When we `ys.splice()` we are not creating further arrays.
+Just reusing the same `ys` from the input, but making it smaller each time.
+We can sure assume it is constant space.
+
+[source,typescript]
+----
+include::example$src/05-problem-solving-patterns/same-v1.ts[]
+----
+
+This solution involves looping while we have matching elements in `xs`.
+If we reach the end of the loop without getting an index of -1 it means every element in `xs` has a matching squared element in `ys`.
+
+<1> We remove that element from `ys` so that one occurrence doesn't
+ever match again. Important because we want to match the frequencies
+of squares of values in `xs` in `ys`.
+
+=== v2
+
+**TIME COMPLEXITY**: stem:[O(n)].
+Three non-nested loops is still linear time.
+Much better than two nested loops.
+
+**SPACE COMPLEXITY**: stem:[O(n)].
+We create two other objects with the same number of keys as `xs` and `ys`.
+So, the space taken inside the function is directly proportional to the input arrays size.
+
+[source,ts]
+----
+include::example$src/05-problem-solving-patterns/same-v2.ts[]
+----
+
+Three loops is much better than a loop inside a loop.
+
+* Two nested loops: stem:[O(n ^ 2)] — quadratic.
+* Three loops one after the other: stem:[O(n)].
+
+Three loops is actually stem:[O(3n)] but is simplified to stem:[O(n)].
+It is still linear time.
