@@ -1,0 +1,11 @@
+= Algorithms and Data Structures in TypeScript
+:url-gitlab-repo: https://gitlab.com/devhowto/algorithms-and-data-structures
+:url-github-repo: https://github.com/devhowto/algorithms-and-data-structures
+
+A place where I take notes and store solutions for algorithms and data structres with TypeScript.
+
+[NOTE]
+====
+The main repository where all the action takes place is the one on {url-gitlab-repo}[Gitlab^].
+The {url-github-repo}[Github one^] is a only mirror.
+====

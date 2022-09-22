@@ -1,2 +1,5 @@
 = Algorithms and Data Structures in TypeScript
 :stem:
+
+A place where I collect notes, tips, ideas and examples on my studies of algorithms and data structures.
+The code here is mostly TypeScript.
