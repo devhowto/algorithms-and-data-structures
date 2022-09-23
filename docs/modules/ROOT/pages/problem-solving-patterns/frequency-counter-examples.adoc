@@ -42,12 +42,14 @@ of squares of values in `xs` in `ys`.
 
 === v2
 
+This solution first counts the frequencies individually and then compare those frequencies.
+
 **TIME COMPLEXITY**: stem:[O(n)].
 Three non-nested loops is still linear time.
 Much better than two nested loops.
 
 **SPACE COMPLEXITY**: stem:[O(n)].
-We create two other objects with the same number of keys as `xs` and `ys`.
+We create two other objects with potentially the same number of keys as `xs` and `ys`.
 So, the space taken inside the function is directly proportional to the input arrays size.
 
 [source,ts]
