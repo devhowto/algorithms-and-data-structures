@@ -44,3 +44,8 @@ node_modules
 # Xournalpp drafts and template files.
 #
 *.xopp
+
+##
+# Local node repl history file.
+#
+.node_repl_history
