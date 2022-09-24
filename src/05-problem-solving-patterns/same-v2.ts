@@ -21,7 +21,7 @@ function same(xs: number[], ys: number[]): boolean {
   }
 
   for (const k in freqXs) {
-    // Check if x² exists in ys. Compare the keys.
+    // Check if x² key exists in ys. Compare the keys.
     if (!(freqXs[k] ** 2 in freqYs)) return false;
 
     // Check if number of occurrences match. Compare the values.

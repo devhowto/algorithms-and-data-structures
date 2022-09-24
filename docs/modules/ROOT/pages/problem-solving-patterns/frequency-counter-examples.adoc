@@ -1,6 +1,6 @@
 = Frequency Counter Examples
 
-Some examples tha make use of the “frequency counter pattern” or “frequency counter approach”.
+Some examples that make use of the “frequency counter pattern” or “frequency counter approach”.
 
 == same()
 
@@ -43,6 +43,25 @@ of squares of values in `xs` in `ys`.
 === v2
 
 This solution first counts the frequencies individually and then compare those frequencies.
+
+1. Generate the frequencies of elements for both input arrays:
+
+----
+arr1 = [1, 2, 3, 1, 1, 3, 3, 3]
+freq1 = { 1: 3, 2: 1, 3: 4}
+
+arr2 = [1, 4, 9, 1, 1, 9, 9, 9]
+freq2 = [1: 3, 4: 1, 9: 4]
+----
+
+Note that:
+
+* stem:[1 ^ 2] is stem:[2]
+* stem:[2 ^ 2] is stem:[4]
+* stem:[3 ^ 2] is stem:[9]
+
+Then we loop and check if the squared keys in `freq1` exist and have the same value in `freq2`.
+As soon as something doesn't match, we return `false` to indicate the two arrays do not meet our criteria; else return `true`.
 
 **TIME COMPLEXITY**: stem:[O(n)].
 Three non-nested loops is still linear time.
