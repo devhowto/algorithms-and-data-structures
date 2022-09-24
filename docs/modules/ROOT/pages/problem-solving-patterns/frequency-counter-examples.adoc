@@ -83,3 +83,70 @@ Three loops is much better than a loop inside a loop.
 
 Three loops is actually stem:[O(3n)] but is simplified to stem:[O(n)].
 It is still linear time.
+
+== anagram()
+
+[NOTE]
+====
+We'll consider only lowercase characters from the English alphabet for this example.
+All other characters are to be ignored (including spaces).
+====
+
+.Examples of anagrams
+----
+            tar = rat
+            arc = car
+          elbow = below
+          state = taste
+          cider = cried
+          dusty = study
+          night = thing
+           inch = chin
+
+      dormitory = dirty room
+  school master = the classroom
+   conversation = voices rant on
+         listen = silent
+     astronomer = moon starer
+       the eyes = they see
+    a gentleman = elegant man
+        funeral = real fun
+----
+
+To solve it using the _frequency counter pattern approach_, we must see if the second string has the same frequency of letters as in the first string.
+For example “listen” is anagram to “silent” because each letter in “listen” has a corresponding frequency in “silent” (and
+vice-versa”.
+
+NOTE: Do not confuse anagrams with palindromes.
+Palindromes are words that are the same if spelled backwards, like “racecar”.
+If you reverse it, it is still “racecar”.
+
+=== Unit Tests
+
+[source,ts,lineos]
+----
+include::example$src/05-problem-solving-patterns/anagram.test.ts[]
+----
+
+=== v1
+
+*TIME COMPLEXITY*: stem:[O(n)].
+We loop a couple times for the length of the input string.
+Not a nested loop.
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+We create a frequency object of at most the size of the input.
+This object may be as large as the input.
+
+This solution involves looping and counting the frequencies of characters in `s1`, and then using a second loop to iterate over each key of `s1`, decrementing each occurrence of the current char in the loop in the frequency object.
+Then, a second loop checks whether any key has got a value count different than zero, which means the frequencies don't match and the strings are not anagrams to each other.
+
+[source,ts,lineos]
+----
+include::example$src/05-problem-solving-patterns/anagram-v1.ts[]
+----
+
+<1> In case char `c` does not exist in `freqS1`, it means it exists in `s2` but not in `s1`, so the inputs are not anagrams.
+However, if it is 0 (which is also falsy), it is not an anagram either because it means we found it again (during this iteration of the loop) on `s2` which means we would decrement it even more, making it `-1`.
+It means the current char doesn't appear with the same frequency on both strings.
+

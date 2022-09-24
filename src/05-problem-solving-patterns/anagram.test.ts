@@ -1,17 +1,22 @@
-import { isAnagram } from './anagram-v1';
+import { assertEquals } from "/deps.ts";
+import { isAnagram } from './anagram-v1.ts';
 
-describe('isAnagram()', () => {
-  it('should return false with inputs of different lengths', () => {
-    expect(isAnagram('', 'z')).toBe(false);
-    expect(isAnagram('listen', 'silen')).toBe(false);
+Deno.test('isAnagram()', async (t) => {
+  await t.step('should return false with inputs of different lengths', () => {
+    assertEquals(isAnagram('', 'z'), false);
+    assertEquals(isAnagram('listen', 'silently'), false);
   });
 
-  it('should return true with empty string inputs', () => {
-    expect(isAnagram('', '')).toBe(true);
-    expect(isAnagram(new String(''), new String(''))).toBe(true);
+  await t.step('should return true with empty string inputs', () => {
+    assertEquals(isAnagram('', ''), true);
+    assertEquals(
+      isAnagram(
+        new String('') as string,
+        new String('') as string
+      ), true);
   });
 
-  it('should return true for single word, non space anagrams', () => {
-    expect(isAnagram('listen', 'silent')).toBe(true);
+  await t.step('should return true for single word, non space anagrams', () => {
+    assertEquals(isAnagram('listen', 'silent'), true);
   });
 });
