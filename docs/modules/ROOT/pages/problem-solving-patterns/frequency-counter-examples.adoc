@@ -138,8 +138,12 @@ Not a nested loop.
 We create a frequency object of at most the size of the input.
 This object may be as large as the input.
 
-This solution involves looping and counting the frequencies of characters in `s1`, and then using a second loop to iterate over each key of `s1`, decrementing each occurrence of the current char in the loop in the frequency object.
-Then, a second loop checks whether any key has got a value count different than zero, which means the frequencies don't match and the strings are not anagrams to each other.
+This solution involves two main ideas:
+
+* Loop once creating a frequency object with the the frequencies of the characters on first string.
+* Loop once more, this time on the second string, and for each character, decrement 1 from it in the frequencies object created with the previous loop.
+
+If we ever get a 0 count or undefined, it means we found that character in the second string more times than in the first string, which means the strings are not anagrams to one another.
 
 [source,ts,lineos]
 ----
@@ -147,6 +151,6 @@ include::example$src/05-problem-solving-patterns/anagram-v1.ts[]
 ----
 
 <1> In case char `c` does not exist in `freqS1`, it means it exists in `s2` but not in `s1`, so the inputs are not anagrams.
-However, if it is 0 (which is also falsy), it is not an anagram either because it means we found it again (during this iteration of the loop) on `s2` which means we would decrement it even more, making it `-1`.
+However, if it is 0 (which is also falsy), it is not an anagram either because it means we found that letter again (during this iteration of the loop) on `s2` which means we would decrement it even more, making it `-1`.
 It means the current char doesn't appear with the same frequency on both strings.
 
