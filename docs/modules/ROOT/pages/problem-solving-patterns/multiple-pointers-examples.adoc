@@ -1,0 +1,60 @@
+= Multiple Pointers Examples
+
+Some examples that make use of the “multiple pointers pattern” or “multiple pointers approach.”
+
+== sumToZero(xs)
+
+Write a function which accepts a sorted array of integers and returns the first pair where the sum is 0.
+Return the pair in an array (like a tuple) or `undefined` if such a pair is not found.
+
+=== Unit Tests
+
+[source,typescript,lineos]
+----
+include::example$src/05-problem-solving-patterns/sumToZero.test.ts[]
+----
+
+=== v1 nested loops
+
+This is a naive solution where we perform a loop inside a loop, therefore stem:[O(n^2)].
+Start at the first element and check with every remaining elements.
+Then, start with the second element and again check with every remaining elements. And so on and so forth.
+
+*TIME COMPLEXITY*: stem:[O(n²)] because we have a nested loop.
+
+*SPACE COMPLEXITY*: stem:[O(1)] because we don't use extra space besides
+the `i` and `j` variables.
+
+[source,typescript,lineos]
+----
+include::example$src/05-problem-solving-patterns/sumToZero-v1.ts[]
+----
+
+=== v2 multiple pointers
+
+This solution relies on the fact that the input array is sorted.
+Using multiple pointers is more performant because it will do a single loop (stem:[O(n)]) instead of a two/nested loops (stem:[O(n^2)]).
+
+*TIME COMPLEXITY*: stem:[O(n)] because we iterate over the array a single time.
+
+*SPACE COMPLEXITY*: stem:[O(1)] because we don't use extra space besides the
+`i`, `j` and `sum` variables.
+
+[source,ts,lineos]
+----
+include::example$src/05-problem-solving-patterns/sumToZero-v2.ts[]
+----
+
+<1> Handles the case where the logic inadvertently compares the sum of `0 + 0 === 0`.
+It could happen if no other pair matches a sum of 0 but we have a 0 in the array, and the indexes in loop are the same for the left and right pointers.
++
+So, if for example we have the list `[-1, 0, 2]`, and `l = 1` and `r = 1`,
+then `ints[l] + ints[r] === 0`, and we would INCORRECTLY return a pair
+of `[0, 0]`.
++
+We may have a pair `[0, 0]` if our input array actually contains two zeroes.
+For example, `[-1, 0, 0, 2, 3]`, then we would find a pair `[0, 0]` which when summed is zero, and it would be correct.
+
+
+<2> Return the pair here if found.
+Also note that there is an implicit `return undefined` at the end of the function in case it doesn't return because of some other condition.
