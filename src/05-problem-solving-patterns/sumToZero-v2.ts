@@ -24,8 +24,7 @@ function sumToZero(ints: number[]): [number, number] | undefined {
     if (sum === 0) {
       return [ints[l], ints[r]]; // <2>
     }
-
-    if (sum < 0)
+    else if (sum < 0)
       ++l;
     else
       --r;
