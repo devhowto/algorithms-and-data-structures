@@ -58,3 +58,36 @@ Also note that there is an implicit `return undefined` at the end of the functio
 Do note the `else if` and `else` conditions.
 If we get a sum less then 0, we increment the left pointer, and if the sum is greater than 0, then we decrement the right pointer.
 That is the clever part of this solution which enables it to loop only once (linear time complexity).
+
+== Count Unique Values
+
+Implement a function called `countUniqVals`, which accepts a sorted array of integers and counts the unique values in the array.
+
+=== Unit Tests
+
+[source,typescript,lineos]
+----
+include::example$src/05-problem-solving-patterns/countUniqVals.test.ts[]
+----
+
+=== v1 loop with single explicit pointer
+
+*TIME COMPLEXITY*: stem:[O(n)].
+We have to iterate once through the entire input.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+We do not create a new array that grows as the input grows.
+Just a few control variables are necessary.
+
+[source,typescript,lineos]
+----
+include::example$src/05-problem-solving-patterns/countUniqVals-v1.ts[]
+----
+
+<1> This solutions uses only one pointer `i` explicitly.
+The other pointer is computed from the pointer `i`.
+Since the array of numbers is sorted, we know for sure that if `[i] !== [i + 1]` then we have a new different value, and that equal values are always siblings (given the fact that the input is sorted).
+
+<2> Also, this solution compares `[i]` with undefined if the input contains only a single number because then `[i + 1]` will be undefined.
+
+We could return 1 if `nums.length` was 1, so we would only enter the loop in case we are sure to have at least two values in the array and that comparison with `undefined` would not happen.
