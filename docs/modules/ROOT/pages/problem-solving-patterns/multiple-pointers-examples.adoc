@@ -17,8 +17,9 @@ include::example$src/05-problem-solving-patterns/sumToZero.test.ts[]
 === v1 nested loops
 
 This is a naive solution where we perform a loop inside a loop, therefore stem:[O(n^2)].
-Start at the first element and check with every remaining elements.
-Then, start with the second element and again check with every remaining elements. And so on and so forth.
+Start at the first element and check with all remaining elements.
+Then, start with the second element and again check with all remaining elements.
+And so on and so forth.
 
 *TIME COMPLEXITY*: stem:[O(n²)] because we have a nested loop.
 
@@ -63,6 +64,11 @@ That is the clever part of this solution which enables it to loop only once (lin
 
 Implement a function called `countUniqVals`, which accepts a sorted array of integers and counts the unique values in the array.
 
+[NOTE]
+====
+The solutions below rely on the fact that the input is sorted.
+====
+
 === Unit Tests
 
 [source,typescript,lineos]
@@ -70,13 +76,13 @@ Implement a function called `countUniqVals`, which accepts a sorted array of int
 include::example$src/05-problem-solving-patterns/countUniqVals.test.ts[]
 ----
 
-=== v1 loop with single explicit pointer
+=== v1 loop with single pointer and counter
 
 *TIME COMPLEXITY*: stem:[O(n)].
-We have to iterate once through the entire input.
+The entire input is iterated once.
 
 *SPACE COMPLEXITY*: stem:[O(1)].
-We do not create a new array that grows as the input grows.
+No new array is necessary to hold processed information.
 Just a few control variables are necessary.
 
 [source,typescript,lineos]
@@ -91,3 +97,51 @@ Since the array of numbers is sorted, we know for sure that if `[i] !== [i + 1]`
 <2> Also, this solution compares `[i]` with undefined if the input contains only a single number because then `[i + 1]` will be undefined.
 
 We could return 1 if `nums.length` was 1, so we would only enter the loop in case we are sure to have at least two values in the array and that comparison with `undefined` would not happen.
+
+=== v2 single loop and two pointers
+
+*TIME COMPLEXITY*: stem:[O(n)].
+We have to iterate once through the entire input.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+We do not create a new array that grows as the input grows.
+Just a few control variables are necessary.
+
+[source,typescript,lineos]
+----
+include::example$src/05-problem-solving-patterns/countUniqVals-v2.ts[]
+----
+
+This solution involves changing the array and moving all the different
+unique values one after the other to the beginning (left side) of the
+array.
+When the loop stops, `i` is at the position of the largest and last unique value found.
+
+<1> This solution doesn't attempt to compare with `undefined` because we
+are looping and checking `j`, which already starts at 1.
+If the input has  length 1, then `j` (which starts at 1) is not less than `nums.length` and we don't compare numbers against `undefined`.
+
+<2> We do not need to swap the elements.
+In this case, we don't care about the state of the array after the computation is performed.
+We just want the number of unique values.
+It is enough to move `[j]` to the place of updated `[i]`.
+
+<3> Because arrays start at index 0, and `i` stops at the last element that was different, we have to add 1 to it to return the correct result.
+
+Basically what we return is the length of the portion of elements that were moved to the beginning of the array.
+
+In short, this solution involves turning something like this:
+
+----
+[1, 1, 2, 3, 3, 3, 4, 4, 5, 5, 5]
+----
+
+into:
+
+----
+[1, 2, 3, 4, 5, n, n, n, n, n, n]
+             ↑
+----
+
+The index of the last unique element after the rearranging.
+We return that index (the index 4, not the value at that index) plus 1.

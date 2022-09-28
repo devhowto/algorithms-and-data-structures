@@ -9,7 +9,8 @@ function countUniqVals(nums: number[]): number {
   if (nums.length === 0) return 0;
 
   // <1>
-  let i = 0, count = 1;
+  let i = 0;
+  let count = 1;
 
   for (; i < nums.length - 1; ++i) {
     if (nums[i] !== nums[i + 1])
