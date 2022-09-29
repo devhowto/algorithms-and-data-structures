@@ -145,3 +145,8 @@ into:
 
 The index of the last unique element after the rearranging.
 We return that index (the index 4, not the value at that index) plus 1.
+
+[NOTE]
+====
+Remember that simply overriding an element at a given index is stem:[O(1)] (linear time) as no shifting of elements is necessary.
+====
