@@ -56,3 +56,28 @@ include::example$src/05-problem-solving-patterns/maxSubArrSum-v2.ts[]
 
 <1> `-Infinity` because we need to take the into account the fact that the sum could be negative.
 Starting with 0 would be a bad decision here.
+
+Consider this example:
+
+image::max-sub-arr-sum-sliding-window.png[max sub array sum sliding window logic]
+
+We keep looping the input array, sliding the window one element at at time, each time subtracting the left element of the previous window, and adding the new element that the window slides on to.
+
+----
+[1, 3, 5, 4, 6, 1, 2]
+ •••••••
+ -  ••••••+
+    -  ••••••+
+       -  ••••••+
+          -  •••••+
+
+9
+
+9 - 1 + 4 → 12
+
+12 - 3 + 6 → 15
+
+15 - 5 + 1 → 11
+
+11 - 4 + 2 → 9
+----
