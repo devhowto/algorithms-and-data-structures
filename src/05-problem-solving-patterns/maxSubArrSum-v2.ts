@@ -9,20 +9,18 @@
 function maxSubArrSum(xs: number[], len: number): number | undefined {
   if (xs.length === 0 || xs.length < len) return undefined;
 
-  let maxSumFound = -Infinity;
+  let maxSoFar = -Infinity; // <1>
+  let i, slidingWindowSum;
 
-  //                             <1>
-  for (let i = 0; i <= xs.length - len; ++i) {
-    let tempSum = 0;
+  maxSoFar = xs.slice(0, len).reduce((acc, num) => acc + num, 0);
+  slidingWindowSum = maxSoFar;
 
-    for (let j = 0; j < len; ++j) {
-      tempSum += xs[i + j];
-    }
-
-    maxSumFound = Math.max(maxSumFound, tempSum);
+  for (i = len; i < xs.length; ++i) {
+    slidingWindowSum = slidingWindowSum - xs[i - len] + xs[i];
+    maxSoFar = Math.max(slidingWindowSum, maxSoFar);
   }
 
-  return maxSumFound;
+  return maxSoFar;
 }
 
 export { maxSubArrSum };

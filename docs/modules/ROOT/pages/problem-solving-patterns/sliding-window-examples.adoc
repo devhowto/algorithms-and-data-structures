@@ -1,0 +1,58 @@
+= Sliding Window Examples
+
+== longestUniqSubSeq()
+
+Problem: given a string the find the longest sequence of unique characters.
+
+For instance, in "hellothere", "hel" is the first sequence of unique chars, because then "l" is repeated.
+Then, we start at the next "l" and the next unique sequence of chars is "lother".
+
+----
+    h  e  l  l  o  t  h  e  r  e
+    -------  ----------------
+      /            \
+     /              \--> second sequence
+    v                    of unique chars
+first sequence
+of unique chars
+----
+
+== maxSubArrSum()
+
+Write a function which accepts an array of integers `xs` and an integer `len` and computes the maximum sum of `len` consecutive elements in `xs`.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/maxSubArrSum.test.ts[]
+----
+
+=== v1 nested loops
+
+*TIME COMPLEXITY*: stem:[O(n^2)] because there is a loop inside a loop.
+
+*SPACE COMPLEXITY*: stem:[O(1)] as no extra storage is required besides a few control variables to store numbers.
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/maxSubArrSum-v1.ts[]
+----
+
+<1> This is necessary as are always *looking ahead* so we avoid looking past the end of the input array.
+
+=== v2 sliding window approach
+
+This solution is stem:[O(n)] time complexity because only one loop is performed.
+
+*TIME COMPLEXITY*: stem:[O(n)] as it runs a single loop.
+
+*SPACE COMPLEXITY*: stem:[O(1)] as no extra space is required besides a few control variables that store numbers.
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/maxSubArrSum-v2.ts[]
+----
+
+<1> `-Infinity` because we need to take the into account the fact that the sum could be negative.
+Starting with 0 would be a bad decision here.

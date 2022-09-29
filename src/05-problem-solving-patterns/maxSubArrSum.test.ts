@@ -1,22 +1,27 @@
-import { maxSubArrSum } from './maxSubArrSum-v1';
+import { assertEquals } from "/deps.ts";
+import { maxSubArrSum } from './maxSubArrSum-v2.ts';
 
-describe("maxSubArrSum()", () => {
-  it("should return the correct sum with valid input arrays", () => {
-    expect(maxSubArrSum([0], 1)).toEqual(0);
-    expect(maxSubArrSum([1, 2, 4, 2, 3], 2)).toEqual(4 + 2);
+Deno.test("maxSubArrSum()", async (t) => {
+  await t.step("should return the correct sum", () => {
+    assertEquals(maxSubArrSum([0], 1), 0);
+    assertEquals(maxSubArrSum([1, 2, 4, 2, 3], 2), 4 + 2);
 
-    expect(maxSubArrSum([1, 2, 3, -4, 7], 2)).toEqual(2 + 3);
+    assertEquals(maxSubArrSum([1, 2, 3, -4, 7], 2), 2 + 3);
 
-    expect(
-      maxSubArrSum([4, 2, 1, 6, 2], 4),
-    ).toEqual(4 + 2 + 1 + 6); // 13
+    assertEquals(
+      maxSubArrSum(
+        [4, 2, 1, 6, 2], 4),
+        4 + 2 + 1 + 6
+    ); // 13
 
-    expect(
+    assertEquals(
       maxSubArrSum([-2, -4, -1, 0, 0], 3),
-    ).toEqual(-1 + 0 + 0); // -1
+     -1 + 0 + 0
+    ); // -1
 
-    expect(
+    assertEquals(
       maxSubArrSum([-2, -1, -1, -1, -2, -2, -2, -5], 3),
-    ).toEqual(-1 + -1 + -1);
+      -1 + -1 + -1
+    );
   });
 });

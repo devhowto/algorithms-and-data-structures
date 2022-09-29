@@ -3,3 +3,4 @@
 * xref:problem-solving-patterns.adoc[]
 ** xref:problem-solving-patterns/frequency-counter-examples.adoc[]
 ** xref:problem-solving-patterns/multiple-pointers-examples.adoc[]
+** xref:problem-solving-patterns/sliding-window-examples.adoc[]
