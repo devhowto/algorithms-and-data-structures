@@ -65,11 +65,11 @@ We keep looping the input array, sliding the window one element at at time, each
 
 ----
 [1, 3, 5, 4, 6, 1, 2]
- •••••••
- -  ••••••+
-    -  ••••••+
-       -  ••••••+
-          -  •••••+
+ ·······
+ -  ······+
+    -  ······+
+       -  ······+
+          -  ·····+
 
 9
 
