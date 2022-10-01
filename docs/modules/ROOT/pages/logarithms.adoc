@@ -1,0 +1,52 @@
+= Logarithms
+
+A logarithm is the inverse of exponentiation.
+https://www.mathsisfun.com/algebra/logarithms.html[Math Is Fun] has a nice intro to the topic.
+There is also Wikipedia, Khan Academy, etc.
+
+Think of this question: “How many x’s multiply together to make y”?
+For example, “How many 2’s multiply together to make 8?”
+We multiply 2 three times to get 8.
+
+* stem:[2 * 2 * 2 = 8]
+* stem:[log₂(8) = 3]
+
+Therefore, stem:[log₂(8) = 3].
+Read as “log base 2 of 8 is 3” or “the base-2 log of 8 is 3”.
+In this example, 2 is the base, and 3 is the logarithm.
+8 is the number we want to get by multiplying stem:[x] stem:[n] times.
+
+* stem:[log_{2}(n) = e] such that stem:[2 \times e = n].
+* stem:[log₂(8) = 3] such that stem:[2³ = 8].
+
+[NOTE]
+====
+For analyzing algorithms' time and space complexity, we mostly care about the general trend.
+We sometimes omit the base when _informally speaking_ about algorithms that have logarithmic time and/or space complexity.
+We say “this algorithm is log of n”, actually meaning log base 2 of n (stem:[log_{2}(n)]).
+====
+
+[IMPORTANT]
+====
+A logarithm *must* have a base.
+That is, simply “log” is not a real (logarithmic) math operation.
+stem:[log_{2}] or stem:[log_{8}] are real logarithmic math operations.
+====
+
+[TIP]
+====
+A loose definition is that stem:[log_{2}] of a number roughly measures the number of times you can divide a number by 2 before you get a value that is less than or equal to stem:[1].
+====
+
+See this slide from Colt Steele for some visual clue on how good logarithmic time complexity fairs in comparison with some others:
+
+* https://cs.slides.com/colt_steele/big-o-notation#/28/0/5[Colt Steele
+Slides on Logarithms]
+
+image::colt-steele-logarithms.png[Colt Steele on Logarithms]
+
+Types of algorithms that sometimes involves logarithmic time and/or space complexity:
+
+* Certain searching algorithms have logarithmic time complexity.
+* Sorting algorithms (especially some of the most efficient ones).
+* Recursive algorithms sometimes have logarithmic space complexity.
