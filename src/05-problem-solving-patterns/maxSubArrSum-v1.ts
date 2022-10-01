@@ -4,7 +4,7 @@
  *
  * Make sure `xs.length >= len`
  *
- * @sig [Number] -> Number -> Number | Undefined
+ * @sig [Number] Number -> Number | Undefined
  */
 function maxSubArrSum(xs: number[], len: number): number | undefined {
   if (xs.length === 0 || xs.length < len) return undefined;
