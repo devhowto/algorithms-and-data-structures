@@ -2,9 +2,10 @@
  * Returns `true` if each element in `xs` has a matching squared element
  * in `ys`; `false` otherwise. Order doesn't matter. Frequency matters.
  *
- * @param xs
- * @param ys
- * @returns
+ * Time complexity: O(n²).
+ * Space complexity: O(1).
+ *
+ * [Number] [Number] -> boolean
  */
 function same(xs: number[], ys: number[]): boolean {
   if (xs.length !== ys.length) return false;

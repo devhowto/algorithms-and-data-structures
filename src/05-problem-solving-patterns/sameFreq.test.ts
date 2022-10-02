@@ -1,10 +1,9 @@
 import { assertEquals } from "/deps.ts";
-import { same } from './same-v2.ts';
+import { same } from './same-v1.ts';
 
 Deno.test('same() ', async (t) => {
   await t.step('when any value in a1 lack a matching value in a2', async (t) => {
     await t.step('should return false', () => {
-      // 1 squared is 1, but it is not in the second array.
       assertEquals(same([1, 2, 3], [4, 9]), false);
 
       // Just because 4 is in the second array, it doesn't mean the

@@ -2,43 +2,43 @@
 
 Some examples that make use of the “frequency counter pattern” or “frequency counter approach”.
 
-== same()
+== sameFreq()
 
-Write a function called `same`, which accepts two arrays.
+Write a function called `sameFreq`, which accepts two arrays.
 It should return true if every value in the array has it's corresponding value
 squared in the second array.
 The frequency of values must be the same.
 The order doesn't matter.
 
-.Unit Tests
+=== Unit Tests
+
 [source,ts]
 ----
-include::example$src/05-problem-solving-patterns/same.test.ts[]
+include::example$src/05-problem-solving-patterns/sameFreq.test.ts[]
 ----
 
 === v1
 
 **TIME COMPLEXITY**: `O(n²)`.
 We have only one explicit `for` loop, but `indexOf()` is also a loop which can potentially go over the entire array.
-We actually have nested loops in this implementation.
+This implementation actually performs nested loops.
 
 **SPACE COMPLEXITY**: `O(1)`.
-We just store the found index each time.
-When we `ys.splice()` we are not creating further arrays.
-Just reusing the same `ys` from the input, but making it smaller each time.
-We can sure assume it is constant space.
+Only the found index is stored each time.
+`ys.splice()` is not creating further arrays.
+Just reusing the same `ys` and making it smaller each time.
 
 [source,typescript]
 ----
-include::example$src/05-problem-solving-patterns/same-v1.ts[]
+include::example$src/05-problem-solving-patterns/sameFreq-v1.ts[]
 ----
 
 This solution involves looping while we have matching elements in `xs`.
-If we reach the end of the loop without getting an index of -1 it means every element in `xs` has a matching squared element in `ys`.
+If end of the loop is reached without getting an index of -1 it means every element in `xs` has a matching squared element in `ys`.
 
-<1> We remove that element from `ys` so that one occurrence doesn't
-ever match again. Important because we want to match the frequencies
-of squares of values in `xs` in `ys`.
+<1> That element is removed from `ys` so that one occurrence doesn't
+ever match again.
+Important because the goal is to match the frequencies of squares of values in `xs` in `ys`.
 
 === v2
 
@@ -60,20 +60,20 @@ Note that:
 * stem:[2 ^ 2] is stem:[4]
 * stem:[3 ^ 2] is stem:[9]
 
-Then we loop and check if the squared keys in `freq1` exist and have the same value in `freq2`.
-As soon as something doesn't match, we return `false` to indicate the two arrays do not meet our criteria; else return `true`.
+Then another loop checks if the squared keys in `freq1` exist and have the same value in `freq2`.
+As soon as something doesn't match, `false` is returned to indicate the two arrays do not meet the criteria; else return `true`.
 
 **TIME COMPLEXITY**: stem:[O(n)].
 Three non-nested loops is still linear time.
 Much better than two nested loops.
 
 **SPACE COMPLEXITY**: stem:[O(n)].
-We create two other objects with potentially the same number of keys as `xs` and `ys`.
+Two other objects are created with potentially the same number of keys as `xs` and `ys`.
 So, the space taken inside the function is directly proportional to the input arrays size.
 
 [source,ts]
 ----
-include::example$src/05-problem-solving-patterns/same-v2.ts[]
+include::example$src/05-problem-solving-patterns/sameFreq-v2.ts[]
 ----
 
 Three loops is much better than a loop inside a loop.
