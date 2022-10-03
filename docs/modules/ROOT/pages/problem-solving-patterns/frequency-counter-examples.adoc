@@ -154,3 +154,28 @@ include::example$src/05-problem-solving-patterns/anagram-v1.ts[]
 However, if it is 0 (which is also falsy), it is not an anagram either because it means we found that letter again (during this iteration of the loop) on `s2` which means we would decrement it even more, making it `-1`.
 It means the current char doesn't appear with the same frequency on both strings.
 
+
+== areThereDups()
+
+Implement a function called `areThereDups` which accepts a variable number of arguments, and checks whether there are any duplicates among the arguments passed in.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/06-challenges/areThereDups.test.ts[]
+----
+
+=== v1
+
+*TIME COMPLEXITY*: stem:[O(n)].
+The input is potentially iterated from beginning to end.
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+A frequency object is created which can potentially be as large as the input.
+
+[source,typescript,linenums]
+----
+include::example$src/06-challenges/areThereDups-v1.ts[lines=5..-1]
+----
+

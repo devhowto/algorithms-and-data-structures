@@ -14,10 +14,9 @@
  * be the case that there were duplicate elements that were discarded,
  * and we know the input contains duplicate elements.
  *
- * @param {...(number|string|nul|undefined)}
- * @return {boolean}
+ * @sig Number... -> Boolean
  */
-function areThereDups(...args) {
+function areThereDups(...args: number[]): boolean {
   if (args.length === 0) return false;
   return new Set(args).size !== args.length;
 }
