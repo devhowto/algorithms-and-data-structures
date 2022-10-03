@@ -11,7 +11,10 @@
     "rules": {
       "tags": ["recommended"],
       "include": ["ban-untagged-todo"],
-      "exclude": ["no-unused-vars"]
+      "exclude": [
+        "no-unused-vars",
+        "no-inferrable-types",
+      ]
     }
   },
   "fmt": {
