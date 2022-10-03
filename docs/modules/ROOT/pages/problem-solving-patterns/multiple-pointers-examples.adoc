@@ -204,3 +204,31 @@ to `-`, then it works in Node too:
 ----
 include::example$src/06-challenges/areThereDups-v3.ts[lines=5..-1]
 ----
+
+== avgPair()
+
+Given a sorted array of integers and a target average, write a function `avgPair` to determine if there is a pair of values in the array where the average of the pair equals the target average.
+There may be more than one pair that matches the average target.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/avgPair.test.ts[]
+----
+
+=== v1
+
+*TIME COMPLEXITY*: stem:[O(n)].
+The input is iterated once.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+Only two primitive-valued variables are created.
+
+If the average on the current iteration is less than the target average, the left pointer is incremented, otherwise, the right pointer is decremented.
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/avgPair-v1.ts[lines=5..-1]
+----
+

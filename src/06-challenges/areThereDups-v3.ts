@@ -1,5 +1,5 @@
 //
-// tags: search loop sort multiple-pointer
+// tags: search loop sort
 //
 
 /**
