@@ -4,6 +4,9 @@
  *
  * Make sure `xs.length >= len`
  *
+ * - Time complexity: `O(n²)`.
+ * - Space complexity: `O(1)`.
+ *
  * @sig [Number] Number -> Number | Undefined
  */
 function maxSubArrSum(xs: number[], len: number): number | undefined {
