@@ -232,3 +232,56 @@ If the average on the current iteration is less than the target average, the lef
 include::example$src/05-problem-solving-patterns/avgPair-v1.ts[lines=5..-1]
 ----
 
+== isSubSeq()
+
+Write a function called `isSubSeq` which takes in two strings and checks whether the characters in the first string form a subsequence of the characters in the second string.
+In other words, the function should check whether the characters in the first string appear somewhere in the second string, without their order changing.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/isSubSeq.test.ts[]
+----
+
+=== v1
+
+**TIME COMPLEXITY**: stem:[O(n + m)].
+Only a single `while` loop is used, but there are updates to `l` and `r` that may cause one to stop and the other to keep going and vice-versa.
+
+**SPACE COMPLEXITY**: stem:[O(1)].
+No extra copies to store strings are required.
+Only a few control variables.
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/isSubSeq-v1.ts[lines=5..-1]
+----
+
+<1> If the end of `sub` is reached it means a subsequence has successfully been found.
+
+<2> If a matching pair of chars has been found, increment both pointers so the next pair of characters can be checked next.
+
+<3> If a match is not found during this iteration, it means a char in `str` which matches the current char in `seq` is yet to be found.
+Therefore, only `r` is increment so `str` is kept being searched further ahead.
+
+=== v2
+
+This solution is the one from the instructor. I just renamed some variables in a more meaningful, self-documenting way.
+
+**TIME COMPLEXITY**: stem:[O(n + m)].
+
+**SPACE COMPLEXITY**: stem:[O(1)].
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/isSubSeq-v2.ts[lines=5..-1]
+----
+
+This algorithm is cleverer than my previous one because it increments the pointers at more specific locations, requiring less code (making it more concise and elegant) and also the checks are performed in a more natural order.
+
+For instance, my previous solution returns true as the first thing
+inside the loop and then increments stuff.
+This solution is more natural — it first checks, increments `idxSub` and then checks if we got the end of `sub`.
+Also, it does not need an `else` clause.
+Very well designed solution indeed!

@@ -1,17 +1,21 @@
-import { isSubSeq } from './isSubSeq-v2';
+import { assertEquals } from "/deps.ts";
+import { isSubSeq } from "./isSubSeq-v2.ts";
 
-describe('isSubSeq()', () => {
-  it('should return true', () => {
-    expect(isSubSeq('dc', 'abcd')).toBe(false);
-    expect(isSubSeq('abc', 'acb')).toBe(false);
-    expect(isSubSeq('abcde', 'abcd')).toBe(false);
-    expect(isSubSeq('may the force', 'be with you')).toBe(false);
+Deno.test("isSubSeq()", async (t) => {
+  await t.step("should return true", () => {
+    assertEquals(isSubSeq("dc", "abcd"), false);
+    assertEquals(isSubSeq("abc", "acb"), false);
+    assertEquals(isSubSeq("abcde", "abcd"), false);
+    assertEquals(isSubSeq("may the force", "be wawait t.steph you"), false);
   });
 
-  it('should return true', () => {
-    expect(isSubSeq('force', 'may the force be with you!')).toBe(true);
-    expect(isSubSeq('ana', 'banana')).toBe(true);
-    expect(isSubSeq('abc', 'abracadabra')).toBe(true);
-    expect(isSubSeq('sing', 'sting')).toBe(true);
+  await t.step("should return true", () => {
+    assertEquals(
+      isSubSeq("force", "may the force be wawait t.steph you!"),
+      true
+    );
+    assertEquals(isSubSeq("ana", "banana"), true);
+    assertEquals(isSubSeq("abc", "abracadabra"), true);
+    assertEquals(isSubSeq("sing", "sting"), true);
   });
 });
