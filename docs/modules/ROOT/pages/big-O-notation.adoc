@@ -1,5 +1,10 @@
 = Big O Notation
 
+[NOTE]
+====
+In these docs and in the accompanying source code, the abbreviations *T.C* and *S.C* will some times be used in place of _time complexity_ and _space complexity_ respectively.
+====
+
 == Big-O of Arrays and Objects
 
 Let's take a look at time complexity of array and object methods in JavaScript.
