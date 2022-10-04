@@ -1,52 +1,55 @@
-import { minSubArrLen } from './minSubArrLen-v1';
+import { assertEquals } from "/deps.ts";
+import { minSubArrLen } from "./minSubArrLen-v2.ts";
 
-describe("minSubArrLen()", () => {
-  describe("when the input array is empty", () => {
-    it("should return 0", () => {
-      expect(minSubArrLen([], 1)).toEqual(0);
-      expect(minSubArrLen(new Array(), 1)).toEqual(0);
+Deno.test("minSubArrLen()", async (t) => {
+  await t.step("when the input array is empty", async (t) => {
+    await t.step("should return 0", () => {
+      assertEquals(minSubArrLen([], 1), 0);
       //
-      // An empty array can't possibly sum to 1.
+      // An empty array can"t possibly sum to 1.
       //
     });
   });
 
-  describe("when the entire array summed is not >= n", () => {
-    it("should return 0", () => {
-      expect(
+  await t.step("when the entire array summed is not >= n", async (t) => {
+    await t.step("should return 0", () => {
+      assertEquals(
         minSubArrLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 95),
-      ).toEqual(0);
+        0
+      );
       //
       // Even adding all the elements doesn't amount to 95.
       //
     });
   });
 
-  describe("when a single element >= n", () => {
-    it("should return 1", () => {
-      expect(minSubArrLen([1, 13, 7], 13)).toEqual(1);
+  await t.step("when a single element >= n", async (t) => {
+    await t.step("should return 1", () => {
+      assertEquals(minSubArrLen([1, 13, 7], 13), 1);
       //
       // 1 Because 13 >= 13.
       //
 
-      expect(
+      assertEquals(
         minSubArrLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52),
-      ).toEqual(1);
+        1
+      );
 
       // 1 because 62 >= 52.
       //
     });
   });
 
-  describe("when 2 elements summed >= n", () => {
-    it("should return 2", () => {
-      expect(
+  await t.step("when 2 elements summed >= n", async (t) => {
+    await t.step("should return 2", () => {
+      assertEquals(
         minSubArrLen([2, 3, 1, 2, 4, 3], 7),
-      ).toEqual(2);
+        2
+      );
       // 2 because [4, 3] is the smallest subarray that produces 7
       // when summed.
 
-      expect(minSubArrLen([2, 1, 6, 5, 4], 9)).toEqual(2);
+      assertEquals(minSubArrLen([2, 1, 6, 5, 4], 9), 2);
       // 2 because [5, 4] is the smallest subarray.
 
       minSubArrLen([4, 3, 3, 8, 1, 2, 3], 11);
@@ -54,17 +57,17 @@ describe("minSubArrLen()", () => {
     });
   });
 
-  describe("when all the elements are required", () => {
-    it("should return the length of the input array", () => {
+  await t.step("when all the elements are required", async (t) => {
+    await t.step("should return the length of the input array", () => {
       const nums3 = [1, 2, 3];
-      expect(minSubArrLen(nums3, 6)).toEqual(nums3.length);
+      assertEquals(minSubArrLen(nums3, 6), nums3.length);
 
       const nums9 = [10, 20, 30, 40, 50, 60, 70, 80, 90];
-      expect(minSubArrLen(nums9, 450)).toEqual(nums9.length);
+      assertEquals(minSubArrLen(nums9, 450), nums9.length);
     });
   });
 
-  it("should handle random subarray lengths required", () => {
+  await t.step("should handle random subarray lengths required", (t) => {
     minSubArrLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 39);
     // 3
 

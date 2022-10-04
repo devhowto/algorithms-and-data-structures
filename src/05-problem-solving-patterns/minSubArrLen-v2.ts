@@ -1,46 +1,37 @@
+//
+// tags: search loop sum window
+//
+
 /**
+ * Finds the minimum subarray length that when summed is `>= n`.
+ *
  * Solution from the instructor.
+ *
+ * - T.C: `O(n²)`
+ * - S.C: `O(1)`.
+ *
+ * @sig [Integer] Integer -> Integer
  */
-function minSubArrLen(nums, n) {
+function minSubArrLen(nums: number[], n: number): number {
   let sum = 0;
   let l = 0;
   let r = 0;
   let minLen = Infinity;
 
   while (l < nums.length) {
-    // if current window doesn't add up to the given sum then
-    // move the window to right
-    if (sum < n && r < nums.length) {
+    if (sum < n && r < nums.length) { // <1>
       sum += nums[r];
       r++;
     }
-    // if current window adds up to at least the sum given then
-    // we can shrink the window
-    else if (sum >= n) {
+    else if (sum >= n) { // <2>
       minLen = Math.min(minLen, r - l);
       sum -= nums[l];
       l++;
     }
-    // current total less than required total but we reach the end,
-    // need this or else we'll be in an infinite loop
-    else {
-      break;
-    }
+    else break; // <3>
   }
 
   return minLen === Infinity ? 0 : minLen;
 }
 
-//
-// Much cleaner and elegant than mine. It uses less confusing conditions
-// and updates variables in less places.
-//
-// This solution sometimes cause ‘minLen’ to be incorrect until some
-// future iteration “fixes” it to a correct value that will work out in
-// the end. The same for ‘sum’, which sometimes gets back to less than
-// the previous ‘n’ value. But it is brilliant that it simplifies logic,
-// and in the end everything works out magnificently.
-//
-//
 export { minSubArrLen };
-
