@@ -1,9 +1,20 @@
 {
-  "deno.enable": true,
+  "deno.enable": false,
   "deno.importMap": "./import-map.json",
   "editor.rulers": [72, 80],
   "vim.textwidth": 72,
+  "files.associations": {
+    //
+    // When focusing on solving algorithms it is a good idea to disable
+    // IDE and language/framework-related features. This way we force
+    // ourselves to understand the code and not to rely on external help
+    // which is not available when doing a code challenge on the board,
+    // Google docs or something like that.
+    //
+    "*.ts": "plaintext",
+  },
   "cSpell.words": [
+    "subarray",
     "Vals"
   ],
 }
