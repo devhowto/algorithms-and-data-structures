@@ -138,3 +138,44 @@ It sometimes cause `minLen` to be incorrect until some future iteration fixes it
 
 The same for `sum`, which sometimes gets back to less than the previous `n` value.
 But it is brilliant that it simplifies logic, and in the end everything works out magnificently.
+
+== findLongestSubstr()
+
+Write a function called `findLongestSubstr`, which accepts a string and returns the length of the longest substring with all distinct characters.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/longestSubstr.test.ts[]
+----
+
+=== v1 convoluted logic 😅
+
+*TIME COMPLEXITY*: stem:[O(n)] because the input is looped once.
+
+*SPACE COMPLEXITY*: stem:[O(n)] since seen chars are stored in an object which could potentially be as big as the input string.
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/longestSubstr-v1.ts[lines=5..-1]
+----
+
+=== v2 more concise and elegant
+
+*TIME COMPLEXITY*: stem:[O(n)].
+The input is looped over once.
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+Seen chars are stored in an object which could potentially be as big as the input string.
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/longestSubstr-v2.ts[lines=5..-1]
+----
+
+<1> index - beginning of substring + 1 (to include current in count).
+
+<2> Store the index of the next char so as to not double-count.
+
+Again, the solution from the instructor is more elegant and concise than mine 🥲.

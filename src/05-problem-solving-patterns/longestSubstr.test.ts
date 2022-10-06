@@ -1,26 +1,27 @@
-import { findLongestSubstr } from './longestSubstr-v2';
+import { assertEquals } from "/deps.ts";
+import { findLongestSubstr } from "./longestSubstr-v2.ts";
 
-describe('findLongestSubstr()', () => {
-  describe('when input string is empty', () => {
-    it('should return 0', () => {
-      expect(findLongestSubstr('')).toEqual(0);
+Deno.test("findLongestSubstr()", async (t) => {
+  await t.step("when input is empty string", async (t) => {
+    await t.step("should return 0", () => {
+      assertEquals(findLongestSubstr(""), 0);
     });
   });
 
-  describe('when string contains no distinct letters', () => {
-    it('should return 1', () => {
-      expect(findLongestSubstr('bbbbbb')).toEqual(1);
+  await t.step("when input contains no distinct chars", async (t) => {
+    await t.step("should return 1", () => {
+      assertEquals(findLongestSubstr("bbbbbb"), 1);
     });
   });
 
-  describe('when string contains substring with distinct letters', () => {
-    it('should return the length of the substring', () => {
-      expect(findLongestSubstr('xyxabcdyx')).toEqual(6);
-      expect(findLongestSubstr('rithmschool')).toEqual(7);
-      expect(findLongestSubstr('thisisawesome')).toEqual(6);
-      expect(findLongestSubstr('thecatinthehat')).toEqual(7);
-      expect(findLongestSubstr('longestsubstring')).toEqual(8);
-      expect(findLongestSubstr('thisishowwedoit')).toEqual(6);
+  await t.step("when input contains substring with distinct chars", async (t) => {
+    await t.step("should return the length of the substring", () => {
+      assertEquals(findLongestSubstr("xyxabcdyx"), 6);
+      assertEquals(findLongestSubstr("rithmschool"), 7);
+      assertEquals(findLongestSubstr("thisisawesome"), 6);
+      assertEquals(findLongestSubstr("thecatinthehat"), 7);
+      assertEquals(findLongestSubstr("longestsubstring"), 8);
+      assertEquals(findLongestSubstr("thisishowwedoit"), 6);
     });
   });
 });

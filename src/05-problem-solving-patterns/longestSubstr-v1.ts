@@ -1,34 +1,17 @@
 //
-// Sliding Window - findLongestSubstr
-//
-// Write a function called findLongestSubstr, which accepts a string
-// and returns the length of the longest substring with all distinct
-// characters.
-//
-// findLongestSubstr('') // 0
-// findLongestSubstr('rithmschool') // 7
-// findLongestSubstr('thisisawesome') // 6
-// findLongestSubstr('thecatinthehat') // 7
-// findLongestSubstr('bbbbbb') // 1
-// findLongestSubstr('longestsubstring') // 8
-// findLongestSubstr('thisishowwedoit') // 6
-//
-// Time Complexity - O(n)
+// tags: loop search substring
 //
 
 /**
- * Finds length of longest substring of distinct chars.
+ * Finds the length of the longest substring of distinct chars.
  *
- * **TIME COMPLEXITY**: `O(n)` because we loop over the input once.
+ * - T.C: `O(n)`.
+ * - S.C: `O(n)`.
  *
- * **SPACE COMPLEXITY**: `O(n)` since we store seen chars in an object
- * which could potentially be as big as the input string.
- *
- * @param {string} str
- * @return {number}
+ * @sig String -> Number
  */
-function findLongestSubstr(str) {
-  let acc = {};
+function findLongestSubstr(str: string): Number {
+  let acc: { [key: string]: number } = {};
   let longestSoFar = 0;
   let tmpLongest = 0;
   let l = 0;

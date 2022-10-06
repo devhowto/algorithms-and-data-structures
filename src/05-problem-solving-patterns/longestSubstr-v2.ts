@@ -1,39 +1,35 @@
+//
+// tags: loop search substring
+//
+
 /**
- * Finds length of longest substring of distinct chars.
+ * Finds the length of the longest substring of distinct chars.
  *
- * **TIME COMPLEXITY**: `O(n)` because we loop over the input once.
+ * This solution is from Colt Steele.
  *
- * **SPACE COMPLEXITY**: `O(n)` since we store seen chars in an object
- * which could potentially be as big as the input string.
+ * - T.C: `O(n)`.
+ * - S.C: `O(n)`.
  *
- * @param {string} str
- * @return {number}
+ * @sig String -> Number
  */
-function findLongestSubstr(str) {
+function findLongestSubstr(str: string): number {
   let longest = 0;
-  let seen = {};
+  const seen: Record<string, number> = {};
   let start = 0;
 
   for (let i = 0; i < str.length; i++) {
-    let char = str[i];
+    const chr = str[i];
 
-    if (seen[char]) {
-      start = Math.max(start, seen[char]);
+    if (seen[chr]) {
+      start = Math.max(start, seen[chr]);
     }
 
-    // index - beginning of substring + 1 (to include current in count)
-    longest = Math.max(longest, i - start + 1);
+    longest = Math.max(longest, i - start + 1); // <1>
 
-    // store the index of the next char so as to not double count
-    seen[char] = i + 1;
+    seen[chr] = i + 1; // <2>
   }
 
   return longest;
 }
-
-//
-// Again, the solution from the instructor is more elegant and concise
-// than mine 🥲.
-//
 
 export { findLongestSubstr };
