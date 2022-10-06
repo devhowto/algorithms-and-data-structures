@@ -1,0 +1,66 @@
+= Recursion
+
+== Intro
+
+Recursion is a different way of thinking about writing solutions.
+It is a function/procedure/method/process that calls it self with new input until the base case is reached and a final result is produced.
+It is a form of looping except without using things like `for`, `while`, etc.
+
+Some algorithms are much simpler if implemented using recursion.
+Some are impossible without recursion.
+For example, to parse or stringify JSON, recursion is much more appropriate than other sorts of loops.
+Traversing the DOM or any sort of object traversal, trees, graphs are generally easier using recursion too.
+
+Algorithms making use of recursion must make sure to:
+
+* handle the base case
+* Pass different input in each invocation so that it will eventually reach the base case
+
+Recursion also involves the call stack, and some languages offer techniques like _Tail Call Optimization_ (TCO) or _Tail Call Elimination_ (TCE) to improve performance and make recursion on larger data sets possible at all.
+
+ECMAScript does not feature TCO or TCE, so recursion must be used responsibly in this language.
+
+Recursion can also be done using *pure recursion* or *helper function recursion*.
+
+== The Call Stack
+
+Almost all programming languages feature the so called *call stack*, which is an internal data structure to that programming language that stores information about the calling of functions.
+
+When a function is called, it is added to the stack, and when it returns, it is popped from the stack.
+
+If the call stack keeps being added functions, at some point a limit will be reached a stack overflow error/exception will happen.
+
+== countdown()
+
+A function that logs integers from `n` down to 0.
+
+*TIME COMPLEXITY*: stem:[O(n)] since all integers from `n` to 0 have to be worked upon.
+The number of recursive invocations is directly proportional to `n`.
+
+*SPACE COMPLEXITY*: stem:[O(1)] as no extra storage is used.
+The call stack is not part of T.C big O concern.
+
+[source,typescript,linenums]
+----
+/**
+ * Logs number from `num` to 0.
+ *
+ * ASSUME: `num >= 0`.
+ *
+ * - T.C: `O(n)`.
+ * - S.C: `O(1)`.
+ *
+ * @sig Number -> Void
+ */
+function countdown(num) {
+  if (num <= 0) {
+    console.log(n);
+    console.info("All done!");
+    return;
+  }
+
+  console.log(num);
+
+  countdown(--num);
+}
+----

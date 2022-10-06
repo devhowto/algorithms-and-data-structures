@@ -6,3 +6,4 @@
 ** xref:problem-solving-patterns/multiple-pointers-examples.adoc[]
 ** xref:problem-solving-patterns/sliding-window-examples.adoc[]
 ** xref:problem-solving-patterns/divide-and-conquer-examples.adoc[]
+* xref:recursion.adoc[]
