@@ -82,6 +82,15 @@ As the length grows, the space complexity grows.
 
 For both objects and arrays, it is O(n), `n` being the number of keys in the object or the length for arrays.
 
+== Recursion
+
+When dealing with recursion, time complexity will depend on the amount of times recursive calls are performed (and other things that may be happening inside the algorithm, of course).
+
+Space complexity is analyzed regarding how much space is taken to compute the result, but not the call stack.
+
+For example, if the input for a given function is 5, and there are five recursive invocations, time complexity is not stem:[O(n)] just because the function is recursively called five times and added five times to the call stack.
+Only the space required for storing temporary and return data is to be taken into account.
+
 == sum() array example
 
 Following the concept of *empty sum*, a sum of an empty list results in 0 (zero).
