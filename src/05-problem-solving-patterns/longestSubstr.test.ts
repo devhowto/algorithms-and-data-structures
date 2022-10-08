@@ -1,5 +1,5 @@
 import { assertEquals } from "/deps.ts";
-import { findLongestSubstr } from "./longestSubstr-v2.ts";
+import { findLongestSubstr } from "./longestSubstr-v3.ts";
 
 Deno.test("findLongestSubstr()", async (t) => {
   await t.step("when input is empty string", async (t) => {

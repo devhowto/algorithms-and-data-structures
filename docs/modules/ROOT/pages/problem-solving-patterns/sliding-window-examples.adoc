@@ -179,3 +179,10 @@ include::example$src/05-problem-solving-patterns/longestSubstr-v2.ts[lines=5..-1
 <2> Store the index of the next char so as to not double-count.
 
 Again, the solution from the instructor is more elegant and concise than mine 🥲.
+
+=== v3 recursion
+
+[source,typescript,linenums]
+----
+include::example$src/05-problem-solving-patterns/longestSubstr-v3.ts[lines=5..-1]
+----
