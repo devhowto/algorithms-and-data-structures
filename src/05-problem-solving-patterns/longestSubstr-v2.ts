@@ -14,19 +14,19 @@
  */
 function findLongestSubstr(str: string): number {
   let longest = 0;
-  const seen: Record<string, number> = {};
   let start = 0;
+  const seenAt: Record<string, number> = {};
 
   for (let i = 0; i < str.length; i++) {
     const chr = str[i];
 
-    if (seen[chr]) {
-      start = Math.max(start, seen[chr]);
+    if (seenAt[chr] !== undefined) {
+      start = Math.max(start, seenAt[chr]);
     }
 
     longest = Math.max(longest, i - start + 1); // <1>
 
-    seen[chr] = i + 1; // <2>
+    seenAt[chr] = i + 1; // <2>
   }
 
   return longest;
