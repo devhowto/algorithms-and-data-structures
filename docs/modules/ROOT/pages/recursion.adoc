@@ -30,6 +30,16 @@ When a function is called, it is added to the stack, and when it returns, it is 
 
 If the call stack keeps being added functions, at some point a limit will be reached a stack overflow error/exception will happen.
 
+== Tips on Recursion
+
+When writing recursive algorithms, keep these things in mind:
+
+* Remember the base case.
+* Careful not to overflow the calls stack.
+* Forgetting to return.
+* Return the wrong thing.
+* Trust the recursion.
+
 == countdown()
 
 A function that logs integers from `n` down to 0.

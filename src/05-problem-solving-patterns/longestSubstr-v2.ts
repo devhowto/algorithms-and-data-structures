@@ -20,7 +20,7 @@ function findLongestSubstr(str: string): number {
   for (let i = 0; i < str.length; i++) {
     const chr = str[i];
 
-    if (seenAt[chr] !== undefined) {
+    if (chr in seenAt) {
       start = Math.max(start, seenAt[chr]);
     }
 
