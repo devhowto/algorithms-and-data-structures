@@ -109,3 +109,42 @@ f(5)
   4 + 6       → pop f(4) + result of previous call
 5 + 10        → pop f(5) + result of previous call
 ----
+
+== Factorial
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/07-recursion/factorial.test.ts[]
+----
+
+=== v1 using recursion
+
+*TIME COMPLEXITY*: stem:[`O(n)`] because the recursion occurs for as many times as the size of `n`.
+
+**SPACE COMPLEXITY**: stem:[O(1)] as only a numeric value is computed by the algorithm.
+
+[TIP]
+====
+The base case for factorial is 1 (not zero) because it is the identity property of multiplication.
+====
+
+[source,typescript,linenums]
+----
+include::example$src/07-recursion/factorial-v1.ts[lines=5..-1]
+----
+
+----
+Let f be factorial (for shortness).
+
+f(5)
+ 5 * f(4)
+  4 * f(3)
+   3 * f(2)
+    2 * f(1)
+     1
+    2 * 1
+   3 * 3
+  4 * 6
+ 5 * 24
