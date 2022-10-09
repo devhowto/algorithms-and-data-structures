@@ -22,6 +22,29 @@ ECMAScript does not feature TCO or TCE, so recursion must be used responsibly in
 
 Recursion can also be done using *pure recursion* or *helper function recursion*.
 
+[TIP]
+====
+Sometimes people seem to think that things that mention “script” imply a notion of inferiority.
+
+For example, “Shell scripting is not really programming, it is _merely_ creating scripts.”
+
+Or, “JavaScript is a scripting language” (therefore, inferior to a _real language_).
+
+Sure, some languages do have pros and cons, good and bad design choices, and are better or worse suited to solve a given problem.
+It doesn't mean, however, that whatever contains “script” in the name or description is inherently _inferior_.
+It is a tool to be used for whatever and whenever it makes sense.
+
+The same with _recursion_, _pure recursion_ and _helper function recursion_.
+Recursion is not inherently better than vanilla, plain good old loops.
+It is a suitable approach for many problems. But it is not _always_ the best approach for every problem.
+
+Also, _pure recursion_ does not mean _better_.
+Sometimes it will be elegant, easy to read and solve the problem, and sometimes _helper function recursion_ will be the better approach.
+
+Don't let names and descriptions trap you into the wrong way of looking at things.
+Learn the techniques and approaches, and use then judiciously.
+====
+
 === Pure Recursion
 
 Pure recursion involves a single standalone function that calls itself:
@@ -252,4 +275,59 @@ f(5)
    3 * 3
   4 * 6
  5 * 24
+----
+
+== filterOdds()
+
+Problem: write a recursive function that filters odd numbers from a list.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/07-recursion/filterOdds.test.ts[]
+----
+
+=== v1 helper function
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Iterate over every element of the input.
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+The collected odds potentially increases in direct proportion to the input size.
+
+[source,typescript,linenums]
+----
+include::example$src/07-recursion/filterOdds-v1.ts[lines=5..-1]
+----
+
+=== v2 helper function
+
+This solution is based on things I learned studying the awesome https://htdp.org/[HtDP book^] and Lisp/Scheme, purely recursive using an accumulator.
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Iterate over every element of the input.
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+The collected odds potentially increases in direct proportion to the input size.
+
+[source,typescript,linenums]
+----
+include::example$src/07-recursion/filterOdds-v2.ts[lines=5..-1]
+----
+
+=== v3 concat approach
+
+Solution from Colt Steele.
+No helper function or extra accumulator parameter is needed.
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Iterates over every element of the input.
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+The collected odds potentially increases in direct proportion to the input size.
+
+[source,typescript,linenums]
+----
+include::example$src/07-recursion/filterOdds-v3.ts[lines=5..-1]
 ----
