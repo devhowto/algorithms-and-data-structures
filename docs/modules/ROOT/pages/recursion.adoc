@@ -22,6 +22,100 @@ ECMAScript does not feature TCO or TCE, so recursion must be used responsibly in
 
 Recursion can also be done using *pure recursion* or *helper function recursion*.
 
+=== Pure Recursion
+
+Pure recursion involves a single standalone function that calls itself:
+
+.pure recursion
+[source,javascript]
+----
+function f(n) {
+  if (n <= 0) return n;
+  return n + f(n - 1);
+}
+----
+
+=== Helper Function Recursion
+
+Helper function recursion is when there is a public, outer function that client code can call, which itself is not recursive, but which contains an inner function (the helper function) that does the recursion.
+This is used to make the main function easier to use (less parameters to worry about, etc.).
+The overall idea goes like this:
+
+.helper function recursion
+[source,javascript]
+----
+function fn(n) {
+  var total = 0; // <1>
+
+  function helper(x) {
+    if (x <= 0) return 0; // <3>
+    total += x; // <4>
+    helper(x - 1); // <5>
+  }
+
+  helper(n); // <2>
+
+  return total; // <6>
+}
+
+log(fn(5));
+// → 15
+----
+
+<1> Defines storage which is captured in a closure.
+
+<2> Invokes the helper function passing `n` along, which is a parameter from the main function.
+
+<3> Handle the base case of course.
+
+<4> Actually modifies the outer input which is captured through the closure.
+
+<5> Calls the itself (the helper function) recursively with a modified input (some kind of modification which will eventually cause the base case to be reached).
+
+<6> The recursive helper function must have finished for the flow to reach this point and the final result is returned.
+
+[TIP]
+====
+This approach works in ECMAScript and other langues that feature _closures_.
+====
+
+A more concrete example, just that in this case it is not use a closure-scoped storage variable.
+The _storage_ is turned into an _accumulator parameter_ as the last parameter of the helper recursive function.
+
+[source,javascript]
+----
+function filter(xs, predicate) { // <1>
+  return (function helper(list, f, acc) { // <2>
+    if (list.length === 0) return acc; // <3>
+
+    var [head, ...rest] = list;
+
+    if (f(head)) // <4>
+      return helper(rest, f, [...acc, head]);
+
+    return helper(rest, f, acc); // <5>
+  })(xs, predicate, []);
+}
+
+function isEven(n) {
+  return n % 2 === 0;
+}
+
+log(filter([0, 1, 2, 3, 4, 5], isEven));
+// → [1, 2, 4]
+----
+
+<1> The outer function takes two parameters: a list of something and a predicate function that can be applied to each element of that list.
+
+<2> A immediately invoked named function expression.
+Note the parentheses between `return` and `function` and how it the function expression is invoked with `(xs, predicate, [])`!
+
+<3> Handles the base case.
+
+<4> If the current element satisfies the predicate, add it to the new list and recurse with the rest of the list and that element added to the filtered list in the accumulator.
+
+<5> The predicate was not satisfied in the previous step, so recurse with the rest of the list and the unmodified accumulator.
+
 == The Call Stack
 
 Almost all programming languages feature the so called *call stack*, which is an internal data structure to that programming language that stores information about the calling of functions.
@@ -158,3 +252,4 @@ f(5)
    3 * 3
   4 * 6
  5 * 24
+----
