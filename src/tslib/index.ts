@@ -6,3 +6,5 @@ export {
 export { add } from "./add.ts";
 export { isEven } from "./isEven.ts";
 export { isOdd } from "./isOdd.ts";
+
+export { head } from "./head.ts";
