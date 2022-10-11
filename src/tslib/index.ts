@@ -8,4 +8,6 @@ export { isEven } from "./isEven.ts";
 export { isOdd } from "./isOdd.ts";
 
 export { length } from "./length.ts";
+export { isEmpty } from "./isEmpty.ts";
 export { head } from "./head.ts";
+export { tail } from "./tail.ts";
