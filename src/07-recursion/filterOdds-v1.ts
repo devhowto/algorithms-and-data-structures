@@ -2,6 +2,12 @@
 // tags: recursion list filter
 //
 
+import {
+  isOdd,
+  isEmpty,
+  tail,
+} from "/src/tslib/index.ts";
+
 /**
  * Returns only the odd numbers from xs.
  *
@@ -14,10 +20,10 @@ function filterOdds(xs: number[]): number[] {
   const odds: number[] = [];
 
   (function go(nums: number[]): void {
-    if (nums.length === 0) return;
-    if (nums[0] % 2 !== 0) {
+    if (isEmpty(nums)) return;
+    if (isOdd(nums[0])) {
       odds.push(nums[0]);
-      go(nums.slice(1));
+      go(tail(nums));
     }
   })(xs);
 
