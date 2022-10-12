@@ -7,6 +7,8 @@ export { add } from "./add.ts";
 export { isEven } from "./isEven.ts";
 export { isOdd } from "./isOdd.ts";
 
+export { isStr } from "./isStr.ts";
+
 export { length } from "./length.ts";
 export { isEmpty } from "./isEmpty.ts";
 export { head } from "./head.ts";
