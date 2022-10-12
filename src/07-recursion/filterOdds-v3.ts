@@ -7,6 +7,7 @@ import {
   isOdd,
   head,
   tail,
+  concat,
 } from "/src/tslib/index.ts";
 
 /**
@@ -18,15 +19,13 @@ import {
  * @sig [Number] -> [Number]
  */
 function filterOdds(xs: number[]): number[] {
-  let arr: number[] = [];
+  const arr: number[] = [];
 
   if (isEmpty(xs)) return arr;
 
   if (isOdd(head(xs))) arr.push(head(xs));
 
-  arr = arr.concat(filterOdds(tail(xs)));
-
-  return arr;
+  return concat(arr, filterOdds(tail(xs)));
 }
 
 export { filterOdds };

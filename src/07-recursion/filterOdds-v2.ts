@@ -7,6 +7,7 @@ import {
   isEmpty,
   head,
   tail,
+  append,
 } from "/src/tslib/index.ts";
 
 /**
@@ -22,8 +23,10 @@ function filterOdds(
   acc: number[] = [],
 ): number[] {
   if (isEmpty(xs)) return acc;
-  if (isOdd(head(xs))) acc.push(head(xs));
-  return filterOdds(tail(xs), acc);
+  return filterOdds(
+    tail(xs),
+    isOdd(head(xs)) ? append(head(xs), acc) : acc
+  );
 }
 
 export { filterOdds };

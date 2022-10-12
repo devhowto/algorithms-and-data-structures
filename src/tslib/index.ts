@@ -14,3 +14,4 @@ export { isEmpty } from "./isEmpty.ts";
 export { head } from "./head.ts";
 export { tail } from "./tail.ts";
 export { concat } from "./concat.ts";
+export { append } from "./append.ts";

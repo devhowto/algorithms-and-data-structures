@@ -5,6 +5,7 @@
 import {
   isOdd,
   isEmpty,
+  head,
   tail,
 } from "/src/tslib/index.ts";
 
@@ -21,8 +22,8 @@ function filterOdds(xs: number[]): number[] {
 
   (function go(nums: number[]): void {
     if (isEmpty(nums)) return;
-    if (isOdd(nums[0])) {
-      odds.push(nums[0]);
+    if (isOdd(head(nums))) {
+      odds.push(head(nums));
       go(tail(nums));
     }
   })(xs);
