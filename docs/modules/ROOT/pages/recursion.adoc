@@ -339,7 +339,7 @@ Assume that stem:[e >= 0].
 
 === Unit Tests
 
-[source,typescript,lineos]
+[source,typescript,linenums]
 ----
 include::example$src/08-recursion-challenges/power.test.ts[]
 ----
@@ -352,7 +352,7 @@ There are as many recursive invocations as the size of `e`.
 *SPACE COMPLEXITY*: stem:[O(1)].
 No extra storage is necessary to store results of the computation.
 
-[source,typescript,lineos]
+[source,typescript,linenums]
 ----
 include::example$src/08-recursion-challenges/power-v1.ts[lines=5..-1]
 ----
@@ -365,8 +365,45 @@ There are as many recursive invocations as the size of `e`.
 *SPACE COMPLEXITY*: stem:[O(1)].
 No extra storage is necessary to store results of the computation.
 
-[source,typescript,lineos]
+[source,typescript,linenums]
 ----
 include::example$src/08-recursion-challenges/power-v1.ts[lines=5..-1]
 ----
 
+== product()
+
+A function that computes the product of an array of numbers.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/product.test.ts
+----
+
+=== v1 no accumulator
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Recur for the length of `xs`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to store the computation.
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/product-v1.ts[lines=11..-1]
+----
+
+=== v2 with helper accumulator
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Recur for the length of `xs`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to store the computation.
+
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/product-v2.ts[lines=11..-1]
+----

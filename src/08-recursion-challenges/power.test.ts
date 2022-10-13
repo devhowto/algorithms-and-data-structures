@@ -1,5 +1,5 @@
 import { assertEquals } from "/deps.ts";
-import { power } from "./power-v1.ts";
+import { power } from "./power-v2.ts";
 
 Deno.test("power()", async (t) => {
   await t.step("should return 1 when raised to the 0th power", () => {
