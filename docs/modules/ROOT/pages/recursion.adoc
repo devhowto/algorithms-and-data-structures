@@ -331,3 +331,42 @@ The collected odds potentially increases in direct proportion to the input size.
 ----
 include::example$src/07-recursion/filterOdds-v3.ts[lines=5..-1]
 ----
+
+== power()
+
+A function that raises a given integer base to a given integer power.
+Assume that stem:[e >= 0].
+
+=== Unit Tests
+
+[source,typescript,lineos]
+----
+include::example$src/08-recursion-challenges/power.test.ts[]
+----
+
+=== v1 if base case
+
+*TIME COMPLEXITY*: stem:[O(n)].
+There are as many recursive invocations as the size of `e`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to store results of the computation.
+
+[source,typescript,lineos]
+----
+include::example$src/08-recursion-challenges/power-v1.ts[lines=5..-1]
+----
+
+=== v2 ternary
+
+*TIME COMPLEXITY*: stem:[O(n)].
+There are as many recursive invocations as the size of `e`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to store results of the computation.
+
+[source,typescript,lineos]
+----
+include::example$src/08-recursion-challenges/power-v1.ts[lines=5..-1]
+----
+
