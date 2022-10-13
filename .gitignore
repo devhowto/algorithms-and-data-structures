@@ -49,3 +49,8 @@ node_modules
 # Local node repl history file.
 #
 .node_repl_history
+
+##
+# Temporary built JS files.
+#
+jsdist
