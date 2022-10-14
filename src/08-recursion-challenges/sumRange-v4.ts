@@ -7,14 +7,13 @@
  *
  * ASSUME: `x >= 1`.
  *
- * - T.C: `O(n)`.
+ * - T.C: `O(1)`.
  * - S.C: `O(1)`.
  *
  * @sig Number -> Number
  */
-function sumFrom1To(x: number): number {
-  if (x === 1) return 1; // <1>
-  return x + sumFrom1To(x - 1); // <2>
+function sumRange(x: number): number {
+  return x * (x + 1) / 2;
 }
 
-export { sumFrom1To };
+export { sumRange };

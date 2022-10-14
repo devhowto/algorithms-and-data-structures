@@ -210,6 +210,12 @@ include::example$src/07-recursion/sumFrom1To.test.ts[]
 
 === v1 using recursion
 
+*TIME COMPLEXITY*: stem:[O(n)].
+There are as many recursive calls as the size of `n`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra space is required.
+
 [source,typescript,linenums]
 ----
 include::example$src/07-recursion/sumFrom1To-v1.ts[lines=5..-1]
@@ -456,6 +462,20 @@ include::example$src/08-recursion-challenges/sumRange-v2.ts[lines=5..-1]
 [source,typescript,linenums]
 ----
 include::example$src/08-recursion-challenges/sumRange-v3.ts[lines=5..-1]
+----
+
+=== v4 no recursion
+
+This example is just to show that some algorithms can be performed in a purely mathematical way, which sometimes greatly improves performance.
+In this case, even time is stem:[O(1)] (linear) no matter how large `x` is.
+
+*TIME COMPLEXITY*: stem:[O(1)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/sumRange-v4.ts[lines=5..-1]
 ----
 
 == fibonacci()

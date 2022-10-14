@@ -1,5 +1,5 @@
 import { assertEquals } from "/deps.ts";
-import { sumRange } from "./sumRange-v3.ts";
+import { sumRange } from "./sumRange-v4.ts";
 
 Deno.test("sumRange()", async (t) => {
   await t.step("should return the correct sum", () => {
