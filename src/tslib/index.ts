@@ -13,5 +13,6 @@ export { length } from "./length.ts";
 export { isEmpty } from "./isEmpty.ts";
 export { head } from "./head.ts";
 export { tail } from "./tail.ts";
+export { last } from "./last.ts";
 export { concat } from "./concat.ts";
 export { append } from "./append.ts";
