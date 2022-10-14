@@ -407,3 +407,53 @@ No extra storage is necessary to store the computation.
 ----
 include::example$src/08-recursion-challenges/product-v2.ts[lines=11..-1]
 ----
+
+== sumRange()
+
+A function that sums all integers from 0 to `n`, inclusive.
+Assume stem:[n > 0].
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/sumRange.test.ts[]
+----
+
+=== v1 helper accumulator
+
+This solution uses an accumulator parameter to store the value computed in each invocation.
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/sumRange-v1.ts[lines=5..-1]
+----
+
+=== v2 no accumulator
+
+This solution neither uses an accumulator parameter, nor does it use a helper function.
+It just uses elegant (yet very simple) logic to do the job.
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/sumRange-v2.ts[lines=5..-1]
+----
+
+=== v3 helper function
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/sumRange-v3.ts[lines=5..-1]
+----
