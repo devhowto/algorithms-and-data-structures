@@ -457,3 +457,40 @@ include::example$src/08-recursion-challenges/sumRange-v2.ts[lines=5..-1]
 ----
 include::example$src/08-recursion-challenges/sumRange-v3.ts[lines=5..-1]
 ----
+
+== fibonacci()
+
+A recursive function called `fib` which accepts a number and returns the _nth_ number in the Fibonacci sequence.
+
+Check this article on the https://www.mathsisfun.com/numbers/fibonacci-sequence.html[Fibonacci Sequence in the MathIsFun website^].
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/fib.test.ts[]
+----
+
+=== v1 helper function
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+Some storage is used to store the terms computed “so far.”
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/fib-v1.ts[lines=5..-1]
+----
+
+=== v2 pure recursion
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is needed.
+
+[source,typescript,linenums]
+----
+include::example$src/08-recursion-challenges/fib-v2.ts[lines=5..-1]
+----
