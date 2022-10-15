@@ -1,6 +1,6 @@
 {
-  "deno.enable": false,
-  "deno.importMap": "./import-map.json",
+  "deno.enable": true,
+  "deno.importMap": "./import_map.json",
   "editor.rulers": [72, 80],
   "vim.textwidth": 72,
   "files.associations": {
