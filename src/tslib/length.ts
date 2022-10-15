@@ -3,6 +3,6 @@
  *
  * @sig Array -> Number
  */
-export function length<T>(xs: T[]): number {
+export function length<T>(xs: T[] | string): number {
   return xs.length;
 }
