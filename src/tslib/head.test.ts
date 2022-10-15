@@ -2,22 +2,29 @@ import { head } from "./index.ts";
 import { assertThrows, assertEquals } from "/deps.ts";
 
 Deno.test("head()", async (t) => {
-  await t.step("should throw exception for empty array", () => {
+  await t.step("should throw exception for empty input", () => {
     assertThrows(
       () => head([]),
       RangeError,
-      "head(): array cannot be empty."
+      "head(): input cannot be empty."
+    );
+
+    assertThrows(
+      () => head(""),
+      RangeError,
+      "head(): input cannot be empty."
     );
   });
 
-  await t.step("when the array contains a single element", async (t) => {
+  await t.step("when the input contains a single element", async (t) => {
     await t.step("should return that element", () => {
       assertEquals(head([0]), 0);
       assertEquals(head(["hello"]), "hello");
+      assertEquals(head("z"), "z");
     });
   });
 
-  await t.step("when array contains two or more elements", async (t) => {
+  await t.step("when input contains two or more elements", async (t) => {
     await t.step("should return the first element", () => {
       assertEquals(head([0, 1]), 0);
       assertEquals(head([0, 1, 2, 3, 4]), 0);
@@ -40,6 +47,8 @@ Deno.test("head()", async (t) => {
         ]),
         { id: 1, name: "Yoda" },
       );
+
+      assertEquals(head("λ lambda symbol"), "λ");
     });
   });
 });
