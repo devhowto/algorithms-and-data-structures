@@ -514,3 +514,36 @@ No extra storage is needed.
 ----
 include::example$src/08-recursion-challenges/fib-v2.ts[lines=5..-1]
 ----
+
+== strRev()
+
+A function that reverses the characters of a string.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/revStr.test.ts[]
+----
+
+=== v1 helper function
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/revStr-v1.ts[lines=12..-1]
+----
+
+=== v2 pure recursion
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/revStr-v2.ts[lines=11..-1]
+----
