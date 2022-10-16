@@ -157,6 +157,41 @@ When writing recursive algorithms, keep these things in mind:
 * Return the wrong thing.
 * Trust the recursion.
 
+== Resources on Recursion
+
+The most amazing book to learn about recursion is The Little Schemer, of course.
+The book is theory and *practice* from beginning to end.
+
+The other amazing book is link:https://htdp.org/[How to Design Programs^].
+This is the book that mostly changed (for the better) the way I think about designing code and programs in general.
+It does an amazing job in every regard: TDD, tests as a design tool and documentation, best (not merely good 😅) practices, and recursion.
+
+== Vocabulary
+
+There is the word _recursion_, of course, but sometimes other related, derived words are needed to better describe an idea.
+
+=== Recur
+
+The book The Little Schemer uses “recur”, in sentences like this:
+
+> Recur on the subparts that are of the same nature.
+
+and
+
+> Recur with the function f.
+
+and
+
+> It recurs o two tups.
+
+The book HtDP has some examples of “recur” too, as in the title of a section:
+
+> Auxiliary functions that recur
+
+and
+
+> For a structurally recursive function, the accumulator’s value is typically used in the base case, that is, the `cond` clause that does not recur.
+
 == countdown()
 
 A function that logs integers from `n` down to 0.
