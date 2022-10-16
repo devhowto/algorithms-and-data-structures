@@ -547,3 +547,23 @@ include::example$src/09-harder-recursion-challenges/revStr-v1.ts[lines=12..-1]
 ----
 include::example$src/09-harder-recursion-challenges/revStr-v2.ts[lines=11..-1]
 ----
+
+== isPalind()
+
+A function that checks whether a string is a palindrome.
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/isPalind.test.ts[]
+----
+
+== v1
+
+This is a very standard way to implement the algorithm.
+Basically, keep recursing while the two ends of the string are the same.
+If they are, recur with the string stripped of its first and last element.
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/isPalind-v1.ts[]
+----
