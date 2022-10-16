@@ -630,3 +630,34 @@ include::example$src/09-harder-recursion-challenges/some-v1.ts[lines=11..-1]
 This algorithm recurs until it finds an element (if any) that satisfies the predicate.
 It does not necessarily recur through the entire array.
 Still, time complexity is stem:[O(n)] because it can potentially recur through the extent of the entire input.
+
+== flatten()
+
+A function that takes an array of arrays and return an array with all values flattened.
+
+----
+flatten([1, 2, [3, 4], 5, [6, [7, 8, [9, [10, 11], 12]]]]);
+// → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+----
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/flatten.test.ts[]
+----
+
+=== v1 helper function
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/flatten-v1.ts[lines=11..-1]
+----
+
+The idea behind this algorithm is that a value is only ever placed into the accumulator if it is a non-array value.
+
+<1> If the value is an array, then recur with its head and the recursion of its tail.
+Note `go()` is invoked twice in this line!
+
+<2> When an element is a non-array element, then place it at the beginning of the accumulator.
+
