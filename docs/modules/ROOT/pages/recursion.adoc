@@ -602,3 +602,31 @@ If they are, recur with the string stripped of its first and last element.
 ----
 include::example$src/09-harder-recursion-challenges/isPalind-v1.ts[]
 ----
+
+== some()
+
+A function that takes an array and a predicate function and returns `true` if any element in the array satisfies the predicate.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/some.test.ts[]
+----
+
+=== v1 simple, pure recursion
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Potentially recurse for as many times as the length of the input array.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to compute the boolean result.
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/some-v1.ts[lines=11..-1]
+----
+
+This algorithm recurs until it finds an element (if any) that satisfies the predicate.
+It does not necessarily recur through the entire array.
+Still, time complexity is stem:[O(n)] because it can potentially recur through the extent of the entire input.
