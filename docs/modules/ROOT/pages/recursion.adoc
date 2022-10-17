@@ -661,3 +661,15 @@ Note `go()` is invoked twice in this line!
 
 <2> When an element is a non-array element, then place it at the beginning of the accumulator.
 
+=== v2 for + recursion
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/flatten-v2.ts[lines=5..-1]
+----
+
+This version also ever only adds an element to the accumulator if it is a non-array element.
+
+<1> If the current element is itself an array, concatenate what is already flattened with the result of recursively flattening the element (since the element is an array, and we only every add an element to the accumulator if it is a non-array element).
+
+<2> The current element is not an array, so, append it to the accumulator.
