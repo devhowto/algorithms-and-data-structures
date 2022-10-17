@@ -3,6 +3,7 @@
   "deno.importMap": "./import_map.json",
   "editor.rulers": [72, 80],
   "vim.textwidth": 72,
+  "files.autoSave": "off",
   "files.associations": {
     //
     // When focusing on solving algorithms it is a good idea to disable
@@ -11,9 +12,12 @@
     // which is not available when doing a code challenge on the board,
     // Google docs or something like that.
     //
-    "*.ts": "plaintext",
+    // "*.ts": "plaintext",
   },
   "cSpell.words": [
+    "antora",
+    "elems",
+    "Palind",
     "subarray",
     "Vals"
   ],
