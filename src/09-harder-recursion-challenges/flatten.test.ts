@@ -1,5 +1,5 @@
 import { assertEquals } from "/deps.ts";
-import { flatten } from "./flatten-v2.ts";
+import { flatten } from "./flatten-v3.ts";
 
 Deno.test("flatten()", async (t) => {
   await t.step("input is already flat", () => {

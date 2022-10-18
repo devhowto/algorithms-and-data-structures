@@ -5,9 +5,6 @@
 /**
  * Flattens an array.
  *
- * Flattening an array means turning an array of n nested sub-arrays
- * into an array where all elements are brought to the surface.
- *
  * This is a solution from Colt Steele.
  *
  * - T.C: O(n).

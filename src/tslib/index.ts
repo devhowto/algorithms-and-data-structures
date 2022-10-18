@@ -8,6 +8,7 @@ export { isEven } from "./isEven.ts";
 export { isOdd } from "./isOdd.ts";
 
 export { isStr } from "./isStr.ts";
+export const isArr = Array.isArray.bind(Array);
 
 export { length } from "./length.ts";
 export { isEmpty } from "./isEmpty.ts";

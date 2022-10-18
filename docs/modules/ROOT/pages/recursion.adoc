@@ -673,3 +673,14 @@ This version also ever only adds an element to the accumulator if it is a non-ar
 <1> If the current element is itself an array, concatenate what is already flattened with the result of recursively flattening the element (since the element is an array, and we only every add an element to the accumulator if it is a non-array element).
 
 <2> The current element is not an array, so, append it to the accumulator.
+
+=== v3 reduce
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/flatten-v3.ts[lines=5..-1]
+----
+
+This solution uses `reduce()`, which means it automatically stops after it runs out of elements in the input array, which also means its base case doesn't need to check whether the element is an array *AND* empty (like it is the case on the version with pure recursion
+without any other sort of loops).
+It only checks if the current element is an array and recurs accordingly.

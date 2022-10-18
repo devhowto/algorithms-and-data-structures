@@ -13,9 +13,6 @@ const isArray = Array.isArray.bind(Array);
 /**
  * Flattens an array.
  *
- * Flattening an array means turning an array of n nested sub-arrays
- * into an array where all elements are brought to the surface.
- *
  * - T.C: O(n).
  * - S.C: O(n).
  *
