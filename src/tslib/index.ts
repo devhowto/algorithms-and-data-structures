@@ -10,6 +10,10 @@ export { isOdd } from "./isOdd.ts";
 export { isStr } from "./isStr.ts";
 export const isArr = Array.isArray.bind(Array);
 
+export { upcase } from "./upcase.ts";
+export { downcase } from "./downcase.ts";
+export { capitalize } from "./capitalize.ts";
+
 export { length } from "./length.ts";
 export { isEmpty } from "./isEmpty.ts";
 export { head } from "./head.ts";

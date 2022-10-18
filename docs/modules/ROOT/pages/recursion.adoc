@@ -684,3 +684,8 @@ include::example$src/09-harder-recursion-challenges/flatten-v3.ts[lines=5..-1]
 This solution uses `reduce()`, which means it automatically stops after it runs out of elements in the input array, which also means its base case doesn't need to check whether the element is an array *AND* empty (like it is the case on the version with pure recursion
 without any other sort of loops).
 It only checks if the current element is an array and recurs accordingly.
+
+=== capitalizeFirst()
+
+A function that capitalizes the first letter of the given array of strings.
+
