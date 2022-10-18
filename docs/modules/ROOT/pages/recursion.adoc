@@ -685,7 +685,35 @@ This solution uses `reduce()`, which means it automatically stops after it runs 
 without any other sort of loops).
 It only checks if the current element is an array and recurs accordingly.
 
-=== capitalizeFirst()
+=== capitalizeAll()
 
 A function that capitalizes the first letter of the given array of strings.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/capitalizeAll.test.ts[]
+----
+
+=== v1 helper function
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/capitalizeAll-v1.ts[lines=5..-1]
+----
+
+=== v2 pure recursion
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/capitalizeAll-v2.ts[lines=5..-1]
+----
+
+=== v3 pattern-matching style
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/capitalizeAll-v3.ts[lines=5..-1]
+----
 
