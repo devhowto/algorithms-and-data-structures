@@ -11,6 +11,8 @@ export { isStr } from "./isStr.ts";
 export { isNum } from "./isNum.ts";
 export const isArr = Array.isArray.bind(Array);
 
+export { keys } from "./keys.ts";
+
 export { upcase } from "./upcase.ts";
 export { downcase } from "./downcase.ts";
 export { capitalize } from "./capitalize.ts";
