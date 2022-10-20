@@ -719,7 +719,7 @@ include::example$src/09-harder-recursion-challenges/capitalizeAll-v3.ts[lines=5.
 
 == nestedEvenSum()
 
-Walks a potentially nested object and sums the values of keys which are even numbers.
+Walks a potentially nested object and sums all values.
 
 .example object
 ----
@@ -735,6 +735,8 @@ Walks a potentially nested object and sums the values of keys which are even num
   },
   h: 6,
 }
+
+1 + 2 + 3 + 4 + 5 + 6 → 21
 ----
 
 === Unit Tests
@@ -751,41 +753,45 @@ include::example$src/09-harder-recursion-challenges/nestedSum.test.ts[]
 include::example$src/09-harder-recursion-challenges/nestedSum-v1.ts[lines=5..-1]
 ----
 
+== nestedEvenSum()
+
+Walks a potentially nested object and sums the values of keys which are even numbers.
+
+.example object
 ----
-/**
- * Checks whether `val` is an object.
- *
- * @remarks
- * Checks if the passed parameter is really an object and not an array
- * or null.
- *
- * @param val - The value to check.
- * @returns A boolean indicating if `val` is an object.
- */
-function isObject(val) {
-  return val !== null && !Array.isArray(val) && typeof val === 'object';
+{
+  a: 1,
+  b: 2,
+  c: {
+    d: 3,
+    e: {
+      f: 4,
+    },
+    g: 5,
+  },
+  h: 6,
 }
 
-/**
- * Sums object leaves that are numbers.
- *
- * @remarks
- * An empty object produces a sum of 0 (zero).
- *
- * @param obj - The object to recursively sum numbers from.
- * @returns The sum of the numeric leaves.
- */
-function nestedEvenSum(obj) {
-  return (function go(o, acc) {
-    Object.keys(o).forEach(k => {
-      if (isObject(o[k])) {
-        acc = go(o[k], acc);
-      }
-      else if (typeof o[k] === 'number' && o[k] % 2 === 0) {
-        acc += o[k];
-      }
-    });
-    return acc;
-  })(obj, 0);
-}
+2 + 4 + 6 → 10
+----
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/nestedEvenSum.test.ts[]
+----
+
+=== v2 nested ternary conditions
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/nestedEvenSum-v1.ts[lines=5..-1]
+----
+
+=== v2 nested ternary conditions
+
+[source,typescript,linenums]
+----
+include::example$src/09-harder-recursion-challenges/nestedEvenSum-v2.ts[lines=5..-1]
 ----
