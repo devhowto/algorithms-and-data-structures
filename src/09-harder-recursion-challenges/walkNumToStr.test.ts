@@ -1,5 +1,5 @@
 import { assertEquals } from "/deps.ts";
-import { walkNumToStr } from "./walkNumToStr-v2.ts";
+import { walkNumToStr } from "./walkNumToStr-v1.ts";
 
 Deno.test("walkNumToStr()", async (t) => {
   await t.step("empty object", () => {

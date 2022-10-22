@@ -845,3 +845,31 @@ include::example$src/09-harder-recursion-challenges/walkNumToStr.test.ts[]
 ----
 include::example$src/09-harder-recursion-challenges/walkNumToStr-v1.ts[lines=5..-1]
 ----
+
+== collectStrs()
+
+A function that returns an array with all strings leaves in the object/tree.
+
+.example input
+----
+{
+  a: "one",
+  b: {
+    c: {
+      d: "two",
+    }
+    e: "three",
+  },
+}
+----
+
+.example output
+----
+["one", "two", "three"]
+----
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+
