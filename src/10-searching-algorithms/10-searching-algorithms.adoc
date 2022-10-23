@@ -1,0 +1,67 @@
+== 10 Searching Algorithms
+:toc: left
+:page-tags: algorithm data-structure search
+
+Some languages have things like `indexOf()` or `find()`.
+But let's create our own search functions.
+
+What is a search algorithm‽
+
+Linear search on arrays.
+
+Binary Search on sorted arrays.
+
+Naive string searching algorithm.
+
+KMP string searching algorithm.
+
+[data-tags="linear-search"]
+=== Linear Search
+
+The naive approach is to look at the elements one by one until the value sought for is found or until the end of the array is reached.
+
+For sorted arrays, looking from first to last element (one by one) is not a good performant way of going about it.
+
+ECMAScript already provides linear search:
+
+* `indexOf()`
+* `includes()`
+* `find()`
+* `findIndex()`
+
+Those are not optimized with some more performant search algorithm because the JavaScript engine would not know if the input array was sorted or not or because they need to return an index, which require counting each element already inspected.
+
+[NOTE]
+====
+Linear search *IS NOT* bad.
+It is not performant as some other searching algorithms, but sometimes it is the only algorithm that makes sense in a given situation.
+====
+
+[data-tags="search linear array index"]
+==== search(arr, val)
+
+* Create a function that accepts an array of numbers and a numeric value.
+* Loop through the array from beginning to end comparing each element with the search value.
+* If the current element matches the value:
+** Return the index at which it was found.
+* Return -1 to indicate the value was not found in the array.
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./linear-search-num/searchNum.test.ts[]
+----
+
+==== v1 using simple for loop
+
+[source,typescript,linenums]
+----
+include::./linear-search-num/searchNum-v1.ts[lines=5..-1]
+----
+
+A `forEach()` cannot be stopped.
+It iterates over each element, from beginning to end, and this algorithm is optimized at least in the sense that it stops as soon the element is found (if found it is).
+`reduce()` cannot be stopped either.
+A good old _for loop_ is OK for situations like this.
+

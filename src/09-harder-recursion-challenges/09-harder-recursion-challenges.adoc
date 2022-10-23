@@ -1,0 +1,335 @@
+== Harder Recursion Challenges
+
+=== strRev()
+
+A function that reverses the characters of a string.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./revStr.test.ts[]
+----
+
+=== v1 helper function
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+
+[source,typescript,linenums]
+----
+include::./revStr-v1.ts[lines=12..-1]
+----
+
+=== v2 pure recursion
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+
+[source,typescript,linenums]
+----
+include::./revStr-v2.ts[lines=11..-1]
+----
+
+=== isPalind()
+
+A function that checks whether a string is a palindrome.
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./isPalind.test.ts[]
+----
+
+==== v1
+
+This is a very standard way to implement the algorithm.
+Basically, keep recursing while the two ends of the string are the same.
+If they are, recur with the string stripped of its first and last element.
+
+[source,typescript,linenums]
+----
+include::./isPalind-v1.ts[]
+----
+
+=== some()
+
+A function that takes an array and a predicate function and returns `true` if any element in the array satisfies the predicate.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./some.test.ts[]
+----
+
+=== v1 simple, pure recursion
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Potentially recurse for as many times as the length of the input array.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to compute the boolean result.
+
+[source,typescript,linenums]
+----
+include::./some-v1.ts[lines=11..-1]
+----
+
+This algorithm recurs until it finds an element (if any) that satisfies the predicate.
+It does not necessarily recur through the entire array.
+Still, time complexity is stem:[O(n)] because it can potentially recur through the extent of the entire input.
+
+=== flatten()
+
+A function that takes an array of arrays and return an array with all values flattened.
+
+----
+flatten([1, 2, [3, 4], 5, [6, [7, 8, [9, [10, 11], 12]]]]);
+// → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+----
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./flatten.test.ts[]
+----
+
+=== v1 helper function
+
+[source,typescript,linenums]
+----
+include::./flatten-v1.ts[lines=11..-1]
+----
+
+The idea behind this algorithm is that a value is only ever placed into the accumulator if it is a non-array value.
+
+<1> If the value is an array, then recur with its head and the recursion of its tail.
+Note `go()` is invoked twice in this line!
+
+<2> When an element is a non-array element, then place it at the beginning of the accumulator.
+
+=== v2 for + recursion
+
+[source,typescript,linenums]
+----
+include::./flatten-v2.ts[lines=5..-1]
+----
+
+This version also ever only adds an element to the accumulator if it is a non-array element.
+
+<1> If the current element is itself an array, concatenate what is already flattened with the result of recursively flattening the element (since the element is an array, and we only every add an element to the accumulator if it is a non-array element).
+
+<2> The current element is not an array, so, append it to the accumulator.
+
+=== v3 reduce
+
+[source,typescript,linenums]
+----
+include::./flatten-v3.ts[lines=5..-1]
+----
+
+This solution uses `reduce()`, which means it automatically stops after it runs out of elements in the input array, which also means its base case doesn't need to check whether the element is an array *AND* empty (like it is the case on the version with pure recursion
+without any other sort of loops).
+It only checks if the current element is an array and recurs accordingly.
+
+=== capitalizeAll()
+
+A function that capitalizes the first letter of the given array of strings.
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./capitalizeAll.test.ts[]
+----
+
+=== v1 helper function
+
+[source,typescript,linenums]
+----
+include::./capitalizeAll-v1.ts[lines=5..-1]
+----
+
+=== v2 pure recursion
+
+[source,typescript,linenums]
+----
+include::./capitalizeAll-v2.ts[lines=5..-1]
+----
+
+=== v3 pattern-matching style
+
+[source,typescript,linenums]
+----
+include::./capitalizeAll-v3.ts[lines=5..-1]
+----
+
+=== nestedEvenSum()
+
+Walks a potentially nested object and sums all values.
+
+.example object
+----
+{
+  a: 1,
+  b: 2,
+  c: {
+    d: 3,
+    e: {
+      f: 4,
+    },
+    g: 5,
+  },
+  h: 6,
+}
+
+1 + 2 + 3 + 4 + 5 + 6 → 21
+----
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./nestedSum.test.ts[]
+----
+
+=== v1 reduce
+
+[source,typescript,linenums]
+----
+include::./nestedSum-v1.ts[lines=5..-1]
+----
+
+=== nestedEvenSum()
+
+Walks a potentially nested object and sums the values of keys which are even numbers.
+
+.example object
+----
+{
+  a: 1,
+  b: 2,
+  c: {
+    d: 3,
+    e: {
+      f: 4,
+    },
+    g: 5,
+  },
+  h: 6,
+}
+
+2 + 4 + 6 → 10
+----
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./nestedEvenSum.test.ts[]
+----
+
+=== v2 nested ternary conditions
+
+[source,typescript,linenums]
+----
+include::./nestedEvenSum-v1.ts[lines=5..-1]
+----
+
+=== v2 nested ternary conditions
+
+[source,typescript,linenums]
+----
+include::./nestedEvenSum-v2.ts[lines=5..-1]
+----
+
+=== walkNumToStr()
+
+A funtion that walks an object and turns its number leaves to strings.
+
+.example input
+----
+{
+  a: 1,
+  b: [],
+  c: {
+    d: 2,
+    e: "The Force!",
+    f: {
+      g: "h",
+      i: 3,
+    },
+  j: 4,
+}
+----
+
+.example output
+----
+{
+  a: "1",
+  b: [],
+  c: {
+    d: "2",
+    e: "The Force!",
+    f: {
+      g: "h",
+      i: "3",
+    },
+  j: "4",
+}
+----
+
+=== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./walkNumToStr.test.ts[]
+----
+
+=== v1 reduce with if else
+
+[source,typescript,linenums]
+----
+include::./walkNumToStr-v1.ts[lines=5..-1]
+----
+
+=== collectStrs()
+
+A function that returns an array with all strings leaves in the object/tree.
+
+.example input
+----
+{
+  a: "one",
+  b: {
+    c: {
+      d: "two",
+    }
+    e: "three",
+  },
+}
+----
+
+.example output
+----
+["one", "two", "three"]
+----
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./collectStrs.test.ts[]
+----
+
+==== v1
+
+[source,typescript,linenums]
+----
+include::./collectStrs-v1.ts[]
+----

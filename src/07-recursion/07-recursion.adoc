@@ -1,0 +1,375 @@
+== Recursion
+
+=== Intro
+
+Recursion is a different way of thinking about writing solutions.
+It is a function/procedure/method/process that calls it self with new input until the base case is reached and a final result is produced.
+It is a form of looping except without using things like `for`, `while`, etc.
+
+Some algorithms are much simpler if implemented using recursion.
+Some are impossible without recursion.
+For example, to parse or stringify JSON, recursion is much more appropriate than other sorts of loops.
+Traversing the DOM or any sort of object traversal, trees, graphs are generally easier using recursion too.
+
+Algorithms making use of recursion must make sure to:
+
+* handle the base case
+* Pass different input in each invocation so that it will eventually reach the base case
+
+Recursion also involves the call stack, and some languages offer techniques like _Tail Call Optimization_ (TCO) or _Tail Call Elimination_ (TCE) to improve performance and make recursion on larger data sets possible at all.
+
+ECMAScript does not feature TCO or TCE, so recursion must be used responsibly in this language.
+
+Recursion can also be done using *pure recursion* or *helper function recursion*.
+
+[TIP]
+====
+Sometimes people seem to think that things that mention “script” imply a notion of inferiority.
+
+For example, “Shell scripting is not really programming, it is _merely_ creating scripts.”
+
+Or, “JavaScript is a scripting language” (therefore, inferior to a _real language_).
+
+Sure, some languages do have pros and cons, good and bad design choices, and are better or worse suited to solve a given problem.
+It doesn't mean, however, that whatever contains “script” in the name or description is inherently _inferior_.
+It is a tool to be used for whatever and whenever it makes sense.
+
+The same with _recursion_, _pure recursion_ and _helper function recursion_.
+Recursion is not inherently better than vanilla, plain good old loops.
+It is a suitable approach for many problems. But it is not _always_ the best approach for every problem.
+
+Also, _pure recursion_ does not mean _better_.
+Sometimes it will be elegant, easy to read and solve the problem, and sometimes _helper function recursion_ will be the better approach.
+
+Don't let names and descriptions trap you into the wrong way of looking at things.
+Learn the techniques and approaches, and use then judiciously.
+====
+
+==== Pure Recursion
+
+Pure recursion involves a single standalone function that calls itself:
+
+.pure recursion
+[source,javascript]
+----
+function f(n) {
+  if (n <= 0) return n;
+  return n + f(n - 1);
+}
+----
+
+==== Helper Function Recursion
+
+Helper function recursion is when there is a public, outer function that client code can call, which itself is not recursive, but which contains an inner function (the helper function) that does the recursion.
+This is used to make the main function easier to use (less parameters to worry about, etc.).
+The overall idea goes like this:
+
+.helper function recursion
+[source,javascript]
+----
+function fn(n) {
+  var total = 0; // <1>
+
+  function helper(x) {
+    if (x <= 0) return 0; // <3>
+    total += x; // <4>
+    helper(x - 1); // <5>
+  }
+
+  helper(n); // <2>
+
+  return total; // <6>
+}
+
+log(fn(5));
+// → 15
+----
+
+<1> Defines storage which is captured in a closure.
+
+<2> Invokes the helper function passing `n` along, which is a parameter from the main function.
+
+<3> Handle the base case of course.
+
+<4> Actually modifies the outer input which is captured through the closure.
+
+<5> Calls the itself (the helper function) recursively with a modified input (some kind of modification which will eventually cause the base case to be reached).
+
+<6> The recursive helper function must have finished for the flow to reach this point and the final result is returned.
+
+[TIP]
+====
+This approach works in ECMAScript and other langues that feature _closures_.
+====
+
+A more concrete example, just that in this case it is not use a closure-scoped storage variable.
+The _storage_ is turned into an _accumulator parameter_ as the last parameter of the helper recursive function.
+
+[source,javascript]
+----
+function filter(xs, predicate) { // <1>
+  return (function helper(list, f, acc) { // <2>
+    if (list.length === 0) return acc; // <3>
+
+    var [head, ...rest] = list;
+
+    if (f(head)) // <4>
+      return helper(rest, f, [...acc, head]);
+
+    return helper(rest, f, acc); // <5>
+  })(xs, predicate, []);
+}
+
+function isEven(n) {
+  return n % 2 === 0;
+}
+
+log(filter([0, 1, 2, 3, 4, 5], isEven));
+// → [1, 2, 4]
+----
+
+<1> The outer function takes two parameters: a list of something and a predicate function that can be applied to each element of that list.
+
+<2> A immediately invoked named function expression.
+Note the parentheses between `return` and `function` and how it the function expression is invoked with `(xs, predicate, [])`!
+
+<3> Handles the base case.
+
+<4> If the current element satisfies the predicate, add it to the new list and recurse with the rest of the list and that element added to the filtered list in the accumulator.
+
+<5> The predicate was not satisfied in the previous step, so recurse with the rest of the list and the unmodified accumulator.
+
+=== The Call Stack
+
+Almost all programming languages feature the so called *call stack*, which is an internal data structure to that programming language that stores information about the calling of functions.
+
+When a function is called, it is added to the stack, and when it returns, it is popped from the stack.
+
+If the call stack keeps being added functions, at some point a limit will be reached a stack overflow error/exception will happen.
+
+=== Tips on Recursion
+
+When writing recursive algorithms, keep these things in mind:
+
+* Remember the base case.
+* Careful not to overflow the calls stack.
+* Forgetting to return.
+* Return the wrong thing.
+* Trust the recursion.
+
+=== Resources on Recursion
+
+The most amazing book to learn about recursion is The Little Schemer, of course.
+The book is theory and *practice* from beginning to end.
+
+The other amazing book is link:https://htdp.org/[How to Design Programs^].
+This is the book that mostly changed (for the better) the way I think about designing code and programs in general.
+It does an amazing job in every regard: TDD, tests as a design tool and documentation, best (not merely good 😅) practices, and recursion.
+
+==== Vocabulary
+
+There is the word _recursion_, of course, but sometimes other related, derived words are needed to better describe an idea.
+
+==== Recur
+
+The book The Little Schemer uses “recur”, in sentences like this:
+
+> Recur on the subparts that are of the same nature.
+
+and
+
+> Recur with the function f.
+
+and
+
+> It recurs o two tups.
+
+The book HtDP has some examples of “recur” too, as in the title of a section:
+
+> Auxiliary functions that recur
+
+and
+
+> For a structurally recursive function, the accumulator’s value is typically used in the base case, that is, the `cond` clause that does not recur.
+
+=== countdown()
+
+A function that logs integers from `n` down to 0.
+
+*TIME COMPLEXITY*: stem:[O(n)] since all integers from `n` to 0 have to be worked upon.
+The number of recursive invocations is directly proportional to `n`.
+
+*SPACE COMPLEXITY*: stem:[O(1)] as no extra storage is used.
+The call stack is not part of T.C big O concern.
+
+[source,typescript,linenums]
+----
+/**
+ * Logs number from `num` to 0.
+ *
+ * ASSUME: `num >= 0`.
+ *
+ * - T.C: `O(n)`.
+ * - S.C: `O(1)`.
+ *
+ * @sig Number -> Void
+ */
+function countdown(num) {
+  if (num <= 0) {
+    console.log(n);
+    console.info("All done!");
+    return;
+  }
+
+  console.log(num);
+
+  countdown(--num);
+}
+----
+
+=== sumRange(n)
+
+*TIME COMPLEXITY*: stem:[O(n)].
+It recurses as many times as is the value of `n`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+Only one numeric variable is used.
+The call stack is not considered as part of space complexity.
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./sumFrom1To.test.ts[]
+----
+
+==== v1 using recursion
+
+*TIME COMPLEXITY*: stem:[O(n)].
+There are as many recursive calls as the size of `n`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra space is required.
+
+[source,typescript,linenums]
+----
+include::./sumFrom1To-v1.ts[lines=5..-1]
+----
+
+<1> The base case.
+
+<2> The recursive invocations with modified input.
+
+It works like this:
+
+.Visual representation of what happens internally
+----
+Let f be sumRange (for shortness).
+
+f(5)
+ 5 + f(4)     → on the call stack
+  4 + f(3)    → ...
+   3 + f(2)   → ...
+    2 + f(1)  → ...
+     1        → no more recursive calls, start unwinding
+    2 + 1     → pop f(2) from the call stack
+   3 + 3      → pop f(3) + result of previous call
+  4 + 6       → pop f(4) + result of previous call
+5 + 10        → pop f(5) + result of previous call
+----
+
+=== Factorial
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./factorial.test.ts[]
+----
+
+==== v1 using recursion
+
+*TIME COMPLEXITY*: stem:[`O(n)`] because the recursion occurs for as many times as the size of `n`.
+
+**SPACE COMPLEXITY**: stem:[O(1)] as only a numeric value is computed by the algorithm.
+
+[TIP]
+====
+The base case for factorial is 1 (not zero) because it is the identity property of multiplication.
+====
+
+[source,typescript,linenums]
+----
+include::./factorial-v1.ts[lines=5..-1]
+----
+
+----
+Let f be factorial (for shortness).
+
+f(5)
+ 5 * f(4)
+  4 * f(3)
+   3 * f(2)
+    2 * f(1)
+     1
+    2 * 1
+   3 * 3
+  4 * 6
+ 5 * 24
+----
+
+=== filterOdds()
+
+Problem: write a recursive function that filters odd numbers from a list.
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./filterOdds.test.ts[]
+----
+
+==== v1 helper function
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Iterate over every element of the input.
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+The collected odds potentially increases in direct proportion to the input size.
+
+[source,typescript,linenums]
+----
+include::./filterOdds-v1.ts[lines=5..-1]
+----
+
+=== v2 helper function
+
+This solution is based on things I learned studying the awesome https://htdp.org/[HtDP book^] and Lisp/Scheme, purely recursive using an accumulator.
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Iterate over every element of the input.
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+The collected odds potentially increases in direct proportion to the input size.
+
+[source,typescript,linenums]
+----
+include::./filterOdds-v2.ts[lines=5..-1]
+----
+
+=== v3 concat approach
+
+Solution from Colt Steele.
+No helper function or extra accumulator parameter is needed.
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Iterates over every element of the input.
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+The collected odds potentially increases in direct proportion to the input size.
+
+[source,typescript,linenums]
+----
+include::./filterOdds-v3.ts[lines=5..-1]
+----
+

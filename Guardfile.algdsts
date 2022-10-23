@@ -14,7 +14,8 @@ guard 'shell' do
     Asciidoctor.convert_file(
       file,
       :safe => :unsafe,
-      :to_file => "#{file}.html"
+      :to_file => "#{file}.html",
+      :doctype => :article
     )
   }
 end

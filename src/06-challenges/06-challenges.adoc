@@ -1,0 +1,54 @@
+== Challenges
+
+=== areThereDups()
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./areThereDups.test.ts[]
+----
+
+==== v1
+
+[source,typescript,linenums]
+----
+include::./areThereDups-v1.ts[]
+----
+
+==== v2
+
+[source,typescript,linenums]
+----
+include::./areThereDups-v2.ts[]
+----
+
+==== v3
+
+[source,typescript,linenums]
+----
+include::./areThereDups-v3.ts[]
+----
+
+==== v4
+
+[source,typescript,linenums]
+----
+include::./areThereDups-v4.ts[]
+----
+
+=== sameFreq()
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./sameFreq.test.ts[]
+----
+
+==== v1
+
+[source,typescript,linenums]
+----
+include::./sameFreq-v1.ts[]
+----

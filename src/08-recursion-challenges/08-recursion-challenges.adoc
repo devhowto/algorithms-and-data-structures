@@ -1,0 +1,179 @@
+== Recursion Challenges
+
+=== power()
+
+A function that raises a given integer base to a given integer power.
+Assume that stem:[e >= 0].
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./power.test.ts[]
+----
+
+==== v1 if base case
+
+*TIME COMPLEXITY*: stem:[O(n)].
+There are as many recursive invocations as the size of `e`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to store results of the computation.
+
+[source,typescript,linenums]
+----
+include::./power-v1.ts[lines=5..-1]
+----
+
+==== v2 ternary
+
+*TIME COMPLEXITY*: stem:[O(n)].
+There are as many recursive invocations as the size of `e`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to store results of the computation.
+
+[source,typescript,linenums]
+----
+include::./power-v1.ts[lines=5..-1]
+----
+
+=== product()
+
+A function that computes the product of an array of numbers.
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./product.test.ts
+----
+
+==== v1 no accumulator
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Recur for the length of `xs`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to store the computation.
+
+[source,typescript,linenums]
+----
+include::./product-v1.ts[lines=11..-1]
+----
+
+==== v2 with helper accumulator
+
+*TIME COMPLEXITY*: stem:[O(n)].
+Recur for the length of `xs`.
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is necessary to store the computation.
+
+
+[source,typescript,linenums]
+----
+include::./product-v2.ts[lines=11..-1]
+----
+
+=== sumRange()
+
+A function that sums all integers from 0 to `n`, inclusive.
+Assume stem:[n > 0].
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./sumRange.test.ts[]
+----
+
+==== v1 helper accumulator
+
+This solution uses an accumulator parameter to store the value computed in each invocation.
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+
+[source,typescript,linenums]
+----
+include::./sumRange-v1.ts[lines=5..-1]
+----
+
+==== v2 no accumulator
+
+This solution neither uses an accumulator parameter, nor does it use a helper function.
+It just uses elegant (yet very simple) logic to do the job.
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+
+[source,typescript,linenums]
+----
+include::./sumRange-v2.ts[lines=5..-1]
+----
+
+==== v3 helper function
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+
+[source,typescript,linenums]
+----
+include::./sumRange-v3.ts[lines=5..-1]
+----
+
+==== v4 no recursion
+
+This example is just to show that some algorithms can be performed in a purely mathematical way, which sometimes greatly improves performance.
+In this case, even time is stem:[O(1)] (linear) no matter how large `x` is.
+
+*TIME COMPLEXITY*: stem:[O(1)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+
+[source,typescript,linenums]
+----
+include::./sumRange-v4.ts[lines=5..-1]
+----
+
+=== fibonacci()
+
+A recursive function called `fib` which accepts a number and returns the _nth_ number in the Fibonacci sequence.
+
+Check this article on the https://www.mathsisfun.com/numbers/fibonacci-sequence.html[Fibonacci Sequence in the MathIsFun website^].
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./fib.test.ts[]
+----
+
+==== v1 helper function
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(n)].
+Some storage is used to store the terms computed “so far.”
+
+[source,typescript,linenums]
+----
+include::./fib-v1.ts[lines=5..-1]
+----
+
+==== v2 pure recursion
+
+*TIME COMPLEXITY*: stem:[O(n)].
+
+*SPACE COMPLEXITY*: stem:[O(1)].
+No extra storage is needed.
+
+[source,typescript,linenums]
+----
+include::./fib-v2.ts[lines=5..-1]
+----
+

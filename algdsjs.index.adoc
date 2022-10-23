@@ -1,10 +1,11 @@
 = JavaScript and Algorithms and Data Structures
 :linkcss!:
-:webfonts!:
+:webfonts:
 :icons: font
 :source-highlighter: pygments
 :source-linenums-option!:
 :pygments-css: class
+:doctype: article
 :sectlinks:
 :sectnums:
 :toclevels: 6
@@ -14,9 +15,25 @@
 
 This is where I store solutions and notes for JavaScript algorithms and data structures.
 
-include::./02-big-O-notation/02-big-O-notation.adoc[]
-include::./04-problem-solving/04-problem-solving.adoc[]
-include::./05-problem-solving-patterns/05-problem-solving-patterns.adoc[]
+include::./src/01-intro/01-intro.adoc[]
+
+include::./src/02-big-O-notation/02-big-O-notation.adoc[]
+
+include::./src/03-bigO-arrays-objects/03-bigO-arrays-objects.adoc[]
+
+include::./src/04-problem-solving/04-problem-solving.adoc[]
+
+include::./src/05-problem-solving-patterns/05-problem-solving-patterns.adoc[]
+
+include::./src/06-challenges/06-challenges.adoc[]
+
+include::./src/07-recursion/07-recursion.adoc[]
+
+include::./src/08-recursion-challenges/08-recursion-challenges.adoc[]
+
+include::./src/09-harder-recursion-challenges/09-harder-recursion-challenges.adoc[]
+
+include::./src/10-searching-algorithms/10-searching-algorithms.adoc[]
 
 ++++
 <style>
