@@ -74,3 +74,57 @@ Remember that for Big O we care about the general trend.
 As the search could go until the end of the array, we say linear search is
 stem:[O(n)].
 
+=== Binary Search
+
+Much faster than linear search, but arrays have to be sorted.
+At each iteration, half of the array can be “eliminated”.
+
+The idea is that an element in the middle is picked and then a comparison is performed to see if it is “less than or grater than” the element being sought for.
+If greater than, discard the half that contains the less than elements.
+If less than, discard the half that contains the greater than elements.
+I each case, keep repeating a similar process with the half that could still potentially contain the element being searched for.
+
+This idea is also known as _divide and conquer_.
+
+[WARNING]
+====
+For binary search to work, the array has to be *sorted*.
+====
+
+.example rationale
+----
+Find 8
+
+                     target element
+                            \
+                             \
+                              v
+  1   2   3   4   5   6   7   8   9   10   11
+                      ^
+                     /
+                    /
+            middle element
+            8 > 6, discard left half
+            keep searching right half
+
+
+                              v
+                          7   8   9   10   11
+                                  ^
+                                 /
+                                /
+                        middle element
+                        8 < 9, discard right half
+                        keep searching left half
+
+
+                              v
+                          7   8
+                              ^
+                             /
+                            /
+                       round up or down to pick middle element
+                       let's round up
+                       8 is neither < 8 nor > 8
+                       found it
+----
