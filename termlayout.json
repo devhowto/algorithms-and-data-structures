@@ -1,0 +1,34 @@
+{
+  "layout": {
+    "vertical": false,
+    "algdsts vim": [
+      {
+        "ratio": 0.5,
+        "children": [
+          {
+            "command": "cd ~/work/src/studies/devhowto/algdsts; neofetch; git status .; bash"
+          }
+        ]
+      },
+      {
+        "children": [
+          {
+            "command": "cd ~/work/src/studies/devhowto/algdsts; ls -a; bash",
+            "ratio": 0.5
+          }
+        ]
+      }
+    ],
+    "algdsts shell": [
+      {
+        "command": "cd ~/work/src/studies/devhowto/algdsts; git log -2; bash"
+      },
+      {
+        "command": "cd ~/work/src/studies/devhowto/algdsts; neofetch; bash"
+      }
+    ]
+  },
+  "profile": {
+    "font": "CaskaydiaCove Nerd Font Mono 13"
+  }
+}
