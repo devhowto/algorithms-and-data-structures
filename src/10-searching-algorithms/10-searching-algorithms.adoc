@@ -65,3 +65,12 @@ It iterates over each element, from beginning to end, and this algorithm is opti
 `reduce()` cannot be stopped either.
 A good old _for loop_ is OK for situations like this.
 
+Linear search will seldom be stem:[O(1)].
+That is very rare indeed
+Most likely, an element is found at stem:[1/3] of the way, or stem:[3/4] of
+the way, that is, _late_ or not at all, which means it is
+stem:[O(n)].
+Remember that for Big O we care about the general trend.
+As the search could go until the end of the array, we say linear search is
+stem:[O(n)].
+
