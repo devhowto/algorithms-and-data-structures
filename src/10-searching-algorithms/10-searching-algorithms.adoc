@@ -5,17 +5,15 @@
 Some languages have things like `indexOf()` or `find()`.
 But let's create our own search functions.
 
-What is a search algorithm‽
+Linear search on unsorted arrays has linear time complexity: stem:[O(n)].
 
-Linear search on arrays.
-
-Binary Search on sorted arrays.
+Binary Search on sorted arrays has logarithmic complexity: stem:[O(log_{10} n)].
 
 Naive string searching algorithm.
 
 KMP string searching algorithm.
 
-[data-tags="linear-search"]
+[data-tags="algorithm search linear-search"]
 === Linear Search
 
 The naive approach is to look at the elements one by one until the value sought for is found or until the end of the array is reached.
@@ -34,7 +32,7 @@ Those are not optimized with some more performant search algorithm because the J
 [NOTE]
 ====
 Linear search *IS NOT* bad.
-It is not performant as some other searching algorithms, but sometimes it is the only algorithm that makes sense in a given situation.
+It is not performant as some other searching algorithms, but sometimes it is the only algorithm that can be used on an unsorted array input.
 ====
 
 [data-tags="search linear array index"]
@@ -127,4 +125,20 @@ Find 8
                        let's round up
                        8 is neither < 8 nor > 8
                        found it
+----
+
+=== indexOf() binary search
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./binary-search-num/indexOf.test.ts[]
+----
+
+==== v1
+
+[source,typescript,linenums]
+----
+include::./binary-search-num/indexOf-v1.ts[lines=5..-1]
 ----
