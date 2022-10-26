@@ -1,13 +1,14 @@
 == 10 Searching Algorithms
-:toc: left
 :page-tags: algorithm data-structure search
+:toc: left
+:imagesdir: src/10-searching-algorithms
 
 Some languages have things like `indexOf()` or `find()`.
 But let's create our own search functions.
 
 Linear search on unsorted arrays has linear time complexity: stem:[O(n)].
 
-Binary Search on sorted arrays has logarithmic complexity: stem:[O(log_{10} n)].
+Binary Search on sorted arrays has logarithmic complexity: stem:[O(log₂ n)].
 
 Naive string searching algorithm.
 
@@ -126,6 +127,64 @@ Find 8
                        8 is neither < 8 nor > 8
                        found it
 ----
+
+==== Big O of Binary Search
+
+In the examples below, `m` is short for “the middle index.”
+
+.8 element array binary search steps
+----
+Search for 5:
+
+[1, 2, 3, 4, 6, 7, 8, 9]
+          m
+
+[6, 7, 8, 9]
+    m
+
+[6]
+ m
+
+Not found. Took 3 steps.
+----
+
+The array above has 8 elements.
+2 to what power gives us 8?
+stem:[2^3 = 8].
+Therefore, a binary search on an array of 8 elements has logarithmic stem:[O(log_{2}n)] time complexity.
+
+.16 element array binary search steps
+----
+Search for 13:
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17]
+                      m
+
+[9, 10, 11, 12, 14, 15, 16, 17]
+            m
+
+[14, 15, 16, 17]
+     m
+
+[14]
+ m
+
+Not found. Took 4 steps.
+----
+
+The array above as 16 elements.
+2 to what power gives us 16?
+stem:[2^4] = 16.
+Therefore, a binary search on an array of 16 elements has logarithmic stem:[O(log_{2}n)] time complexity.
+
+Using binary search, an array with 32 elements would, at the worst case scenario, take 5 steps as stem:[2^5] = 32].
+An array of 64 elements would take 6 steps at most, as stem:[2^6 = 32].
+
+Every time the input array is doubled, only one extra step is needed (and not double the number of steps or something like that).
+
+In short, the time complexity of a binary search (on sorted input) is stem:[O(log_{2}n)] where stem:[n] is the length of the input.
+
+image::./10-searching-algorithms.assets/big-O-common-ops.png[Big O of Common Operations]
 
 === indexOf() binary search
 
