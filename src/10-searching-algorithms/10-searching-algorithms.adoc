@@ -201,3 +201,49 @@ include::./binary-search-num/indexOf.test.ts[]
 ----
 include::./binary-search-num/indexOf-v1.ts[lines=5..-1]
 ----
+
+=== Naive Substring Search
+
+Count the number of times a smaller string (a substring) appear in a sting.
+
+Find "haha", or "omg", or "lol":
+
+----
+harold said haha in hamburg
+
+wowomgzomg!
+
+lorie loled 🤣
+----
+
+Outline of the algorithm:
+
+* Loop over the string.
+* Inner loop over the substring.
+** If chars don't match, break out of inner loop.
+** If chars match, keep running inner loop.
+** If complete inner loop without breaking out of it, a match has been found.
+*** Increment the match count.
+* Return the count of matches.
+
+==== Unit Tests
+
+[source,typescript,linenums]
+----
+include::./naive-string-search/countSubstrs.test.ts[]
+----
+
+==== v1 nested for loops
+
+Remember that `xs.length` is one greater than the last index.
+That is, `[a, b, c].length` is 3 and the last index is not 3, but 0!
+
+[source,typescript,linenums]
+----
+include::./naive-string-search/countSubstrs-v1.ts[lines=5..-1]
+----
+
+1. This `[i + j]` is a _lookahead_.
+Because two (nested) loops are needed, `i` from the outermost loop is stuck at the same value until the `j` from the inner loop completes one full iteration.
+Therefore, we need to peek ahead to see if there is a match.
+
