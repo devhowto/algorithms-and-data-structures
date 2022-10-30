@@ -1,0 +1,208 @@
+== Bubble Sort
+:page-tags: sort bubble-sort algorithm data-structure
+
+Sorting is the process of rearranging items in a collection so that the elements are in some kind of order.
+
+There are many different techniques for sorting things, and each have their pros and cons.
+Some are better for some sorting problems, while others are better for other sorting problems.
+Some are very niche.
+Bad for most cases but extremely performant for very particular scenarios, like when the data is pretty uniform and _almost_ sorted.
+
+One could say _bubble_, _selection_ and _insertion_ sort are the elementary sorting algorithms, and they are generally not the most performant (except for some specific niches).
+It is still important to study and understand them.
+
+=== ECMAScript default sort()
+
+.deno repl sorting examples
+----
+$ deno repl
+Deno 1.27.0
+
+> ['yoda', 'luke', 'ahsoka', 'aayla', 'leia', 'vader'].sort()
+[ "aayla", "ahsoka", "leia", "luke", "vader", "yoda" ]
+
+> [10, 9, 11, 35, 7, 21].sort()
+[ 10, 11, 21, 35, 7, 9 ]
+----
+
+The first sort is OK, but the second is “broken”.
+
+> The default sort order is ascending, built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values.
+> -- MDN docs on array sort
+
+* https://tc39.es/ecma262/#sec-array.prototype.sort[tc39 spec on Array.prototype.sort].
+* link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort[MDN docs on Array.prototype.sort].
+
+The spec explicitly converts the values to strings, and 10 comes before 2 if they are converted to strings.
+That is the reason for the “problem”.
+
+So, one can provide a sorting callback function:
+
+.deno repl session with custom sorting function
+----
+$ deno repl
+Deno 1.27.0
+
+> function compNumsAsc(x, y) { return x - y; }
+
+> [10, 9, 11, 35, 7, 21].sort(compNumsAsc);
+[ 7, 9, 10, 11, 21, 35 ]
+----
+
+That is what we want!
+To compare in descending order, just do `y - x` instead.
+
+=== Bubble Sort Intro
+
+It is called “Bubble Sort” because the largest values _bubble to the top_.
+
+A naive implementation would always loop from beginning to end:
+
+.very naive bubble sort implementation
+----
+function sortAsc<T>(xs: T[]): T[] {
+  const len = xs.length;
+
+  for (let i = 0; i < len; ++i) {
+    for (let j = 0; j < len; ++j) {
+      log(xs, xs[j], xs[j + 1]);
+      if (xs[j] > xs[j + 1])
+        swap(xs, j, j + 1);
+    }
+  }
+
+  return xs;
+}
+
+$ deno run \
+    --import-map ./import_map.json \
+    src/11-bubble-sort/sortAsc-v1.ts
+
+[ "b", "a", "d", "c", "e" ] b a
+[ "a", "b", "d", "c", "e" ] b d
+[ "a", "b", "d", "c", "e" ] d c
+[ "a", "b", "c", "d", "e" ] d e
+[ "a", "b", "c", "d", "e" ] e undefined
+[ "a", "b", "c", "d", "e" ] a b
+[ "a", "b", "c", "d", "e" ] b c
+[ "a", "b", "c", "d", "e" ] c d
+[ "a", "b", "c", "d", "e" ] d e
+[ "a", "b", "c", "d", "e" ] e undefined
+[ "a", "b", "c", "d", "e" ] a b
+[ "a", "b", "c", "d", "e" ] b c
+[ "a", "b", "c", "d", "e" ] c d
+[ "a", "b", "c", "d", "e" ] d e
+[ "a", "b", "c", "d", "e" ] e undefined
+[ "a", "b", "c", "d", "e" ] a b
+[ "a", "b", "c", "d", "e" ] b c
+[ "a", "b", "c", "d", "e" ] c d
+[ "a", "b", "c", "d", "e" ] d e
+[ "a", "b", "c", "d", "e" ] e undefined
+[ "a", "b", "c", "d", "e" ] a b
+[ "a", "b", "c", "d", "e" ] b c
+[ "a", "b", "c", "d", "e" ] c d
+[ "a", "b", "c", "d", "e" ] d e
+[ "a", "b", "c", "d", "e" ] e undefined
+----
+
+Note there are always four logs between each `undefined`.
+It means the iteration is working over on values that have already been previously bubbled up to the top, so, unnecessary and useless work is being performed.
+It always compares each element from beginning to end:
+
+----
+[ "a", "b", "c", "d", "e" ]
+  ----------------------- compares all these elements on every pass
+----
+
+==== Optimization 1 shrinking set
+
+The problems outlined can be handled such that the algorithm doesn't work over elements that have already been bubbled up to the top so that each iteration works on an ever shrinking portion of the original array.
+
+* Start looping from the end of array towards the beginning with an `i` pointer.
+* Inner loop with `j` pointer until `i - 1`.
+* if `arr[j] > `arr[j + 1]`, swap.
+* Return sorted array.
+
+.improved bubble sort approach
+----
+function sortAsc(xs: number[]): number[] {
+  const len = xs.length;
+
+  for (let i = len - 1; i >= 0; --i) {
+    for (let j = 0; j < i; ++j) {
+      log(xs, xs[j], xs[j + 1]);
+      if (xs[j] > xs[j + 1])
+        swap(xs, j, j + 1);
+    }
+  }
+
+  return xs;
+}
+
+$ deno run \
+    --import-map ./import_map.json \
+    src/11-bubble-sort/sortAsc-v2.ts
+
+[ "b", "a", "d", "c", "e" ] b a
+[ "a", "b", "d", "c", "e" ] b d
+[ "a", "b", "d", "c", "e" ] d c
+[ "a", "b", "c", "d", "e" ] d e
+[ "a", "b", "c", "d", "e" ] a b
+[ "a", "b", "c", "d", "e" ] b c
+[ "a", "b", "c", "d", "e" ] c d
+[ "a", "b", "c", "d", "e" ] a b
+[ "a", "b", "c", "d", "e" ] b c
+[ "a", "b", "c", "d", "e" ] a b
+----
+
+Compared to to the previous solution, this one requires a lot less operations.
+
+----
+[ "b", "a", "d", "c", "e" ]
+  ----------------------
+
+[ "b", "a", "d", "c", "e" ]
+  ------------------
+
+[ "b", "a", "d", "c", "e" ] swaps d and c
+  -------------
+
+[ "b", "a", "c", "d", "e" ] swaps b and a
+  --------
+
+[ "a", "b", "c", "d", "e" ]
+  ---
+----
+
+Twenty 25 passes on the first approach, and only five passes on this, improved approach.
+
+==== Optimization 2 no swaps
+
+Sometimes the array may already be sorted, or almost sorted, but the algorithm will continue to loop over its remaining steps, even though no more elements will be swapped.
+
+There is a simple check that can be done to determine if the algorithm could stop: if there has not been a swap during the last pass, there will be no more swaps at all.
+
+[source,typescript,lineos]
+----
+include::./sortAsc-v3.ts[lines=5..-1]
+----
+
+<1> Assume there will be swaps.
+
+<2> If we ever enter the `if` conditional block, there is a swap.
+    Make `noSwaps` false.
+
+<3> At the end of the outer loop, if there was no swaps, we are done and there is no need to keep looping since we know there will be no further swaps.
+
+==== Big O of Bubble Sort
+
+Because a sorting is being performed, the output array will always be of the same size of the input array, therefore, space complexity for bubble sort is stem:[O(n)].
+
+Time complexity, though, is a bit fuzzy because it depends how more or less sorted the input already is or isn't.
+It could be stem:[O(n)] for the best case scenario, but stem:[O(n²)] otherwise.
+
+=== References
+
+* https://visualgo.net/
+* https://www.toptal.com/developers/sorting-algorithms
+

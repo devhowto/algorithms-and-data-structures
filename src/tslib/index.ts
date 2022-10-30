@@ -3,6 +3,8 @@ export {
   englishAlphabetUpper,
 } from "./alphabet.ts";
 
+export const log: Console["log"] = console.log.bind(console);
+
 export { add } from "./add.ts";
 export { isEven } from "./isEven.ts";
 export { isOdd } from "./isOdd.ts";
