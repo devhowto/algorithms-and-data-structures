@@ -1,0 +1,53 @@
+== Selection Sort
+:page-tags: sort selection-sort algorithm data-structure
+
+Similar to bubble sort, but instead of moving large values into sorted
+position (more to the end), moves smaller values into position (more to
+the beginning).
+
+The idea is:
+
+* To start, consider the first element the smallest seen so far.
+* Compare it with the next until a smaller is found.
+** If a smaller value is found, designate that smaller value to be the new minimum and keep comparing further to see if some other elements are even smaller.
+** If the minimum is not the same as the initial value, swap the two values.
+* Repeat the process with the next element until the array is sorted.
+
+=== v1 nested for loops
+
+[source,typescript,lineos]
+----
+include::./sortAsc-v1.ts[lines=5..-1]
+----
+
+This approach compares the indexes in this way:
+
+.indexes comparison steps
+----
+0   1
+0   2
+0   3
+0   4
+
+then
+
+1   2
+1   3
+1   4
+
+then
+
+2   3
+2   4
+
+then
+
+3   4
+----
+
+Each time through, we start at the next value for `i` and not from the beginning every time, lest we would be stuck with the first element always being considered the smallest value and not actual sorting would take place.
+
+Selection sort is not necessarily better than bubble sort, but there is one scenario where it is more appropriate: when we want to minimize the number of swaps performed.
+
+Remember that bubble sorts keeps swapping over and over to move the element towards the end.
+But with selection sort, we only make on swap at the end of each loop.

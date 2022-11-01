@@ -35,6 +35,10 @@ include::./src/09-harder-recursion-challenges/09-harder-recursion-challenges.ado
 
 include::./src/10-searching-algorithms/10-searching-algorithms.adoc[]
 
+include::./src/11-bubble-sort/11-bubble-sort.adoc[]
+
+include::./src/12-selection-sort/12-selection-sort.adoc[]
+
 ++++
 <style>
 /**
