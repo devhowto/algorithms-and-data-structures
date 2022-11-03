@@ -1,0 +1,74 @@
+== Insertion Sort
+:page-tags: sort insertion-sort algorithm data-structure
+
+Insertion sort works by gradually creating a larger left portion which is always sorted.
+
+.example of how insertion sort works
+----
+[5, 3, 4, 1, 2]
+--- ‽
+   /
+  /
+ v
+[3, 5, 4, 1, 2]
+-▪---- ‽
+      /
+     /
+    v
+[3, 4, 5, 1, 2]
+----▪---- ‽
+         /
+   +----+
+  /
+ v
+[1, 3, 4, 5, 2]
+-▪-----------‽
+            /
+      +----+
+     /
+    v
+[1, 2, 3, 4, 5]
+----▪---------  (we are done)
+----
+
+And that is where the name comes from.
+We _insert_ the element at its proper sorted position on the left portion that is gradually builds up.
+
+The algorithm goes like this:
+
+* Start with the second element (consider the first is already sorted).
+* Compare the picked element with the one(s) to the left and insert it into its sorting position if that is the case.
+* Continue with the next element and compare it with the ones on the left and again, swap (insert it at its sorted position) if that is the case.
+* Repeat until the entire array is sorted.
+
+=== v1 end to right
+
+[source,typescript,linenums]
+----
+include::./sortAsc-v1.ts[lines=5..-1]
+----
+
+=== v2
+
+This second approach will leave the array in a “wrong” state while inside the inner loop, but makes it right each time we go back to the outer loop.
+
+
+[source,typescript,linenums]
+----
+include::./sortAsc-v2.ts[lines=5..-1]
+----
+
+The outer loop goes from “left to right” and the inner loop goes from `i - 1` back towards the beginning.
+
+1. Note `i` and `j` are defined outside the loops because we need them to be in scope outside the loops (just like good old `var` would do even if used to declare `for (var i ...)`).
+
+2. This is where we need the function-scoped `j`.
+
+We don't do a “swap” because the current value is stored in a variable in the outer loop.
+
+In the best possible case scenarios, we could say Insertion Sort has time complexity stem:[O(n)], but in general, assume it is stem:[O(n^2)].
+
+Insertion Sort is a good approach if data to be sorted is fed in a stream.
+As new data arrives, it is sorted and added to the appropriate place on the “left portion that is kept always sorted.”
+
+
