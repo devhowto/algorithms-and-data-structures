@@ -31,8 +31,11 @@ Insertion sort works by gradually creating a larger left portion which is always
 ----▪---------  (we are done)
 ----
 
+[TIP]
+====
 And that is where the name comes from.
 We _insert_ the element at its proper sorted position on the left portion that is gradually builds up.
+====
 
 The algorithm goes like this:
 
@@ -41,17 +44,20 @@ The algorithm goes like this:
 * Continue with the next element and compare it with the ones on the left and again, swap (insert it at its sorted position) if that is the case.
 * Repeat until the entire array is sorted.
 
-=== v1 end to right
+=== v1 Swap Target Immediatelly
+
+This first approach immediately swaps the target element each time it is less than the one it is being compared to.
+It may end up causing already sorted elements to become unsorted, but as the loop keeps progressing, things fall back into place.
 
 [source,typescript,linenums]
 ----
 include::./sortAsc-v1.ts[lines=5..-1]
 ----
 
-=== v2
+=== v2 Swap Target at The End
 
 This second approach will leave the array in a “wrong” state while inside the inner loop, but makes it right each time we go back to the outer loop.
-
+The target element is swapped only after the inner loop stops.
 
 [source,typescript,linenums]
 ----
@@ -70,5 +76,4 @@ In the best possible case scenarios, we could say Insertion Sort has time comple
 
 Insertion Sort is a good approach if data to be sorted is fed in a stream.
 As new data arrives, it is sorted and added to the appropriate place on the “left portion that is kept always sorted.”
-
 

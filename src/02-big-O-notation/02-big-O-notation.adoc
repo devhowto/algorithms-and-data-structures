@@ -1,4 +1,5 @@
 == Big O Notation
+:imagespath: src/02-big-O-notation/02-big-O-notation.assets
 
 [NOTE]
 ====
@@ -50,10 +51,11 @@ See this slide from Colt Steele for some visual clue on how good logarithmic tim
 * https://cs.slides.com/colt_steele/big-o-notation#/28/0/5[Colt Steele
 Slides on Logarithms]
 
-image::colt-steele-logarithms.png[Colt Steele on Logarithms]
+image::{imagespath}/colt-steele-logarithms.png[Colt Steele on Logarithms]
 
 Types of algorithms that sometimes involves logarithmic time and/or space complexity:
 
 * Certain searching algorithms have logarithmic time complexity.
 * Sorting algorithms (especially some of the most efficient ones).
 * Recursive algorithms sometimes have logarithmic space complexity.
+

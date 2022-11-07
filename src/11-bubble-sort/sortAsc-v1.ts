@@ -13,7 +13,7 @@ function swap<T>(xs: T[], idx1: number, idx2: number): void {
  * unnecessarily.
  *
  * - T.C: O(n²).
- * - S.C: O(n).
+ * - S.C: O(1).
  *
  * @sig [Number] -> [Number]
  */
@@ -29,3 +29,5 @@ export function sortAsc<T>(xs: T[]): T[] {
 
   return xs;
 }
+
+:

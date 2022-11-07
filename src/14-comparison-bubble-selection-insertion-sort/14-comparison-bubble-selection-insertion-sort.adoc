@@ -1,0 +1,10 @@
+== Comparison of Bubble, Selection and Insertion Sort
+:page-tags: sort bubble-sort selection-sort insertion-sort algorithm data-structure
+
+[%header,cols="1,1,1,1,1"]
+|===
+|Algorithm      |T.C (best)    |T.C (avg)     |T.C (worst)   |S.C
+|Bubble Sort    |stem:[O(n)]   |stem:[O(n^2)] |stem:[O(n^2)] |stem:[O(1)]
+|Insertion Sort |stem:[O(n)]   |stem:[O(n^2)] |stem:[O(n^2)] |stem:[O(1)]
+|Selection Sort |stem:[O(n^2)] |stem:[O(n^2)] |stem:[O(n^2)] |stem:[O(1)]
+|===

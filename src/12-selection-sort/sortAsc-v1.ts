@@ -25,7 +25,7 @@ function swap(
  * selection sort goes).
  *
  * - T.C: O(n²).
- * - S.C: O(n).
+ * - S.C: O(1).
  *
  * @sig [Number] -> [Number]
  */

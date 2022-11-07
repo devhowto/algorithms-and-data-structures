@@ -24,7 +24,7 @@ function swap(
  *
  * - T.C: O(n) for best case scenario (array is already almost entirely
  *        sorted, but O(n²) if not.
- * - S.C: O(n).
+ * - S.C: O(1).
  *
  * @sig [Number] -> [Number]
  */

@@ -8,7 +8,8 @@ Some are better for some sorting problems, while others are better for other sor
 Some are very niche.
 Bad for most cases but extremely performant for very particular scenarios, like when the data is pretty uniform and _almost_ sorted.
 
-One could say _bubble_, _selection_ and _insertion_ sort are the elementary sorting algorithms, and they are generally not the most performant (except for some specific niches).
+One could say _bubble_, _selection_ and _insertion_ sort are the
+elementary sorting algorithms, and generally they are not the most performant (except for some specific niches).
 It is still important to study and understand them.
 
 === ECMAScript default sort()
@@ -174,7 +175,7 @@ Compared to to the previous solution, this one requires a lot less operations.
   ---
 ----
 
-Twenty 25 passes on the first approach, and only five passes on this, improved approach.
+Twenty 25 passes on the first approach, and only five passes on this improved approach.
 
 ==== Optimization 2 no swaps
 

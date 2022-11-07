@@ -21,11 +21,11 @@ function swap(
  * Sorts an array in ascending order using the insertion sort algorithm.
  *
  * - T.C: (n²).
- * - S.C: O(n).
+ * - S.C: O(1).
  *
  * @sig [Number] -> [Number]
  */
-function sortAsc(xs: number[]): number[] {
+export function sortAsc(xs: number[]): number[] {
   const lastPos = xs.length - 1;
 
   for (let i = 1; i <= lastPos; ++i) {
