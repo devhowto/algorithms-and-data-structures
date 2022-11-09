@@ -1,5 +1,5 @@
 import { assertEquals } from "/deps.ts";
-import { same } from './same-v1.ts';
+import { same } from './sameFreq-v2.ts';
 
 Deno.test('same() ', async (t) => {
   await t.step('when any value in a1 lack a matching value in a2', async (t) => {

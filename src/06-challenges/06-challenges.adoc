@@ -2,13 +2,6 @@
 
 === areThereDups()
 
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./areThereDups.test.ts[]
-----
-
 ==== v1
 
 [source,typescript,linenums]
@@ -38,13 +31,6 @@ include::./areThereDups-v4.ts[]
 ----
 
 === sameFreq()
-
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./sameFreq.test.ts[]
-----
 
 ==== v1
 

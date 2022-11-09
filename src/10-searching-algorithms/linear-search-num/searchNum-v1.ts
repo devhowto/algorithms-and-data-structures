@@ -13,11 +13,8 @@
  * @sig [Number] -> Number
  */
 export function searchNum(xs: number[], n: number): number {
-  for (let idx = 0; idx < xs.length; ++idx) {
-    if (xs[idx] === n) {
-      return idx;
-    }
-  }
+  for (let idx = 0; idx < xs.length; ++idx)
+    if (xs[idx] === n) return idx;
 
   return -1;
 }

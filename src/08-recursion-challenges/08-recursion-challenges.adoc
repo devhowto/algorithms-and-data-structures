@@ -5,13 +5,6 @@
 A function that raises a given integer base to a given integer power.
 Assume that stem:[e >= 0].
 
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./power.test.ts[]
-----
-
 ==== v1 if base case
 
 *TIME COMPLEXITY*: stem:[O(n)].
@@ -41,13 +34,6 @@ include::./power-v1.ts[lines=5..-1]
 === product()
 
 A function that computes the product of an array of numbers.
-
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./product.test.ts
-----
 
 ==== v1 no accumulator
 
@@ -80,13 +66,6 @@ include::./product-v2.ts[lines=11..-1]
 
 A function that sums all integers from 0 to `n`, inclusive.
 Assume stem:[n > 0].
-
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./sumRange.test.ts[]
-----
 
 ==== v1 helper accumulator
 
@@ -145,13 +124,6 @@ include::./sumRange-v4.ts[lines=5..-1]
 A recursive function called `fib` which accepts a number and returns the _nth_ number in the Fibonacci sequence.
 
 Check this article on the https://www.mathsisfun.com/numbers/fibonacci-sequence.html[Fibonacci Sequence in the MathIsFun website^].
-
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./fib.test.ts[]
-----
 
 ==== v1 helper function
 

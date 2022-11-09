@@ -43,14 +43,7 @@ It is not performant as some other searching algorithms, but sometimes it is the
 * Loop through the array from beginning to end comparing each element with the search value.
 * If the current element matches the value:
 ** Return the index at which it was found.
-* Return -1 to indicate the value was not found in the array.
-
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./linear-search-num/searchNum.test.ts[]
-----
+* Return `-1` to indicate the value was not found in the array.
 
 ==== v1 using simple for loop
 
@@ -65,17 +58,15 @@ It iterates over each element, from beginning to end, and this algorithm is opti
 A good old _for loop_ is OK for situations like this.
 
 Linear search will seldom be stem:[O(1)].
-That is very rare indeed
-Most likely, an element is found at stem:[1/3] of the way, or stem:[3/4] of
-the way, that is, _late_ or not at all, which means it is
-stem:[O(n)].
+That is very rare indeed.
+Most likely, an element is found at stem:[1/3] of the way, or stem:[3/4] of the way, that is, _late_ or not at all, which means it is stem:[O(n)].
+
 Remember that for Big O we care about the general trend.
-As the search could go until the end of the array, we say linear search is
-stem:[O(n)].
+As the search could go until the end of the array, we say linear search has time complexity of stem:[O(n)].
 
 === Binary Search
 
-Much faster than linear search, but arrays have to be sorted.
+Much faster than linear search, but the *input has to be sorted*.
 At each iteration, half of the array can be “eliminated”.
 
 The idea is that an element in the middle is picked and then a comparison is performed to see if it is “less than or grater than” the element being sought for.
@@ -87,7 +78,7 @@ This idea is also known as _divide and conquer_.
 
 [WARNING]
 ====
-For binary search to work, the array has to be *sorted*.
+For binary search to work, *hhe input has to be sorted*.
 ====
 
 .example rationale
@@ -177,8 +168,8 @@ The array above as 16 elements.
 stem:[2^4] = 16.
 Therefore, a binary search on an array of 16 elements has logarithmic stem:[O(log_{2}n)] time complexity.
 
-Using binary search, an array with 32 elements would, at the worst case scenario, take 5 steps as stem:[2^5] = 32].
-An array of 64 elements would take 6 steps at most, as stem:[2^6 = 32].
+Using binary search, an array with 32 elements would, at the worst case scenario, take 5 steps as stem:[2^5] = 32.
+An array of 64 elements would take 6 steps at most, as stem:[2^6 = 64].
 
 Every time the input array is doubled, only one extra step is needed (and not double the number of steps or something like that).
 
@@ -186,14 +177,9 @@ In short, the time complexity of a binary search (on sorted input) is stem:[O(lo
 
 image::./10-searching-algorithms.assets/big-O-common-ops.png[Big O of Common Operations]
 
+I got the above image from https://notlaura.com/day-5-algorithms-logarithms-big-o-binary-search/[notlaura.com] but a that same image is found on countless pages on the web so I'm not sure who to attribute it to.
+
 === indexOf() binary search
-
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./binary-search-num/indexOf.test.ts[]
-----
 
 ==== v1
 
@@ -225,13 +211,6 @@ Outline of the algorithm:
 ** If complete inner loop without breaking out of it, a match has been found.
 *** Increment the match count.
 * Return the count of matches.
-
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./naive-string-search/countSubstrs.test.ts[]
-----
 
 ==== v1 nested for loops
 

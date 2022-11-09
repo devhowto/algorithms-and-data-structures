@@ -236,13 +236,6 @@ It recurses as many times as is the value of `n`.
 Only one numeric variable is used.
 The call stack is not considered as part of space complexity.
 
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./sumFrom1To.test.ts[]
-----
-
 ==== v1 using recursion
 
 *TIME COMPLEXITY*: stem:[O(n)].
@@ -280,13 +273,6 @@ f(5)
 
 === Factorial
 
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./factorial.test.ts[]
-----
-
 ==== v1 using recursion
 
 *TIME COMPLEXITY*: stem:[`O(n)`] because the recursion occurs for as many times as the size of `n`.
@@ -321,13 +307,6 @@ f(5)
 === filterOdds()
 
 Problem: write a recursive function that filters odd numbers from a list.
-
-==== Unit Tests
-
-[source,typescript,linenums]
-----
-include::./filterOdds.test.ts[]
-----
 
 ==== v1 helper function
 

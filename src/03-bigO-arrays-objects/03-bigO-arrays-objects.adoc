@@ -105,13 +105,6 @@ ghci> sum []
 
 Read the link:https://en.wikipedia.org/wiki/Empty_sum[Empty sum article on Wikipedia^].
 
-==== Unit Tests
-
-[source,js]
-----
-include::./sum.test.ts[]
-----
-
 ==== sum(xs) v1
 
 [source,ts]
@@ -134,13 +127,6 @@ include::./sum-v3.ts[]
 ----
 
 === calcSubtotals(xs) example
-
-==== Unit Tests
-
-[source,ts]
-----
-include::./calcSubtotals.test.ts[]
-----
 
 ==== calcSubtotals(xs) v1
 

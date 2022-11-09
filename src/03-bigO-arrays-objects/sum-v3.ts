@@ -1,4 +1,4 @@
-import { add } from "/src/lib/index.ts";
+import { add } from "../tslib/index.ts";
 
 /**
  * Sum an all the elements in `xs`.

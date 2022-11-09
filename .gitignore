@@ -18,16 +18,12 @@
 
 #
 # Exclude these Asciidoctor generated files in any subdirectory
-# frm this root directory.
+# from this root directory.
 #
 asciidoctor.css
 pygments-default.css
-
-
-#
-# Some C stuff.
-#
-.ccls-cache
+*.pdf
+*.html
 
 #
 # MacOS work laptop. Developing in this shit is painful for Linux power users.

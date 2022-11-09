@@ -1,5 +1,6 @@
-import { indexOf } from './indexOf-v2';
+import { indexOf } from './indexOf-v2.ts';
 
+/*
 describe('indexOf()', () => {
   it('should return -1 with empty arrays', () => {
     expect(indexOf(9, [])).toEqual(-1);
@@ -21,3 +22,4 @@ describe('indexOf()', () => {
     expect(indexOf(-1, [-9, -7, -1, 0, 3, 5])).toEqual(2);
   });
 });
+*/

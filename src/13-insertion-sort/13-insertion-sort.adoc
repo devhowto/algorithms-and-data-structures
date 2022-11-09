@@ -34,7 +34,7 @@ Insertion sort works by gradually creating a larger left portion which is always
 [TIP]
 ====
 And that is where the name comes from.
-We _insert_ the element at its proper sorted position on the left portion that is gradually builds up.
+We _insert_ the element at its proper sorted position on the left portion that gradually builds up.
 ====
 
 The algorithm goes like this:
@@ -44,7 +44,7 @@ The algorithm goes like this:
 * Continue with the next element and compare it with the ones on the left and again, swap (insert it at its sorted position) if that is the case.
 * Repeat until the entire array is sorted.
 
-=== v1 Swap Target Immediatelly
+=== v1 Swap Target Immediately
 
 This first approach immediately swaps the target element each time it is less than the one it is being compared to.
 It may end up causing already sorted elements to become unsorted, but as the loop keeps progressing, things fall back into place.

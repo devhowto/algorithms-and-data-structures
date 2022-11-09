@@ -11,7 +11,7 @@
  * @sig [Number] -> [Number]
  */
 export function sortAsc(xs: number[]): number[] {
-  let i, j;
+  let i, j; // <1>
 
   for (i = 1; i <= xs.length - 1; ++i) {
     const curr = xs[i];
@@ -19,7 +19,7 @@ export function sortAsc(xs: number[]): number[] {
     for (j = i - 1; j >= 0 && xs[j] > curr; --j)
       xs[j + 1] = xs[j];
 
-    xs[j + 1] = curr;
+    xs[j + 1] = curr; // <2>
   }
 
   return xs;
