@@ -1,0 +1,11 @@
+export { length } from './length';
+export { isArr } from './isArr';
+export { head } from './head';
+export { tail } from './tail';
+export { concat } from './concat';
+export { isEmpty } from './isEmpty';
+export { isNil } from './isNil';
+export { isObj } from './isObj';
+export { isStr } from './isStr';
+export { keys } from './keys';
+export { upcase } from './upcase';

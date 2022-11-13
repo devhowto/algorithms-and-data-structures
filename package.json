@@ -5,7 +5,8 @@
   "main": "",
   "type": "module",
   "scripts": {
-    "testjs": "NODE_OPTIONS=--experimental-vm-modules jest --testMatch='**/*.spec.js' --watch"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "author": "Fernando Basso",
   "license": "SEE LICENSE IN LICENSE.txt",
