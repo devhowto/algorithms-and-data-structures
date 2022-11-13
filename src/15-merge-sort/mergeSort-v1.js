@@ -25,7 +25,6 @@ function merge(xs, ys) {
 
   return res;
 }
-
 //
 // Note we are doing xs[i++] like real hackers often do in C 🤣. We
 // could just do something like this instead (in two lines):
@@ -39,8 +38,26 @@ function merge(xs, ys) {
 // remaining in one of the arrays. If either j or i have reached the
 // length of their respective array, maybe the other array has remaining
 // elements.
-//
+////
+
+/**
+ * Sorts an array of numbers in ascending order.
+ *
+ * @sig [Number] -> [Number]
+ */
+function sortAsc(xs) {
+  var len = xs.length;
+
+  if ([0, 1].includes(len)) return xs;
+
+  var mid = Math.floor(len / 2);
+  var left = xs.slice(0, mid);
+  var right = xs.slice(mid);
+
+  return merge(sortAsc(left), sortAsc(right));
+}
 
 module.exports = {
   merge,
+  sortAsc,
 };
