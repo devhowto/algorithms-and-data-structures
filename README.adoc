@@ -9,3 +9,27 @@ A place where I take notes and store solutions for algorithms and data structres
 The main repository where all the action takes place is the one on {url-gitlab-repo}[Gitlab^].
 The {url-github-repo}[Github one^] is a only mirror.
 ====
+
+Many of the algorithms use an “old-school” approach to handling data.
+For example, instead of spreading, we may use `Array.prototype.push` and tread data structures as *mutable*.
+With large data sets, using ECMAScript spreads and always making new copies of data is extremely expensive, both for time and space.
+
+As an example, if we need to append an element to an array, we can use one of two approaches: spread or push.
+
+Spread (cool, immutable data, but less performant):
+
+----
+function append(xs, x) {
+  return [...xs, x];
+}
+----
+
+Push (mutable data, but more performant):
+
+----
+function append(xs, x) {
+  xs.push(x);
+  return xs;
+}
+----
+
