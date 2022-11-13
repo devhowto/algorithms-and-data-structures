@@ -12,7 +12,8 @@
       "tags": ["recommended"],
       "include": ["ban-untagged-todo"],
       "exclude": [
-        "no-inferrable-types"
+        "no-inferrable-types",
+        "no-var"
       ]
     }
   },
