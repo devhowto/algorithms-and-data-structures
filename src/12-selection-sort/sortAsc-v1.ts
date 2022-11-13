@@ -29,11 +29,11 @@ function swap(
  *
  * @sig [Number] -> [Number]
  */
+
 export function sortAsc(xs: number[]): number[] {
   const len = xs.length;
 
   for (let i = 0; i < len; ++i) {
-    const ini = i;
     let min = i;
 
     for (let j = i + 1; j < len; ++j) {
@@ -41,8 +41,8 @@ export function sortAsc(xs: number[]): number[] {
         min = j;
     }
 
-    if (xs[min] < xs[ini])
-      swap(xs, ini, min);
+    if (xs[min] < xs[i])
+      swap(xs, i, min);
   }
 
   return xs;

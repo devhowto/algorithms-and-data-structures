@@ -29,5 +29,3 @@ export function sortAsc<T>(xs: T[]): T[] {
 
   return xs;
 }
-
-:
