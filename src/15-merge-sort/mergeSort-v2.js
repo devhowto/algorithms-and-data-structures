@@ -18,12 +18,10 @@ function sortAsc(xs) {
   if (len <= 1) return xs;
 
   var mid = Math.floor(len / 2);
-  var left = xs.slice(0, mid);
-  var right = xs.slice(mid, len);
+  var left = sortAsc(xs.slice(0, mid));
+  var right = sortAsc(xs.slice(mid, len));
 
-  return merge(sortAsc(left), sortAsc(right));
+  return merge(left, right);
 }
 
-export { sortAsc };
-
-sortAsc(['d', 'a', 'c', 'b']);
+export { merge, sortAsc };

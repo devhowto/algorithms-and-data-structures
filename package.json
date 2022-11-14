@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
-    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
+    "debug": "NODE_OPTIONS=--experimental-vm-modules node --inspect-brk"
   },
   "author": "Fernando Basso",
   "license": "SEE LICENSE IN LICENSE.txt",
