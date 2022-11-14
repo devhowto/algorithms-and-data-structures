@@ -1,6 +1,4 @@
 {
-  "deno.enable": false,
-  "deno.importMap": "./import_map.json",
   "editor.rulers": [72, 80],
   "vim.textwidth": 72,
   "files.autoSave": "off",
@@ -17,6 +15,7 @@
   "cSpell.words": [
     "antora",
     "elems",
+    "jslib",
     "Palind",
     "subarray",
     "Vals"
