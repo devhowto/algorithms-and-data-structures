@@ -3,6 +3,8 @@ export { isArr } from './isArr';
 export { head } from './head';
 export { tail } from './tail';
 export { concat } from './concat';
+export { append } from './append';
+export { slice } from './slice';
 export { isEmpty } from './isEmpty';
 export { isNil } from './isNil';
 export { isObj } from './isObj';
