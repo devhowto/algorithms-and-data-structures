@@ -1,4 +1,4 @@
-import { bsAsc } from './bsAsc-v1.js';
+import { bsAsc } from './bsAsc-v2.js';
 
 describe('bsAsc()', () => {
   test('empty arrays', () => {
