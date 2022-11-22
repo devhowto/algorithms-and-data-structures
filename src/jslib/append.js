@@ -6,6 +6,8 @@
  *
  * @sig a [a] -> [a]
  */
-export function append(x, xs) {
+function append(x, xs) {
   return [...xs, x];
 }
+
+export { append };

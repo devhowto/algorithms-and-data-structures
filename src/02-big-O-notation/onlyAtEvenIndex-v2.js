@@ -3,7 +3,7 @@ import {
   addIndex,
 } from 'ramda';
 
-import { isEven } from 'lib/isEven';
+import { isEven } from '../jslib/index.js;
 
 /**
  * Returns only elements of `xs` whose index is even.

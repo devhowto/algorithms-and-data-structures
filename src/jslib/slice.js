@@ -4,6 +4,8 @@
  * @sig Number Number String -> String
  * @sig Number Number [a] -> [a]
  */
-export function slice(ini, end, xs) {
+function slice(ini, end, xs) {
   return xs.slice(ini, end);
 }
+
+export { slice };

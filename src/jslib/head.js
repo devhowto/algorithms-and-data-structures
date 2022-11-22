@@ -2,7 +2,7 @@ import {
   isEmpty,
   isArr,
   isStr,
-} from './';
+} from './index.js';
 
 /**
  * Takes the first element of an array or string.
@@ -19,9 +19,11 @@ import {
  * So this function works for 1 and 2-byte strings only. 3 and 4-byte
  * strings will break.
  */
-export function head(xs) {
+function head(xs) {
   if (!isArr(xs) && !isStr(xs) || isEmpty(xs))
     throw new TypeError("head(): input must be a non-empty array or string");
 
   return xs[0];
 }
+
+export { head };

@@ -1,7 +1,14 @@
-import { isNil } from './';
+import { isNil } from './index.js';
 
-export function isStr(val) {
+/**
+ * Checks whether `val` is a string.
+ *
+ * @sig a -> Boolean
+ */
+function isStr(val) {
   return !isNil(val)
     && typeof val === "string"
     || (typeof val === Object && val instanceof String);
 }
+
+export { isStr };

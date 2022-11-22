@@ -1,7 +1,7 @@
 import {
   slice,
   length,
-} from './';
+} from './index.js';
 
 describe('slice()', () => {
   test('empty input', () => {

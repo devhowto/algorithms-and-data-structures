@@ -1,4 +1,4 @@
-import { onlyAtEvenIndex } from './onlyAtEvenIndex-v2';
+import { onlyAtEvenIndex } from './onlyAtEvenIndex-v1.js';
 
 describe('onlyAtEvenIndex()', () => {
   it('should return only the elements at even indexes', () => {

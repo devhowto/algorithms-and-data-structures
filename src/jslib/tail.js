@@ -2,9 +2,9 @@ import {
   isArr,
   isStr,
   isEmpty,
-} from './';
+} from './index.js';
 
-export function tail(xs) {
+function tail(xs) {
   if ((!isArr(xs) && !isStr(xs)) || isEmpty(xs))
     throw new TypeError(
       "tail(): input must be a non-empty string or array."
@@ -12,3 +12,5 @@ export function tail(xs) {
 
   return xs.slice(1);
 }
+
+export { tail };

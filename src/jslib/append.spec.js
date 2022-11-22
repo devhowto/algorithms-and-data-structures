@@ -1,4 +1,4 @@
-import { append } from './';
+import { append } from './index.js';
 
 describe('append()', () => {
   test('should append to the array', () => {

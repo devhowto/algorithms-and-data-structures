@@ -1,6 +1,6 @@
 import {
   isStr,
-} from './';
+} from './index.js';
 
 export function upcase(s) {
   if (!isStr(s))
