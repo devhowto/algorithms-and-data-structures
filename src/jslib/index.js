@@ -44,3 +44,4 @@ export { toDigits } from './toDigits.js';
 export { countDigits } from './countDigits.js';
 export { numToDigits } from './numToDigits.js';
 export { getLastDigit } from './getLastDigit.js';
+export { getDigit } from './getDigit.js';
