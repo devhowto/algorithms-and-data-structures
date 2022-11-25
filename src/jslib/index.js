@@ -6,12 +6,14 @@ var floor = Math.floor.bind(Math);
 var log10 = Math.log10.bind(Math);
 var pow = Math.pow.bind(Math);
 var sqrt = Math.sqrt.bind(Math);
+var max = Math.max.bind(Math);
 export {
   abs,
   pow,
   sqrt,
   floor,
   log10,
+  max,
 };
 
 export { length } from './length.js';
