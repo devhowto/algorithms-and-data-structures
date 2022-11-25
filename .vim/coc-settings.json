@@ -1,6 +1,6 @@
 {
   "deno.enable": false,
   "deno.importMap": "./import_map.json",
-  "tsserver.enable": false,
+  "tsserver.enable": true,
   "suggest.autoTrigger": "none"
 }
