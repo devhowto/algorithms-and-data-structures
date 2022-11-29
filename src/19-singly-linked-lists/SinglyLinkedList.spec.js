@@ -18,7 +18,7 @@ describe("SinglyLinkedList", () => {
     });
   });
 
-  describe("pop()", () => {
+  describe("push()", () => {
     test("can push a node to an empty list", () => {
       var list = new SinglyLinkedList();
       list.push(7);

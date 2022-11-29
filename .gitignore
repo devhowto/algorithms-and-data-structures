@@ -50,3 +50,9 @@ node_modules
 # Temporary built JS files.
 #
 jsdist
+
+##
+# clang debug stuff.
+#
+*.dSYM
+
