@@ -1,4 +1,0 @@
-== Intro
-
-The intro on Algorithms and Data Structures.
-
