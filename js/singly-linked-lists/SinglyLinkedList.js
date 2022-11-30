@@ -59,6 +59,9 @@ class SinglyLinkedList {
 
     return cur;
   }
+
+  shift(val) {
+  }
 }
 
 export { Node, SinglyLinkedList };
