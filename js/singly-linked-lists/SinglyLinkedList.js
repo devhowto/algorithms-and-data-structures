@@ -31,7 +31,7 @@ class SinglyLinkedList {
       this.tail = node;
     }
 
-    this.length++;
+    ++this.length;
 
     return this;
   }
@@ -50,7 +50,7 @@ class SinglyLinkedList {
     this.tail = tail;
     this.tail.next = null;
 
-    this.length--;
+    --this.length;
 
     if (this.length === 0) {
       this.head = null;
