@@ -41,4 +41,40 @@ describe("SinglyLinkedList", () => {
       expect(list.tail.val).toEqual(3);
     });
   });
+
+  describe("pop()", () => {
+    test('pop from empty list', () => {
+      var list = new SinglyLinkedList();
+
+      var popped = list.pop();
+      expect(popped).toEqual(undefined);
+      expect(list.length).toEqual(0);
+    });
+
+    test('pop from a single-node list', () => {
+      var list = new SinglyLinkedList();
+      list.push(7);
+
+      expect(list.head.val).toEqual(7);
+      expect(list.tail.val).toEqual(7);
+
+      var popped = list.pop();
+      expect(popped.val).toEqual(7);
+      expect(list.length).toEqual(0);
+      expect(list.head).toEqual(null);
+      expect(list.tail).toEqual(null);
+    });
+
+    test("pop from two-or-more-node list", () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(3).push(5);
+
+      expect(list.tail.val).toEqual(5);
+
+      var popped = list.pop();
+      expect(popped.val).toEqual(5);
+
+      expect(list.tail.val).toEqual(3);
+    });
+  });
 });

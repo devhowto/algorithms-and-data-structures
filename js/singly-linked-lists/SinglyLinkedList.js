@@ -35,6 +35,30 @@ class SinglyLinkedList {
 
     return this;
   }
+
+  pop() {
+    if (this.length === 0) return undefined;
+
+    var cur = this.head;
+    var tail = cur;
+
+    while (cur.next) {
+      tail = cur;
+      cur = cur.next;
+    }
+
+    this.tail = tail;
+    this.tail.next = null;
+
+    this.length--;
+
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return cur;
+  }
 }
 
 export { Node, SinglyLinkedList };
