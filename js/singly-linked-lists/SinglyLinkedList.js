@@ -24,6 +24,10 @@ class SinglyLinkedList {
       this.head = node;
       this.tail = node;
     } else {
+      //
+      // !!! ORDER OF THESE STATEMENTS MATER !!!
+      //
+      this.tail.next = node;
       this.tail = node;
     }
 
