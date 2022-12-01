@@ -72,6 +72,17 @@ class SinglyLinkedList {
 
     return shifted;
   }
+
+  unshift(val) {
+    var node = new Node(val);
+
+    if (this.length === 0) this.tail = node;
+    else node.next = this.head;
+
+    this.head = node;
+
+    ++this.length;
+  }
 }
 
 export { Node, SinglyLinkedList };
