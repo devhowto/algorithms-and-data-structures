@@ -60,7 +60,7 @@ class SinglyLinkedList {
     return cur;
   }
 
-  shift(val) {
+  shift() {
     if (this.length === 0) return undefined;
 
     var shifted = this.head;
