@@ -83,6 +83,17 @@ class SinglyLinkedList {
 
     ++this.length;
   }
+
+  get(idx) {
+    if (idx < 0 || idx >= this.length) return null;
+
+    var cnt = 0;
+    var cur = this.head;
+
+    while (cnt++ !== idx) cur = cur.next;
+
+    return cur;
+  }
 }
 
 export { Node, SinglyLinkedList };

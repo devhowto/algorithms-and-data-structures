@@ -134,4 +134,53 @@ describe("SinglyLinkedList", () => {
       expect(list.head.next.val).toEqual(7);
     });
   });
+
+  describe('get(idx)', () => {
+    test('empty list', () => {
+      var list = new SinglyLinkedList();
+      var node = list.get(5);
+      expect(node).toEqual(null);
+    });
+
+    test('negative index', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+      var node = list.get(-3);
+      expect(node).toEqual(null);
+    });
+
+    test('index >= list.length', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+
+      //
+      // A list with 2 nodes contains index 0 and 1.
+      //
+      var node = list.get(2);
+
+      expect(node).toEqual(null);
+    });
+
+    test('get 0th index', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+
+      //
+      // A list with 2 nodes contains index 0 and 1.
+      //
+      var node = list.get(0);
+
+      expect(node.val).toEqual(7);
+    });
+
+    test('get 3rd index', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5).push(99).push(101).push(-77).push(1e4);
+      //                                 3rd
+
+      var node = list.get(3);
+
+      expect(node.val).toEqual(101);
+    });
+  });
 });
