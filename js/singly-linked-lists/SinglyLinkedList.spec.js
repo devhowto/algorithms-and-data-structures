@@ -77,4 +77,24 @@ describe("SinglyLinkedList", () => {
       expect(list.tail.val).toEqual(3);
     });
   });
+
+  describe('shift()', () => {
+    test('empty list', () => {
+      var list = new SinglyLinkedList();
+      var shifted = list.shift();
+      expect(shifted).toEqual(undefined);
+    });
+
+    test('list with single node', () => {
+      var list = new SinglyLinkedList();
+      list.push(7);
+
+      var shifted = list.shift();
+
+      expect(shifted.val).toEqual(7);
+      expect(list.length).toEqual(0);
+      expect(list.head).toEqual(null)
+      expect(list.tail).toEqual(null)
+    });
+  });
 });

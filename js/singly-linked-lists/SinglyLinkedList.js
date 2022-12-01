@@ -61,6 +61,16 @@ class SinglyLinkedList {
   }
 
   shift(val) {
+    if (this.length === 0) return undefined;
+
+    var shifted = this.head;
+    this.head = this.head.next;
+
+    --this.length;
+
+    if (this.length === 0) this.tail = null;
+
+    return shifted;
   }
 }
 
