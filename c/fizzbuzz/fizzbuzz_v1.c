@@ -43,6 +43,36 @@ void fizzbuzz_3(const int N) {
   }
 }
 
+//
+// The fizz buzz problem is cyclical. It repeats
+//
+const char *lktbl[] = {
+  "FizzBuzz",
+  "%i",
+  "%i",
+  "Fizz",
+  "%i",
+  "Buzz",
+  "Fizz",
+  "%i",
+  "%i",
+  "Fizz",
+  "Buzz",
+  "%i",
+  "Fizz",
+  "%i",
+  "%i"
+};
+
+const char *lut[] =
+
+void fizzbuzz_4(const int N) {
+  for (int i = 0; i < N; ++i) {
+    printf(lktbl[i % 15], i);
+    printf("\n");
+  }
+}
+
 int main(int argc, char **argv) {
   if (argc != 2) {
     fprintf(stderr, "Usage: param must be an int greater than 1.\n");
@@ -51,7 +81,7 @@ int main(int argc, char **argv) {
 
   int N = atoi(argv[1]);
 
-  fizzbuzz_3(N);
+  fizzbuzz_4(N);
 
   return 0;
 }
