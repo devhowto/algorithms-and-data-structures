@@ -47,21 +47,21 @@ void fizzbuzz_3(const int N) {
 // The fizz buzz problem is cyclical. It repeats
 //
 const char *lktbl[] = {
-  "FizzBuzz",
-  "%i",
-  "%i",
-  "Fizz",
-  "%i",
-  "Buzz",
-  "Fizz",
-  "%i",
-  "%i",
-  "Fizz",
-  "Buzz",
-  "%i",
-  "Fizz",
-  "%i",
-  "%i"
+  "FizzBuzz", // 0
+  "%i",       // 1
+  "%i",       // 2
+  "Fizz",     // 3
+  "%i",       // 4
+  "Buzz",     // 5
+  "Fizz",     // 6
+  "%i",       // 7
+  "%i",       // 8
+  "Fizz",     // 9
+  "Buzz",     // 10
+  "%i",       // 11
+  "Fizz",     // 12
+  "%i",       // 13
+  "%i"        // 14
 };
 
 const char *lut[] =

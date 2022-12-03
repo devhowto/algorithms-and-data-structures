@@ -94,6 +94,14 @@ class SinglyLinkedList {
 
     return cur;
   }
+
+  set(idx, val) {
+    var node = this.get(idx);
+    if (node === null) return false;
+
+    node.val = val;
+    return true;
+  }
 }
 
 export { Node, SinglyLinkedList };

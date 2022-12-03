@@ -183,4 +183,34 @@ describe("SinglyLinkedList", () => {
       expect(node.val).toEqual(101);
     });
   });
+
+  describe('set(idx, val)', () => {
+    test('empty list', () => {
+      var list = new SinglyLinkedList();
+      expect(list.set(0, 7)).toEqual(false);
+    });
+
+    test('negative index', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+      expect(list.set(-3, 7)).toEqual(false);
+    });
+
+    test('index >= list.length', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+
+      //
+      // A list with 2 nodes contains index 0 and 1.
+      //
+      expect(list.set(2, 5)).toEqual(false);
+    });
+
+    test('valid existing node index', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5).push(99).push(101).push(-77).push(1e4);
+      //                                 3rd
+      expect(list.set(3, 88)).toEqual(true);
+    });
+  });
 });
