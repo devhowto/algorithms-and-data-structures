@@ -136,6 +136,27 @@ class SinglyLinkedList {
 
     return removed;
   }
+
+  reverse() {
+    var node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    var prev = null;
+    var next = undefined;
+    var i = 0;
+
+    // for (var i = 0; i < this.length; ++i) {
+    while (i++ < this.length) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+
+    return this;
+  }
 }
+
+// 77 55, 22, 88
 
 export { Node, SinglyLinkedList };

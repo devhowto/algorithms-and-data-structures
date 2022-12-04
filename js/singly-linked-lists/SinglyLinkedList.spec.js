@@ -298,4 +298,15 @@ describe("SinglyLinkedList", () => {
       expect(list.get(2).val).toEqual(55);
     });
   });
+
+  describe('reverse()', () => {
+    var list = new SinglyLinkedList();
+    list.push(77).push(55).push(33).push(99);
+    list.reverse();
+    expect(list.length).toEqual(4);
+    expect(list.head.val).toEqual(99);
+    expect(list.tail.val).toEqual(77);
+    expect(list.head.next.val).toEqual(33);
+    expect(list.head.next.next.val).toEqual(55);
+  });
 });
