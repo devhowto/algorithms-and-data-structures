@@ -213,4 +213,48 @@ describe("SinglyLinkedList", () => {
       expect(list.set(3, 88)).toEqual(true);
     });
   });
+
+  describe('insert(idx, val)', () => {
+    test('invalid index range', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+      expect(list.insert(-4, 7)).toEqual(false);
+
+      //
+      // A list with two elements has indexes 0 and 1.
+      // Index 2 is out of range.
+      // Length is 2, though.
+      //
+      expect(list.insert(3, 8)).toEqual(false);
+    });
+
+    test('insert at index same as length (same as push)', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+      expect(list.insert(2, 8)).toEqual(true);
+      expect(list.tail.val).toEqual(8);
+      expect(list.length).toEqual(3);
+    });
+
+    test('insertdd at index 0 (same as unshift)', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+      expect(list.insert(0, 8)).toEqual(true);
+      expect(list.head.val).toEqual(8);
+      expect(list.length).toEqual(3);
+    });
+
+    test('insertdd somewhere in “the middle”', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5).push(1).push(3);
+      //                   idx = 2
+
+      expect(list.insert(2, 8)).toEqual(true);
+      expect(list.length).toEqual(5);
+
+      var inserted = list.get(2);
+      expect(inserted.val).toEqual(8);
+      expect(inserted.next.val).toEqual(1);
+    });
+  });
 });
