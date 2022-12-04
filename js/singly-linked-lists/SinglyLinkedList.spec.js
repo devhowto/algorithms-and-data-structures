@@ -257,4 +257,45 @@ describe("SinglyLinkedList", () => {
       expect(inserted.next.val).toEqual(1);
     });
   });
+
+  describe('remove(idx)', () => {
+    test('invalid index range', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+
+      expect(list.remove(2)).toEqual(undefined);
+      expect(list.length).toEqual(2);
+    });
+
+    test('index 0', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5);
+
+      var removed = list.remove(0);
+
+      expect(removed.val).toEqual(7);
+      expect(list.length).toEqual(1);
+    });
+
+    test('index is same as length - 1', () => {
+      var list = new SinglyLinkedList();
+      list.push(7).push(5).push(88).push(55);
+
+      var removed = list.remove(3);
+
+      expect(removed.val).toEqual(55);
+      expect(list.length).toEqual(3);
+    });
+
+    test('somewhere “in the middle”', () => {
+      var list = new SinglyLinkedList();
+      list.push(77).push(33).push(88).push(55);
+
+      var removed = list.remove(2);
+
+      expect(removed.val).toEqual(88);
+      expect(list.length).toEqual(3);
+      expect(list.get(2).val).toEqual(55);
+    });
+  });
 });
