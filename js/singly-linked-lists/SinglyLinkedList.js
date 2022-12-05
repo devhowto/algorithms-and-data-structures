@@ -157,6 +157,4 @@ class SinglyLinkedList {
   }
 }
 
-// 77 55, 22, 88
-
 export { Node, SinglyLinkedList };
