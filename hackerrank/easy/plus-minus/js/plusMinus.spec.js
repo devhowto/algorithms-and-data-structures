@@ -1,7 +1,7 @@
 import {
   countFreqs,
   getRatios,
-} from './plusMinus.js';
+} from './plusMinus-v1.js';
 
 describe('countFreqs()', () => {
   test('empty array', () => {
