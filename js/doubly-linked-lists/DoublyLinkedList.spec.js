@@ -38,5 +38,37 @@ describe('DoublyLinkedList', () => {
     expect(list.length).toEqual(0);
   });
 
+  describe('push(val)', () => {
+    test('empty list', () => {
+      var list = new DoublyLinkedList();
+      var that = list.push(70);
 
+      expect(list.head.val).toEqual(70);
+      expect(list.tail.val).toEqual(70);
+
+      expect(list.head.prev).toEqual(null);
+      expect(list.tail.next).toEqual(null);
+
+      expect(list.length).toEqual(1);
+      expect(that).toEqual(list);
+    });
+
+    test('non-empty list', () => {
+      var list = new DoublyLinkedList();
+      list.push(70);
+      var that = list.push(30);
+
+      expect(list.head.val).toEqual(70);
+      expect(list.tail.val).toEqual(30);
+
+      expect(list.head.prev).toEqual(null);
+      expect(list.tail.next).toEqual(null);
+
+      expect(list.head.next.val).toEqual(30);
+      expect(list.tail.prev.val).toEqual(70);
+
+      expect(list.length).toEqual(2);
+      expect(that).toEqual(list);
+    });
+  });
 });
