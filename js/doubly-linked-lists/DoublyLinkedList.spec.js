@@ -31,7 +31,7 @@ describe('Node', () => {
 });
 
 describe('DoublyLinkedList', () => {
-  test('can construct an empy list', () => {
+  test('can construct an empty list', () => {
     var list = new DoublyLinkedList();
     expect(list.head).toEqual(null);
     expect(list.tail).toEqual(null);
@@ -69,6 +69,42 @@ describe('DoublyLinkedList', () => {
 
       expect(list.length).toEqual(2);
       expect(that).toEqual(list);
+    });
+  });
+
+  describe('pop()', () => {
+    test('empty list', () => {
+      var list = new DoublyLinkedList();
+      var popped = list.pop();
+      expect(popped).toEqual(null);
+    });
+
+    test('single-element list', () => {
+      var list = new DoublyLinkedList();
+      list.push(70);
+
+      var popped = list.pop();
+
+      expect(popped.val).toEqual(70);
+      expect(popped.prev).toEqual(null);
+
+      expect(list.head).toEqual(null);
+      expect(list.tail).toEqual(null);
+
+      expect(list.length).toEqual(0);
+    });
+
+    test('two-or-more-element list', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(30).push(50);
+
+      var popped = list.pop();
+
+      expect(popped.val).toEqual(50);
+      expect(popped.prev).toEqual(null);
+
+      expect(list.tail.val).toEqual(30);
+      expect(list.length).toEqual(2);
     });
   });
 });
