@@ -107,4 +107,47 @@ describe('DoublyLinkedList', () => {
       expect(list.length).toEqual(2);
     });
   });
+
+  describe('shift()', () => {
+    test('empty list', () => {
+      var list = new DoublyLinkedList();
+      var shifted = list.shift();
+
+      expect(shifted).toEqual(null);
+      expect(list.length).toEqual(0);
+    });
+
+    test('single-element list', () => {
+      var list = new DoublyLinkedList();
+      list.push(70);
+
+      var shifted = list.shift();
+
+      expect(shifted.val).toEqual(70);
+      expect(shifted.next).toEqual(null);
+      expect(shifted.prev).toEqual(null);
+
+      expect(list.head).toEqual(null);
+      expect(list.tail).toEqual(null);
+
+      expect(list.length).toEqual(0);
+    });
+
+    test('two-or-more-element list', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(30).push(50);
+
+      var shifted = list.shift();
+
+      expect(shifted.val).toEqual(70);
+      expect(shifted.next).toEqual(null);
+      expect(shifted.prev).toEqual(null);
+
+      expect(list.head.val).toEqual(30);
+      expect(list.head.prev).toEqual(null);
+      expect(list.head.next.val).toEqual(50);
+
+      expect(list.length).toEqual(2);
+    });
+  });
 });
