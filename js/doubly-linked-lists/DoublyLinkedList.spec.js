@@ -178,4 +178,75 @@ describe('DoublyLinkedList', () => {
       expect(unshifted).toEqual(list);
     });
   });
+
+  describe('get(idx)', () => {
+    test('empty list', () => {
+      var list = new DoublyLinkedList();
+
+      var node = list.get(3);
+
+      expect(node).toBe(null);
+    });
+
+    test('invalid index', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(30).push(50);
+
+      expect(list.get(-1)).toBe(null);
+      expect(list.get(3)).toBe(null);
+    });
+
+    test('single-node list', () => {
+      var list = new DoublyLinkedList().push(70);
+
+      var node = list.get(0);
+
+      expect(node.val).toEqual(70);
+    });
+
+    test('six-node list, left half', () => {
+      var list = new DoublyLinkedList();
+      list
+        .push(70)
+        .push(30)
+        .push(50)
+        .push(10)
+        .push(60)
+        .push(80);
+
+      var nodeAt1 = list.get(1);
+
+      expect(nodeAt1.val).toEqual(30);
+    });
+
+    test('six-node list, middle (rounded up)', () => {
+      var list = new DoublyLinkedList();
+      list
+        .push(70)
+        .push(30)
+        .push(50)
+        .push(10)
+        .push(60)
+        .push(80);
+
+      var nodeAt3 = list.get(3);
+
+      expect(nodeAt3.val).toEqual(10);
+    });
+
+    test('six-node list, right half', () => {
+      var list = new DoublyLinkedList();
+      list
+        .push(70)
+        .push(30)
+        .push(50)
+        .push(10)
+        .push(60)
+        .push(80);
+
+      var nodeAt4 = list.get(4);
+
+      expect(nodeAt4.val).toEqual(60);
+    });
+  });
 });

@@ -90,6 +90,43 @@ class DoublyLinkedList {
 
     return this;
   }
+
+  get(idx) {
+    var len = this.length;
+
+    if (len === 0) return null;
+
+    // Index out of bounds.
+    if (idx < 0 || idx >= len) return null;
+
+    // if (len === 1 && idx === 0)
+    //   return this.head;
+
+    // Round up to int.
+    var mid = len / 2 | 0;
+    console.log('==== mid', mid);
+
+    // Handles from head to middle.
+    if (idx <= mid) {
+      var i = 0;
+      var node = this.head;
+
+      while (i <= mid) {
+        if (i === idx) return node;
+        node = node.next;
+        ++i;
+      }
+    } else {
+      var i = len - 1;
+      var node = this.tail;
+
+      while (i > mid) {
+        if (i == idx) return node;
+        node = node.prev;
+        --i;
+      }
+    }
+  }
 }
 
 export {
