@@ -79,7 +79,7 @@ describe('DoublyLinkedList', () => {
       expect(popped).toEqual(null);
     });
 
-    test('single-element list', () => {
+    test('single-node list', () => {
       var list = new DoublyLinkedList();
       list.push(70);
 
@@ -94,7 +94,7 @@ describe('DoublyLinkedList', () => {
       expect(list.length).toEqual(0);
     });
 
-    test('two-or-more-element list', () => {
+    test('two-or-more-node list', () => {
       var list = new DoublyLinkedList();
       list.push(70).push(30).push(50);
 
@@ -117,7 +117,7 @@ describe('DoublyLinkedList', () => {
       expect(list.length).toEqual(0);
     });
 
-    test('single-element list', () => {
+    test('single-node list', () => {
       var list = new DoublyLinkedList();
       list.push(70);
 
@@ -133,7 +133,7 @@ describe('DoublyLinkedList', () => {
       expect(list.length).toEqual(0);
     });
 
-    test('two-or-more-element list', () => {
+    test('two-or-more-node list', () => {
       var list = new DoublyLinkedList();
       list.push(70).push(30).push(50);
 
@@ -148,6 +148,34 @@ describe('DoublyLinkedList', () => {
       expect(list.head.next.val).toEqual(50);
 
       expect(list.length).toEqual(2);
+    });
+  });
+
+  describe('unshift(val)', () => {
+    test('empty list', () => {
+      var list = new DoublyLinkedList();
+
+      var unshifted = list.unshift(80);
+
+      expect(list.head.val).toEqual(80);
+      expect(list.tail.val).toEqual(80);
+      expect(list.length).toEqual(1);
+      expect(unshifted).toEqual(list);
+    });
+
+    test('single-node list', () => {
+      var list = new DoublyLinkedList().push(70);
+
+      var unshifted = list.unshift(80);
+
+      expect(list.head.val).toEqual(80);
+      expect(list.tail.val).toEqual(70);
+
+      expect(list.head.next.val).toEqual(70);
+      expect(list.head.next.prev.val).toEqual(80);
+
+      expect(list.length).toEqual(2);
+      expect(unshifted).toEqual(list);
     });
   });
 });
