@@ -130,21 +130,20 @@ class DoublyLinkedList {
   insert(idx, val) {
     if (idx < 0 || idx > this.length) return false;
 
-    else if (idx === 0) this.unshift(val);
-    else if (idx === this.length) this.push(val);
+    if (idx === 0) return !!this.unshift(val);
+    if (idx === this.length) return !!this.push(val);
 
-    else {
-      var newNode = new Node(val);
-      var foundNode = this.get(idx - 1);
+    var newNode = new Node(val);
+    var foundNode = this.get(idx - 1);
+    var afterNode = foundNode.next;
 
-      newNode.next = foundNode.next;
-      foundNode.next.prev = newNode;
+    newNode.prev = foundNode;
+    foundNode.next = newNode;
 
-      foundNode.next = newNode;
-      newNode.prev = foundNode;
+    newNode.next = afterNode;
+    afterNode.prev = newNode;
 
-      ++this.length;
-    }
+    ++this.length;
 
     return true;
   }
