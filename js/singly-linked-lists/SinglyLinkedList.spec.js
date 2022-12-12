@@ -236,7 +236,7 @@ describe("SinglyLinkedList", () => {
       expect(list.length).toEqual(3);
     });
 
-    test('insertdd at index 0 (same as unshift)', () => {
+    test('inserted at index 0 (same as unshift)', () => {
       var list = new SinglyLinkedList();
       list.push(7).push(5);
       expect(list.insert(0, 8)).toEqual(true);
@@ -244,7 +244,7 @@ describe("SinglyLinkedList", () => {
       expect(list.length).toEqual(3);
     });
 
-    test('insertdd somewhere in “the middle”', () => {
+    test('inserted somewhere in “the middle”', () => {
       var list = new SinglyLinkedList();
       list.push(7).push(5).push(1).push(3);
       //                   idx = 2

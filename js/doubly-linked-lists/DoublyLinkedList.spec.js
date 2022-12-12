@@ -279,4 +279,50 @@ describe('DoublyLinkedList', () => {
       expect(list.set(3, 88)).toEqual(true);
     });
   });
+
+  describe('insert(idx, val)', () => {
+    test('index out of bounds', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50);
+      expect(list.insert(-4, 90)).toEqual(false);
+
+      //
+      // A list with two elements has indexes 0 and 1.
+      // Index 2 is out of range.
+      // Length is 2, though.
+      //
+      expect(list.insert(3, 80)).toEqual(false);
+    });
+
+    test('insert at index 0 (same as unshift)', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50);
+
+      expect(list.insert(0, 80)).toEqual(true);
+      expect(list.head.val).toEqual(80);
+      expect(list.length).toEqual(3);
+    });
+
+    test('insert at index same as length (same as push)', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50);
+
+      expect(list.insert(2, 80)).toEqual(true);
+      expect(list.tail.val).toEqual(80);
+      expect(list.length).toEqual(3);
+    });
+
+    test('insert somewhere in “the middle”', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50).push(10).push(30);
+      //                     idx = 2
+
+      expect(list.insert(2, 80)).toEqual(true);
+      expect(list.length).toEqual(5);
+
+      var inserted = list.get(2);
+      expect(inserted.val).toEqual(80);
+      expect(inserted.next.val).toEqual(10);
+    });
+  });
 });
