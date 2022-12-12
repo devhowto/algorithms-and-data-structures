@@ -1,3 +1,5 @@
+'use strict';
+
 const log = console.log.bind(console);
 
 var dir = function dir (label, o) {
@@ -94,38 +96,36 @@ class DoublyLinkedList {
   get(idx) {
     var len = this.length;
 
-    if (len === 0) return null;
-
+    ///
     // Index out of bounds.
+    //
     if (idx < 0 || idx >= len) return null;
 
-    // if (len === 1 && idx === 0)
-    //   return this.head;
-
-    // Round up to int.
+    ////
+    // Round up to int. Don't strictly need this. Could do
+    //
+    //   while (idx <= len / 2)
+    //
     var mid = len / 2 | 0;
-    console.log('==== mid', mid);
 
+    var i, node;
+
+    ////
     // Handles from head to middle.
+    //
     if (idx <= mid) {
-      var i = 0;
-      var node = this.head;
+      i = 0;
+      node = this.head;
 
-      while (i <= mid) {
-        if (i === idx) return node;
-        node = node.next;
-        ++i;
-      }
+      while (i++ !== idx) node = node.next;
     } else {
-      var i = len - 1;
-      var node = this.tail;
+      i = len - 1;
+      node = this.tail;
 
-      while (i > mid) {
-        if (i == idx) return node;
-        node = node.prev;
-        --i;
-      }
+      while (i-- !== idx) node = node.prev;
     }
+
+    return node;
   }
 }
 
