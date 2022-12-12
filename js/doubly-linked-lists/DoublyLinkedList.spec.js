@@ -249,4 +249,34 @@ describe('DoublyLinkedList', () => {
       expect(nodeAt4.val).toEqual(60);
     });
   });
+
+  describe('set(idx, val)', () => {
+    test('empty list', () => {
+      var list = new DoublyLinkedList();
+      expect(list.set(0, 70)).toEqual(false);
+    });
+
+    test('negative index', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50);
+      expect(list.set(-3, 70)).toEqual(false);
+    });
+
+    test('index >= list.length', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50);
+
+      //
+      // A list with 2 nodes contains index 0 and 1.
+      //
+      expect(list.set(2, 80)).toEqual(false);
+    });
+
+    test('valid existing node index', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50).push(90).push(100).push(-70).push(1e4);
+      //                                 3rd
+      expect(list.set(3, 88)).toEqual(true);
+    });
+  });
 });

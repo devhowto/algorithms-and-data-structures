@@ -96,23 +96,14 @@ class DoublyLinkedList {
   get(idx) {
     var len = this.length;
 
-    ///
     // Index out of bounds.
-    //
     if (idx < 0 || idx >= len) return null;
 
-    ////
-    // Round up to int. Don't strictly need this. Could do
-    //
-    //   while (idx <= len / 2)
-    //
+    // Round up to int.
     var mid = len / 2 | 0;
 
     var i, node;
 
-    ////
-    // Handles from head to middle.
-    //
     if (idx <= mid) {
       i = 0;
       node = this.head;
@@ -126,6 +117,14 @@ class DoublyLinkedList {
     }
 
     return node;
+  }
+
+  set(idx, val) {
+    var node = this.get(idx);
+    if (node === null) return false;
+
+    node.val = val;
+    return true;
   }
 }
 
