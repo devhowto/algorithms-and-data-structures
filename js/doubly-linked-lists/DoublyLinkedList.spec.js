@@ -325,4 +325,45 @@ describe('DoublyLinkedList', () => {
       expect(inserted.next.val).toEqual(10);
     });
   });
+
+  describe('remove(idx)', () => {
+    test('index out of bounds', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50);
+
+      expect(list.remove(2)).toEqual(undefined);
+      expect(list.length).toEqual(2);
+    });
+
+    test('index 0', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50);
+
+      var removed = list.remove(0);
+
+      expect(removed.val).toEqual(70);
+      expect(list.length).toEqual(1);
+    });
+
+    test('index is same as length - 1', () => {
+      var list = new DoublyLinkedList();
+      list.push(70).push(50).push(88).push(55);
+
+      var removed = list.remove(3);
+
+      expect(removed.val).toEqual(55);
+      expect(list.length).toEqual(3);
+    });
+
+    test('somewhere “in the middle”', () => {
+      var list = new DoublyLinkedList();
+      list.push(77).push(33).push(88).push(55);
+
+      var removed = list.remove(2);
+
+      expect(removed.val).toEqual(88);
+      expect(list.length).toEqual(3);
+      expect(list.get(2).val).toEqual(55);
+    });
+  });
 });
