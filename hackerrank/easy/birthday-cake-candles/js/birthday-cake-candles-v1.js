@@ -13,8 +13,8 @@ function birthdayCakeCandles(candles) {
   for (var cur of candles)
     max = Math.max(cur, max);
 
-  for (var j = 0; j < candles.length; ++j)
-    if (candles[j] === max) ++cnt;
+  for (var cur of candles)
+    if (cur === max) ++cnt;
 
   return cnt;
 }

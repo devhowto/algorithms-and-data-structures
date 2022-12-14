@@ -10,7 +10,6 @@ function birthdayCakeCandles(candles) {
   var max = -Infinity;
   var freq = {};
 
-  // for (var i = 0; i < candles.length; ++i) {
   for (var cur of candles) {
     max = Math.max(cur, max);
     freq[cur] = ++freq[cur] || 1;
