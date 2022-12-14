@@ -22,7 +22,7 @@ indent_style = tab
 tab_width = 2
 
 [*.{adoc}]
-max_line_length = 0;
+max_line_length = 0
 
 [Makefile]
 indent_style = tab
