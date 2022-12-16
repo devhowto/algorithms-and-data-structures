@@ -1,6 +1,6 @@
 import {
   birthdayCakeCandles,
-} from './birthday-cake-candles-v1.js';
+} from './birthday-cake-candles-v2.js';
 
 describe('birthdayCakeCandles(candles)', () => {
   describe('single-element array', () => {
