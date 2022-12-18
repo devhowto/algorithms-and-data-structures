@@ -30,10 +30,35 @@ describe('Stack class', () => {
     expect(stack.size).toEqual(3);
   });
 
-  test('can pop from single-node stack', () => {
+  test('pop() on empty stack', () => {
+    var stack = new Stack();
+    var popped = stack.pop();
+    expect(popped).toEqual(null);
+    expect(stack.size).toEqual(0);
+  });
+
+  test('can pop() from single-node stack', () => {
     var stack = new Stack();
     stack.push(70);
 
-    var size = st
+    var popped = stack.pop();
+
+    expect(popped.val).toEqual(70);
+    expect(stack.size).toEqual(0);
+    expect(stack.top).toEqual(null);
+  });
+
+  test('can pop() from two-or-more-node stack', () => {
+    var stack = new Stack();
+    stack.push(70);
+    stack.push(30);
+    stack.push(50);
+
+    var popped = stack.pop();
+
+    expect(popped.val).toEqual(50);
+    expect(popped.prev).toEqual(null);
+    expect(stack.top.val).toEqual(30);
+    expect(stack.size).toEqual(2);
   });
 });

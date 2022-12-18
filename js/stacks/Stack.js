@@ -29,6 +29,23 @@ class Stack {
 
     return ++this.size;
   }
+
+  pop() {
+    if (this.size === 0) return null;
+
+    var oldTop = this.top;
+
+    if (this.size === 1)
+      this.top = null;
+    else
+      this.top = oldTop.prev;
+
+    --this.size;
+
+    oldTop.prev = null;
+
+    return oldTop;
+  }
 }
 
 export { Stack };
