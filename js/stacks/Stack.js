@@ -1,26 +1,30 @@
 class Node {
   constructor(val) {
     this.val = val;
-    this.next = null;
+
+    //
+    // I'll call it prev because “the top points to the previous node”
+    // (except for the empty or single- element stack).
+    //
+    this.prev = null;
   }
 }
 
 class Stack {
   constructor() {
-    this.first = null;
-    this.last = null;
+    this.top = null;
     this.size = 0;
   }
 
   push(val) {
-    var node = new Node(val);
+    var newNode = new Node(val);
 
     if (this.size === 0) {
-      this.first = this.last = node;
+      this.top = newNode;
     } else {
-      var oldFirst = this.first;
-      this.first = node;
-      node.next = oldFirst;
+      var oldTop = this.top;
+      this.top = newNode;
+      newNode.prev = oldTop;
     }
 
     return ++this.size;
