@@ -11,7 +11,12 @@ function timeConv(time) {
   }
 
   if (time.includes('PM')) {
-    return time.replace('PM', '');
+    if (/^12/.test(time))
+      return time.replace('PM', '');
+
+    return time.replace(/([01][0-9])/, function replacer(m, g1) {
+      return Number(g1) + 12;
+    }).replace('PM', '');
   }
 }
 
