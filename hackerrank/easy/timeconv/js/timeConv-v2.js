@@ -1,25 +1,20 @@
+import {
+  pipe,
+  replace,
+  includes,
+  test,
+} from 'ramda';
+
+var subst12With00 = replace('12', '00');
 
 /**
- * Drop the 'PM' from the string `s`.
+ * Drop either 'AM' or 'PM' from the string `s`.
  *
  * @sig String -> String
  * @param {string} s
  * @returns {string}
  */
-function dropPM(s) {
-  return s.replace('PM', '');
-}
-
-/**
- * Drop the 'AM' from the string `s`.
- *
- * @sig String -> String
- * @param {string} s
- * @returns {string}
- */
-function dropAM(s) {
-  return s.replace('AM', '');
-}
+var dropMeridien = replace(/(AM|PM)/, '');
 
 /**
  * Adds 12 to the value of the first capturing group.
@@ -37,6 +32,12 @@ function add12(_m, g1) {
   return Number(g1) + 12;
 }
 
+var add12toPM = replace(/([01][0-9])/, add12);
+
+var includesAM = includes('AM');
+var includesPM = includes('PM');
+var startsWith12 = test(/^12/);
+
 /**
  * Converts a 12-hour time format to a 24-hour (military) format.
  *
@@ -44,15 +45,14 @@ function add12(_m, g1) {
  * @param {string} time
  */
 function timeConv(time) {
-  if (time.includes('AM')) {
-    return dropAM(time.replace('12', '00'));
-  }
+  if (includesAM(time))
+    return pipe(subst12With00, dropMeridien)(time);
 
-  if (time.includes('PM')) {
-    if (/^12/.test(time))
-      return dropPM(time);
+  if (includesPM(time)) {
+    if (startsWith12(time))
+      return dropMeridien(time);
 
-    return dropPM(time.replace(/([01][0-9])/, add12));
+    return pipe(add12toPM, dropMeridien)(time);
   }
 }
 
