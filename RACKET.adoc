@@ -1,0 +1,14 @@
+= Racket
+:icons: font
+:toc: right
+:source-highlighter: highlight.js
+:experimental:
+
+== Tests
+
+[source,shell-session]
+----
+$ raco test path/to/**/*.spec.rkt
+----
+
+From emacs, switch to the buffer for the test/spec file and, using racket-mode, just hit kbd:[F5].
