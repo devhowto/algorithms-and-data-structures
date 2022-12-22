@@ -15,6 +15,7 @@
   "magicRacket.languageServer.enabled": true,
   "cSpell.words": [
     "antora",
+    "Conv",
     "elems",
     "fizzbuzz",
     "heapify",

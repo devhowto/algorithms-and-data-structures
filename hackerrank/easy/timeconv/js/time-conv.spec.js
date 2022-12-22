@@ -1,4 +1,4 @@
-import { timeConv } from './timeConv-v1.js';
+import { timeConv } from './timeConv-v2.js';
 
 //
 // In all case we want to remove both AM and PM.
