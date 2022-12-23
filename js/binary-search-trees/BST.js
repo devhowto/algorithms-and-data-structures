@@ -11,6 +11,18 @@ class BST {
     this.root = null;
   }
 
+  /**
+   * Inserts a node created from the given `val` into the BST.
+   *
+   * The BST is modified in place. This method returns the BST
+   * reference itself.
+   *
+   * - T.C: O(log n).
+   * - S.C: O(1).
+   *
+   * @param {unknown} val
+   * @returns {BST}
+   */
   insert(val) {
     var newNode = new Node(val);
 
@@ -19,25 +31,26 @@ class BST {
       return this;
     }
 
-    return (function go(bst, node) {
+    (function go(bst, node) {
       if (node.val < bst.val) {
-        console.log('==== ', bst.val, node.val);
-        if (bst.left) {
-          return go(bst.left, node);
-        } else {
+        if (bst.left === null) {
           bst.left = node;
           return bst;
         }
+
+        return go(bst.left, node);
       }
       else if (node.val > bst.val) {
-        if (bst.right) {
-          return go(bst.right, node);
-        } else {
+        if (bst.right === null) {
           bst.right = node;
           return bst;
         }
+
+        return go(bst.right, node);
       }
     }(this.root, newNode));
+
+    return this;
   }
 }
 
