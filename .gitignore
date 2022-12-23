@@ -56,3 +56,8 @@ jsdist
 #
 *.dSYM
 
+##
+# Racket stuff.
+#
+*_rkt.dep
+*_rkt.zo
