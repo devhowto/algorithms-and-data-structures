@@ -61,3 +61,4 @@ jsdist
 #
 *_rkt.dep
 *_rkt.zo
+*.rkt#

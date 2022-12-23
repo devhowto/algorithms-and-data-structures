@@ -1,0 +1,5 @@
+= Grasshopper Summation
+:icons: font
+:toc: right
+
+* link:https://www.codewars.com/kata/55d24f55d7dd296eb9000030[Grasshopper Summation :: Codewars 8kyu]
