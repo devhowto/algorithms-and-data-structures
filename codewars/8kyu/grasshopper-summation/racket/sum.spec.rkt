@@ -1,6 +1,10 @@
 #lang racket/base
 (require rackunit)
+<<<<<<< HEAD:codewars/8kyu/grasshopper-summation/sum.spec.rkt
 (require "./sum-v4.rkt")
+=======
+(require "./sum-v5.rkt")
+>>>>>>> d935f48 (codewars(8kyu): summation v1 to v5):codewars/8kyu/grasshopper-summation/racket/sum.spec.rkt
 
 (check-eq? (sum 1) 1 "from 1 to 1")
 
