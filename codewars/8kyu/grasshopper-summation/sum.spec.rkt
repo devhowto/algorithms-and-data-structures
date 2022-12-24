@@ -1,6 +1,6 @@
 #lang racket/base
 (require rackunit)
-(require "./sum-v1.rkt")
+(require "./sum-v4.rkt")
 
 (check-eq? (sum 1) 1 "from 1 to 1")
 

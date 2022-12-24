@@ -6,13 +6,9 @@
 ;;
 ;; ASSUME: n >= 1.
 ;;
-;; Recursive tail call.
-;;
 ;; sum :: Int -> Int
 ;;
 (define (sum to)
-  (let go ([n to] [acc 1])
-    (cond
-      [(= n 1) acc]
-      [else (go (- n 1) (+ acc n))])))
-
+  (if (zero? to)
+      0
+      (+ to (sum (sub1 to)))))

@@ -12,6 +12,7 @@
     //
     // "*.ts": "plaintext",
   },
+  "magicRacket.languageServer.enabled": true,
   "cSpell.words": [
     "antora",
     "elems",
