@@ -1,7 +1,7 @@
 import {
   Node,
   BST,
-} from './BST.js';
+} from './BST-v2.js';
 
 describe('Node', () => {
   test('can create a Node', () => {
@@ -29,6 +29,22 @@ describe('BST()', () => {
       expect(bst.root.left).toBe(null);
       expect(bst.root.right).toBe(null);
     });
+
+    // In this implementation, we chose to ignore
+    // duplicate nodes (simply do nothing).
+    test('duplicate node', () => {
+      var bst = new BST();
+      bst.insert(100);
+      bst.insert(80);
+
+      var res = bst.insert(80);
+
+      expect(res === bst).toBe(true);
+      expect(bst.root.val).toEqual(100);
+      expect(bst.root.left.val).toEqual(80);
+      expect(bst.root.left.left).toBe(null);
+      expect(bst.root.right).toBe(null);
+    })
 
     test('to the left of single node BST', () => {
       var bst = new BST().insert(100);
@@ -64,6 +80,20 @@ describe('BST()', () => {
       expect(bst.root.left.val).toEqual(40);
       expect(bst.root.left.left.val).toEqual(20);
       expect(bst.root.right).toBe(null);
+    });
+
+    test('to the right of the right', () => {
+      var bst = new BST().insert(100);
+
+      bst.insert(150);
+
+      var res = bst.insert(170);
+
+      expect(res === bst).toBe(true);
+      expect(bst.root.val).toEqual(100);
+      expect(bst.root.right.val).toEqual(150);
+      expect(bst.root.right.right.val).toEqual(170);
+      expect(bst.root.left).toBe(null);
     });
   });
 });

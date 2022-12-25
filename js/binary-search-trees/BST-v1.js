@@ -32,6 +32,12 @@ class BST {
     }
 
     (function go(bst, node) {
+      ///
+      // In this implementation, we chose to simply
+      // ignore duplicate values.
+      //
+      if (node.val === bst.val) return;
+
       if (node.val < bst.val) {
         if (bst.left === null) {
           bst.left = node;
@@ -39,8 +45,7 @@ class BST {
         }
 
         return go(bst.left, node);
-      }
-      else if (node.val > bst.val) {
+      } else {
         if (bst.right === null) {
           bst.right = node;
           return bst;
