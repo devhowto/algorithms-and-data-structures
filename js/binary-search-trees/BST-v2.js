@@ -56,6 +56,32 @@ class BST {
       }
     }
   }
+
+  find(val) {
+    if (this.root === null) return null;
+
+    var curNode = this.root;
+
+    while (1) {
+      if (curNode.val === val) return curNode;
+
+      if (val < curNode.val) {
+        if (curNode.left !== null) {
+          curNode = curNode.left;
+          continue;
+        }
+
+        return null;
+      } else {
+        if (curNode.right !== null) {
+          curNode = curNode.right;
+          continue;
+        }
+
+        return null;
+      }
+    }
+  }
 }
 
 export {

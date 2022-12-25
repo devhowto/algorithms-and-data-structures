@@ -96,5 +96,63 @@ describe('BST()', () => {
       expect(bst.root.left).toBe(null);
     });
   });
+
+  describe('find(val)', () => {
+    test('empty tree', () => {
+      var bst = new BST();
+
+      var found = bst.find(100);
+
+      expect(found).toBe(null);
+    });
+
+    test('not found', () => {
+      var bst = new BST()
+        .insert(100)
+        .insert(80)
+        .insert(70)
+        .insert(150)
+        .insert(180);
+
+      expect(bst.find(60)).toBe(null);
+      expect(bst.find(160)).toBe(null);
+    });
+
+    test('single node tree', () => {
+      var bst = new BST().insert(100);
+
+      var found = bst.find(100);
+
+      expect(found.val).toEqual(100);
+    });
+
+    test('left of the tree', () => {
+      var bst = new BST()
+        .insert(100)
+        .insert(70)
+        .insert(40);
+
+      var found70 = bst.find(70);
+      var found40 = bst.find(40);
+
+      expect(found70.val).toEqual(70);
+      expect(found70.left.val).toEqual(40);
+      expect(found40.val).toEqual(40);
+    });
+
+    test('right of the tree', () => {
+      var bst = new BST()
+        .insert(100)
+        .insert(150)
+        .insert(180);
+
+      var found150 = bst.find(150);
+      var found180 = bst.find(180);
+
+      expect(found150.val).toEqual(150);
+      expect(found150.right.val).toEqual(180);
+      expect(found180.val).toEqual(180);
+    });
+  });
 });
 
