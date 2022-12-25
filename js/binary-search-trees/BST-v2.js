@@ -60,27 +60,18 @@ class BST {
   find(val) {
     if (this.root === null) return null;
 
-    var curNode = this.root;
+    var curNode = this.root,
+        found = false;
 
-    while (1) {
+    while (!found && curNode) {
       if (curNode.val === val) return curNode;
 
-      if (val < curNode.val) {
-        if (curNode.left !== null) {
-          curNode = curNode.left;
-          continue;
-        }
-
-        return null;
-      } else {
-        if (curNode.right !== null) {
-          curNode = curNode.right;
-          continue;
-        }
-
-        return null;
-      }
+      curNode = val < curNode.val
+        ? curNode.left
+        : curNode.right;
     }
+
+    return found ? curNode : null;
   }
 }
 
