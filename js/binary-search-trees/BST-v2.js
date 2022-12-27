@@ -1,3 +1,5 @@
+import { Queue } from '../queues/Queue.js';
+
 class Node {
   constructor(val) {
     this.val = val;
@@ -72,6 +74,31 @@ class BST {
     }
 
     return found ? curNode : null;
+  }
+
+  /**
+   * Returns an array of the values in breadth-first order.
+   *
+   */
+  toArr() {
+    if (this.root === null) return [];
+
+    var q = [],
+        arr = [],
+        node = this.root;
+
+    q.push(node);
+
+    while (q.length !== 0) {
+      node = q.shift();
+      console.dir(node, { depth: null });
+      arr.push(node.val);
+
+      if (node.left) q.enqueue(node.left);
+      if (node.right) q.enqueue(node.right);
+    }
+
+    return arr;
   }
 }
 

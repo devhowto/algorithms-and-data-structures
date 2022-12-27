@@ -154,5 +154,18 @@ describe('BST()', () => {
       expect(found180.val).toEqual(180);
     });
   });
+
+  describe('toArr()', () => {
+    test('empty BST', () => {
+      var bst = new BST();
+      expect(bst.toArr()).toEqual([]);
+    });
+
+    test('BST with single root node', () => {
+      var bst = new BST().insert(100);
+      var res = bst.toArr();
+      expect(res).toEqual([100]);
+    });
+  });
 });
 
