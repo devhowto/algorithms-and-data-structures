@@ -84,6 +84,8 @@ class BST {
    * pass a node already, the queue's `val` will be a node itself.
    * Therefore, when we dequeue, we may need to unwrap the original
    * node value from the queues node.
+   *
+   * @sig Void -> [a]
    */
   toArrBFS() {
     if (this.root === null) return [];
@@ -106,6 +108,11 @@ class BST {
     return arr;
   }
 
+  /**
+   * Returns an array of the values in depth-first search, pre-order.
+   *
+   * @sig -> Void -> [a]
+   */
   toArrDFSPreOrder() {
     if (this.root === null) return [];
 
