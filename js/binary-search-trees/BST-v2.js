@@ -85,7 +85,7 @@ class BST {
    * Therefore, when we dequeue, we may need to unwrap the original
    * node value from the queues node.
    */
-  toArr() {
+  toArrBFS() {
     if (this.root === null) return [];
 
     debugger;

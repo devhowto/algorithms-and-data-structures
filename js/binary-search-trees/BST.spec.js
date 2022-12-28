@@ -155,16 +155,16 @@ describe('BST()', () => {
     });
   });
 
-  describe('toArr() :: vistit all nodes breadth-first', () => {
+  describe('toArrBFS() :: visit all nodes breadth-first', () => {
     test('empty BST', () => {
       var bst = new BST();
-      expect(bst.toArr()).toEqual([]);
+      expect(bst.toArrBFS()).toEqual([]);
     });
 
     test('BST with single root node', () => {
       var bst = new BST().insert(100);
 
-      expect(bst.toArr()).toEqual([100]);
+      expect(bst.toArrBFS()).toEqual([100]);
     });
 
     test('BST with only lefts', () => {
@@ -173,7 +173,7 @@ describe('BST()', () => {
       bst.insert(70);
       bst.insert(30);
 
-      expect(bst.toArr()).toEqual([100, 70, 30]);
+      expect(bst.toArrBFS()).toEqual([100, 70, 30]);
     });
 
     test('BST with only rights', () => {
@@ -182,7 +182,7 @@ describe('BST()', () => {
       bst.insert(150);
       bst.insert(190);
 
-      expect(bst.toArr()).toEqual([100,150, 190]);
+      expect(bst.toArrBFS()).toEqual([100,150, 190]);
     });
 
     test('BST with lefts and rights', () => {
@@ -196,7 +196,7 @@ describe('BST()', () => {
       bst.insert(180);
       bst.insert(190);
 
-      var res = bst.toArr();
+      var res = bst.toArrBFS();
 
       expect(res).toEqual([100, 50, 150, 30, 70, 130, 180, 190]);
     });
