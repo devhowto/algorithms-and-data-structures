@@ -79,23 +79,29 @@ class BST {
   /**
    * Returns an array of the values in breadth-first order.
    *
+   * NOTE: This implementation of `toArr()` makes use of `Queue`. Our
+   * Queue implementation makes a node of the value passed. So if we
+   * pass a node already, the queue's `val` will be a node itself.
+   * Therefore, when we dequeue, we may need to unwrap the original
+   * node value from the queues node.
    */
   toArr() {
     if (this.root === null) return [];
 
-    var q = [],
+    debugger;
+    var queue = new Queue(),
         arr = [],
         node = this.root;
 
-    q.push(node);
+    queue.enqueue(node);
 
-    while (q.length !== 0) {
-      node = q.shift();
-      console.dir(node, { depth: null });
+    while (queue.size !== 0) {
+      // `.val` to unwrap the original node from the queue.
+      node = queue.dequeue().val;
       arr.push(node.val);
 
-      if (node.left) q.enqueue(node.left);
-      if (node.right) q.enqueue(node.right);
+      if (node.left) queue.enqueue(node.left);
+      if (node.right) queue.enqueue(node.right);
     }
 
     return arr;
