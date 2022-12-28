@@ -109,7 +109,7 @@ class BST {
   }
 
   /**
-   * Returns an array of the values in depth-first search, pre-order.
+   * Returns an array of the values, depth-first, pre-order.
    *
    * @sig Void -> [a]
    */
@@ -129,7 +129,7 @@ class BST {
   }
 
   /**
-   * Returns an array of the values in depth-first search, post-order.
+   * Returns an array of the values, depth-first, post-order.
    *
    * @sig Void -> [a]
    */
@@ -143,6 +143,27 @@ class BST {
       if (node.right) go(node.right);
 
       arr.push(node.val);
+    })(this.root);
+
+    return arr;
+  }
+
+  /**
+   * Returns an array of the value, depth-first, in-order.
+   *
+   * @sig Void -> [a]
+   */
+  toArrDFSInOrder() {
+    if (this.root === null) return [];
+
+    var arr = [];
+
+    (function go(node) {
+      if (node.left) go(node.left);
+
+      arr.push(node.val);
+
+      if (node.right) go(node.right);
     })(this.root);
 
     return arr;
