@@ -202,10 +202,7 @@ describe('BST()', () => {
     });
   });
 
-
-
-
-  describe('toArrDFSPreOrder() :: visit all nodes breadth-first', () => {
+  describe('toArrDFSPreOrder() :: depth-first, pre order', () => {
     test('empty BST', () => {
       var bst = new BST();
       expect(bst.toArrDFSPreOrder()).toEqual([]);
@@ -251,5 +248,53 @@ describe('BST()', () => {
       expect(res).toEqual([100, 50, 30, 70, 150, 130, 180, 190]);
     });
   });
+
+  describe('toArrDFSPostOrder() :: depth-first, post order', () => {
+    test('empty BST', () => {
+      var bst = new BST();
+      expect(bst.toArrDFSPostOrder()).toEqual([]);
+    });
+
+    test('BST with single root node', () => {
+      var bst = new BST().insert(100);
+
+      expect(bst.toArrDFSPostOrder()).toEqual([100]);
+    });
+
+    test('BST with only lefts', () => {
+      var bst = new BST();
+      bst.insert(100);
+      bst.insert(70);
+      bst.insert(30);
+
+      expect(bst.toArrDFSPostOrder()).toEqual([30, 70, 100]);
+    });
+
+    test('BST with only rights', () => {
+      var bst = new BST();
+      bst.insert(100);
+      bst.insert(150);
+      bst.insert(190);
+
+      expect(bst.toArrDFSPostOrder()).toEqual([190, 150, 100]);
+    });
+
+    test('BST with lefts and rights', () => {
+      var bst = new BST();
+      bst.insert(100);
+      bst.insert(50);
+      bst.insert(30);
+      bst.insert(70);
+      bst.insert(150);
+      bst.insert(130);
+      bst.insert(180);
+      bst.insert(190);
+
+      var res = bst.toArrDFSPostOrder();
+
+      expect(res).toEqual([30, 70, 50, 130, 190, 180, 150, 100]);
+    });
+  });
+
 });
 
