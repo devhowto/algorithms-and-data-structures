@@ -201,5 +201,55 @@ describe('BST()', () => {
       expect(res).toEqual([100, 50, 150, 30, 70, 130, 180, 190]);
     });
   });
+
+
+
+
+  describe('toArrDFSPreOrder() :: visit all nodes breadth-first', () => {
+    test('empty BST', () => {
+      var bst = new BST();
+      expect(bst.toArrDFSPreOrder()).toEqual([]);
+    });
+
+    test('BST with single root node', () => {
+      var bst = new BST().insert(100);
+
+      expect(bst.toArrDFSPreOrder()).toEqual([100]);
+    });
+
+    test('BST with only lefts', () => {
+      var bst = new BST();
+      bst.insert(100);
+      bst.insert(70);
+      bst.insert(30);
+
+      expect(bst.toArrDFSPreOrder()).toEqual([100, 70, 30]);
+    });
+
+    test('BST with only rights', () => {
+      var bst = new BST();
+      bst.insert(100);
+      bst.insert(150);
+      bst.insert(190);
+
+      expect(bst.toArrDFSPreOrder()).toEqual([100,150, 190]);
+    });
+
+    test('BST with lefts and rights', () => {
+      var bst = new BST();
+      bst.insert(100);
+      bst.insert(50);
+      bst.insert(30);
+      bst.insert(70);
+      bst.insert(150);
+      bst.insert(130);
+      bst.insert(180);
+      bst.insert(190);
+
+      var res = bst.toArrDFSPreOrder();
+
+      expect(res).toEqual([100, 50, 30, 70, 150, 130, 180, 190]);
+    });
+  });
 });
 
