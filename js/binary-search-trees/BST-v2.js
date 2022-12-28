@@ -116,15 +116,14 @@ class BST {
   toArrDFSPreOrder() {
     if (this.root === null) return [];
 
-    var cur = this.root,
-        arr = [];
+    var arr = [];
 
     (function go(node) {
       arr.push(node.val);
 
       if (node.left) go(node.left);
       if (node.right) go(node.right);
-    })(cur);
+    })(this.root);
 
     return arr;
   }
