@@ -1,7 +1,7 @@
 import {
   Node,
   BST,
-} from './BST-v2.js';
+} from './BST.js';
 
 describe('Node', () => {
   test('can create a Node', () => {
