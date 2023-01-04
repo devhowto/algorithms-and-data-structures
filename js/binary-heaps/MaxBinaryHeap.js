@@ -45,51 +45,48 @@ class MaxBinaryHeap {
     var max = this.vals[0];
     var last = this.vals.pop();
 
+    ////
+    // If the array is already empty, don't add `last` back into the
+    // array and heapify beause it means we are done.
+    //
     if (this.vals.length > 0) {
-      ////
-      // Do not add `last` back to the array if it is already empty
-      // because in this case we are done.
-      //
       this.vals[0] = last;
 
-      this.#trickleDown();
+      this.#heapify(0);
     }
 
     return max;
   }
 
-  #trickleDown() {
-    var len = this.vals.length;
-    var elem = this.vals[0];
-    var parentIdx = 0;
-    var leftIdx, rightIdx, left, right, swapIdx;
+  /**
+   * Max-heapifies the subtree with the root at index `p`.
+   *
+   * @param {number} p The index where the work should start.
+   * @sig Int -> Void
+   */
+  #heapify(p) {
+    var i,
+        l = 2 * p + 1,
+        r = 2 * p + 2,
+        vals = this.vals,
+        len = vals.length;
 
-    while (true) {
-      leftIdx = parentIdx * 2 + 1;
-      rightIdx = parentIdx * 2 + 2;
-      swapIdx = undefined;
+    if (l < len)
+      if (vals[l] > vals[p])
+        i = l;
 
-      if (leftIdx < len) {
-        left = this.vals[leftIdx];
-        if (left > elem) swapIdx = leftIdx;
-      }
+    if (r < len)
+      if (
+        (i === undefined && vals[r] > vals[p]) ||
+        (i !== undefined && vals[r] > vals[l])
+      )
+        i = r;
 
-      if (rightIdx < len) {
-        right = this.vals[rightIdx];
+    if (i === undefined) return;
 
-        if (
-          (swapIdx === undefined && right > elem) ||
-          (right !== undefined && right > left)
-        )
-          swapIdx = rightIdx;
-      }
+    swap(vals, i, p);
 
-      if (swapIdx === undefined) break;
-
-      swap(this.vals, parentIdx, swapIdx);
-
-      parentIdx = swapIdx;
-    }
+    return this.#heapify(i);
   }
 }
 
