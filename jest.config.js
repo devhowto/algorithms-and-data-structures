@@ -2,7 +2,7 @@
 var config = {
   bail: 1,
   verbose: true,
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: [
     'js/**/*.js',
     // 'js/priority-queues/PriorityQueue.js',

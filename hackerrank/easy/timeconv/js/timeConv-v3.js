@@ -6,6 +6,7 @@ import {
   ifElse,
   when,
   identity,
+  complement,
 } from 'ramda';
 
 var subst12With00 = replace('12', '00');
@@ -68,17 +69,24 @@ var startsWith12 = test(/^12/);
  *
  * @sig String -> String
  * @param {string} time
+ *
+ * @example
+ * timeConv('11:59:59PM');
+ * //=> '12:59:59'
  */
-function timeConv(time) {
-  if (includesAM(time))
-    return pipe(subst12With00, dropMeridiem)(time);
-
-  if (includesPM(time)) {
-    if (startsWith12(time))
-      return dropMeridiem(time);
-
-    return pipe(add12toPM, dropMeridiem)(time);
-  }
-}
+var timeConv = pipe(
+  ifElse(
+    includesAM,
+    subst12With00,
+    when(
+      includesPM,
+      when(
+        complement(startsWith12),
+        add12toPM,
+      ),
+    ),
+  ),
+  dropMeridiem,
+);
 
 export { timeConv };

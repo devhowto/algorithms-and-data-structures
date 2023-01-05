@@ -1,4 +1,4 @@
-import { timeConv } from './timeConv-v2.js';
+import { timeConv } from './timeConv-v3.js';
 
 //
 // In all case we want to remove both AM and PM.
@@ -44,3 +44,4 @@ describe('timeConv()', () => {
     expect(timeConv('11:59:59PM')).toEqual('23:59:59');
   });
 });
+
