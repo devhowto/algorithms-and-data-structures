@@ -86,7 +86,7 @@ class MaxBinaryHeap {
 
     swap(this.vals, idx, pIdx);
 
-    // idx becames the new pIdx 😀
+    // idx becomes the new pIdx 😀
     return this.#heapify(idx);
   }
 }
