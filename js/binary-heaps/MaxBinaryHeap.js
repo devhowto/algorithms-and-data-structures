@@ -47,7 +47,7 @@ class MaxBinaryHeap {
 
     ////
     // If the array is already empty, don't add `last` back into the
-    // array and heapify beause it means we are done.
+    // array and heapify because it means we are done.
     //
     if (this.vals.length > 0) {
       this.vals[0] = last;
