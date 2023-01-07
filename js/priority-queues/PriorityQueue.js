@@ -19,6 +19,12 @@ class PriorityQueue {
     this.vals = [];
   }
 
+  /**
+   * Enqueues a values with the given priority.
+   *
+   * - T.C: O(log n).
+   * - S.C: O(n).
+   */
   enqueue(val, priority) {
     var newNode = new Node(val, priority);
 
@@ -39,6 +45,12 @@ class PriorityQueue {
     }
   }
 
+  /**
+   * Dequeues the highest priority element from the queue.
+   *
+   * - T.C: O(log n).
+   * - S.C: O(n).
+   */
   dequeue() {
     var len = this.vals.length;
 
