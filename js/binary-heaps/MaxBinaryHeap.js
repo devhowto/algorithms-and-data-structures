@@ -51,7 +51,6 @@ class MaxBinaryHeap {
     //
     if (this.vals.length > 0) {
       this.vals[0] = last;
-
       this.#heapify(0);
     }
 
@@ -61,32 +60,34 @@ class MaxBinaryHeap {
   /**
    * Max-heapifies the subtree with the root at index `p`.
    *
-   * @param {number} p The index where the work should start.
+   * @param {number} pIdx The index where the work should start.
    * @sig Int -> Void
    */
-  #heapify(p) {
-    var i,
-        l = 2 * p + 1,
-        r = 2 * p + 2,
-        vals = this.vals,
-        len = vals.length;
+  #heapify(pIdx) {
+    var idx,
+        lIdx = 2 * pIdx + 1,
+        rIdx = 2 * pIdx + 2,
+        len = this.vals.length;
 
-    if (l < len)
-      if (vals[l] > vals[p])
-        i = l;
+    if (
+      (lIdx < len) &&
+      (this.vals[lIdx] > this.vals[pIdx])
+    )
+      idx = lIdx;
 
-    if (r < len)
-      if (
-        (i === undefined && vals[r] > vals[p]) ||
-        (i !== undefined && vals[r] > vals[l])
-      )
-        i = r;
+    if (
+      (rIdx < len) &&
+      (idx === undefined && this.vals[rIdx] > this.vals[pIdx]) ||
+      (idx !== undefined && this.vals[rIdx] > this.vals[lIdx])
+    )
+      idx = rIdx;
 
-    if (i === undefined) return;
+    if (idx === undefined) return;
 
-    swap(vals, i, p);
+    swap(this.vals, idx, pIdx);
 
-    return this.#heapify(i);
+    // idx becames the new pIdx 😀
+    return this.#heapify(idx);
   }
 }
 
