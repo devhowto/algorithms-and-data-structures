@@ -76,18 +76,16 @@ class PriorityQueue {
         lChild = this.vals[lIdx],
         rChild = this.vals[rIdx];
 
-    if (
-      (lIdx < len) &&
-      (lChild.priority < parent.priority)
-    )
+    if (lIdx < len)
+      if (lChild.priority < parent.priority)
       idx = lIdx;
 
-    if (
-      (rIdx < len) &&
-      (isNil(idx) && rChild.priority < parent.priority) ||
-      (!isNil(idx) && rChild.priority < lChild.priority.priority)
-    )
-      idx = rIdx;
+    if (rIdx < len)
+      if (
+        (isNil(idx) && rChild.priority < parent.priority) ||
+        (!isNil(idx) && rChild.priority < lChild.priority)
+      )
+        idx = rIdx;
 
     if (isNil(idx)) return;
 
@@ -97,7 +95,5 @@ class PriorityQueue {
     this.#heapify(idx);
   }
 }
-
-var queue = new PriorityQueue();
 
 export { PriorityQueue, Node };
