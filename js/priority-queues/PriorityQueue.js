@@ -26,24 +26,21 @@ class PriorityQueue {
    * - S.C: O(n).
    */
   enqueue(val, priority) {
-    var newNode, newNodeIdx, parentIdx;
+    this.vals.push(new Node(val, priority));
+    this.#bubble(this.vals.length - 1);
+  }
 
-    newNode = new Node(val, priority);
+  #bubble(newIdx) {
+    if (newIdx < 1) return;
 
-    this.vals.push(newNode);
+    var parentIdx = (newIdx - 1) / 2 | 0;
 
-    newNodeIdx = this.vals.length - 1;
+    if (this.vals[newIdx].priority > this.vals[parentIdx].priority)
+      return;
 
-    while (newNodeIdx > 0) {
-      parentIdx = (newNodeIdx - 1) / 2 | 0;
+    swap(this.vals, newIdx, parentIdx);
 
-      if (newNode.priority >= this.vals[parentIdx].priority)
-        break;
-
-      swap(this.vals, newNodeIdx, parentIdx);
-
-      newNodeIdx = parentIdx;
-    }
+    return this.#bubble(parentIdx);
   }
 
   /**
