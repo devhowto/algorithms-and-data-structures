@@ -1,3 +1,13 @@
+/*
+Run the tests for this module with this command:
+
+$ npm run test -- \
+    --collectCoverage \
+    --collectCoverageFrom \
+    js/priority-queues/PriorityQueue.js \
+    js/priority-queues/PriorityQueue.spec.js
+*/
+
 import {
   swap,
   isNil,
@@ -20,78 +30,93 @@ class PriorityQueue {
   }
 
   /**
-   * Enqueues a values with the given priority.
+   * Enqueues a task to the priority queue.
    *
    * - T.C: O(log n).
-   * - S.C: O(n).
+   *
+   * @param {unknown} val
+   * @param {number} priority
+   * @returns {void}
    */
   enqueue(val, priority) {
-    this.vals.push(new Node(val, priority));
+    var newNode = new Node(val, priority);
+    this.vals.push(newNode);
+
     this.#bubble(this.vals.length - 1);
   }
 
-  #bubble(newIdx) {
-    if (newIdx < 1) return;
+  /**
+   * Helper method for `enqueue()`.
+   *
+   * @param {number} newNodeIdx
+   * @returns {void}
+   */
+  #bubble(newNodeIdx) {
+    if (newNodeIdx < 1) return;
 
-    var parentIdx = (newIdx - 1) / 2 | 0;
+    var parentIdx = (newNodeIdx - 1) / 2 | 0;
 
-    if (this.vals[newIdx].priority > this.vals[parentIdx].priority)
+    if (this.vals[newNodeIdx].priority > this.vals[parentIdx].priority)
       return;
 
-    swap(this.vals, newIdx, parentIdx);
+    swap(this.vals, newNodeIdx, parentIdx);
 
-    return this.#bubble(parentIdx);
+    this.#bubble(parentIdx);
   }
 
   /**
-   * Dequeues the highest priority element from the queue.
+   * Dequeues the highest priority task from the priority queue.
    *
-   * - T.C: O(log n).
-   * - S.C: O(n).
+   * T.C: O(log n).
+   *
+   * @returns {Node}
    */
   dequeue() {
-    var len = this.vals.length;
+    if (this.vals.length === 0) return null;
 
-    if (len === 0) return null;
+    var min = this.vals[0],
+        last = this.vals.pop();
 
-    var min = this.vals[0];
-    var last = this.vals.pop();
-
-    if (len > 0) {
+    if (this.vals.length > 0) {
       this.vals[0] = last;
-      this.#heapify(0);
+      this.#sink(0);
     }
 
     return min;
   }
 
-  #heapify(pIdx) {
-    var idx,
-        len = this.vals.length,
-        lIdx = 2 * pIdx + 1,
-        rIdx = 2 * pIdx + 2,
+  /**
+   * Helper method for `dequeue()`.
+   *
+   * @param {number} pIdx
+   * @returns {void}
+   */
+  #sink(pIdx) {
+    var len = this.vals.length,
+        lIdx = pIdx * 2 + 1,
+        rIdx = pIdx * 2 + 2,
         parent = this.vals[pIdx],
         lChild = this.vals[lIdx],
-        rChild = this.vals[rIdx];
+        rChild = this.vals[rIdx],
+        swpIdx;
 
     if (lIdx < len)
       if (lChild.priority < parent.priority)
-      idx = lIdx;
+        swpIdx = lIdx;
 
     if (rIdx < len)
       if (
-        (isNil(idx) && rChild.priority < parent.priority) ||
-        (!isNil(idx) && rChild.priority < lChild.priority)
+        (isNil(swpIdx) && rChild.priority < parent.priority) ||
+        (!isNil(swpIdx) && rChild.priority < lChild.priority)
       )
-        idx = rIdx;
+        swpIdx = rIdx;
 
-    if (isNil(idx)) return;
+    if (isNil(swpIdx)) return;
 
-    swap(this.vals, idx, pIdx);
+    swap(this.vals, swpIdx, pIdx);
 
-    // idx becomes the new pIdx 😀
-    this.#heapify(idx);
+    this.#sink(swpIdx);
   }
 }
 
-export { PriorityQueue, Node };
+export { Node, PriorityQueue };
