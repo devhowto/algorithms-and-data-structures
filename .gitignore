@@ -37,6 +37,11 @@ pygments-default.css
 node_modules
 
 ##
+# Jest coverage reports.
+#
+coverage
+
+##
 # Xournalpp drafts and template files.
 #
 *.xopp
