@@ -1,4 +1,4 @@
-import { miniMaxSum } from './miniMaxSum-v1.js';
+import { miniMaxSum } from './miniMaxSum-v2.js';
 
 describe('miniMaxSum(xs)', () => {
   it('should work with ascending sorted arrays', () => {
