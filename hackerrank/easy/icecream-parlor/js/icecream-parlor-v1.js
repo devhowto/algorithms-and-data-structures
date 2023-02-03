@@ -14,8 +14,7 @@
  * @param {Array<number>} flavorPrices
  * @returns {[number, number]}
  */
-function icecreamParlor(money, flavorPrices) {
-  debugger;
+function iceCreamParlor(money, flavorPrices) {
   var indices = [-1, -1],
       len = flavorPrices.length,
       i,
@@ -40,8 +39,8 @@ function icecreamParlor(money, flavorPrices) {
   [3, 2, 5, 7, 1], // flavor prices for trip 1
   [1, 3, 4, 5, 6], // flavor prices for trip 2
 ].forEach(prices => {
-  console.log(icecreamParlor(6, prices));
+  console.log(iceCreamParlor(6, prices));
 });
 */
 
-export { icecreamParlor };
+export { iceCreamParlor };
