@@ -1,4 +1,4 @@
-import { iceCreamParlor } from './icecream-parlor-v1.js';
+import { iceCreamParlor } from './icecream-parlor-v2.js';
 
 describe('iceCreamParlor(money, flavorPrices)', () => {
   test('when the input is in ascending order', () => {
