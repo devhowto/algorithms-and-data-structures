@@ -20,7 +20,8 @@ const log = console.log.bind(console);
  */
 function hash(str, len) {
   return [...str].reduce((acc, chr) => {
-    return (chr.charCodeAt(0) - 96 + acc) % len;
+    var sub = chr.charCodeAt(0) - 96;
+    return (acc * 31 + sub) % len;
   }, 0);
 }
 
