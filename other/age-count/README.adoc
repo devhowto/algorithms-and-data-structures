@@ -1,0 +1,27 @@
+= Age Counting :: CoderByte
+:icons: font
+:toc: left
+
+Count the number of ages that are equal to or greater than 50.
+
+{ "data": ""}
+
+[source,text]
+----
+{ "data": "key=IAfpK, age=58, key=WNVdi, age=32, key=jp9zt, age=97" }
+----
+
+In the case above, the count of ages >= 40 is 2.
+
+[NOTE]
+====
+The value is a single string, which means it has to be properly parsed.
+====
+
+[source,shell-session]
+----
+$ curl \
+    --request 'PATCH' \
+    https://coderbyte.com/api/challenges/json/age-counting \
+    | jq
+----
