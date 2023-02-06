@@ -1,3 +1,12 @@
+##
+# Finds the indices of the two prices that sum to `money`.
+#
+# • T.C: O(n²)
+#
+# @param money [Int]
+# @param flavorPrices [Array<Int>]
+# @return [Array<Int>]
+#
 def parlor(money, flavorPrices)
   p flavorPrices
   lastIdx = flavorPrices.size - 1
