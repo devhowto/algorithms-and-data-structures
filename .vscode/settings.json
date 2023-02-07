@@ -12,6 +12,7 @@
     //
     // "*.ts": "plaintext",
   },
+  "solargraph.useBundler": true,
   "magicRacket.languageServer.enabled": true,
   "cSpell.words": [
     "antora",
