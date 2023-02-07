@@ -2,9 +2,12 @@
  * Finds the indices of two distinct indices in `flavors` that when
  * added together are equal to `money`.
  *
+ * • T.C: O(n²).
+ *
  * NOTE: The challenge requires the output indices to start at 1 😅.
  *
  * ASSUME:
+ *
  * • There is always a single, correct solution.
  * • The input array is NOT sorted.
  * • The input array could contain duplicate values.
