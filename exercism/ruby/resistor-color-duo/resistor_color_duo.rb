@@ -1,42 +1,20 @@
-=begin
-Write your code for the 'Resistor Color Duo' exercise in this file. Make the
-tests in `resistor_color_duo_test.rb` pass.
-
-To get started with TDD, see the `README.md` file in your
-`ruby/resistor-color-duo` directory.
-=end
-
 class ResistorColorDuo
-  @color_names = [
-    'black',
-    'brown',
-    'red',
-    'orange',
-    'yellow',
-    'green',
-    'blue',
-    'violet',
-    'grey',
-    'white',
-  ]
+   COLORS = {
+    'black' => 0,
+    'brown' => 1,
+    'red' => 2,
+    'orange' => 3,
+    'yellow' => 4,
+    'green' => 5,
+    'blue' => 6,
+    'violet' => 7,
+    'grey' => 8,
+    'white' => 9,
+  }
 
   class << self
-    ##
-    # Return an array of indexes from the color names. Example:
-    #
-    # ['black', 'red', 'grey'] -> [0, 2]
-    #
-    # At most two colors are taken into consideration. Excess colors are
-    # simply ignored.
-    #
-    def to_index_array(colors)
-      colors.take(2).collect do |color|
-        @color_names.index(color)
-      end
-    end
-
     def value(colors)
-      to_index_array(colors).join('').to_i
+      colors.take(2).map(&COLORS).join('').to_i
     end
   end
 end
