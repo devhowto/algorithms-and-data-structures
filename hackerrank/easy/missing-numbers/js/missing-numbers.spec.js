@@ -1,4 +1,4 @@
-import { missingNums } from './missing-numbers-v1.js';
+import { missingNums } from './missing-numbers-v2.js';
 
 //
 // • design tool
