@@ -14,5 +14,6 @@
 ;;
 (define (invert xs)
   (if (empty? xs) '()
-      (cons (- (car xs)) (invert (cdr xs)))))
+      (cons (- (car xs))
+            (invert (cdr xs)))))
 

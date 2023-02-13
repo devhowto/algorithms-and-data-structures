@@ -13,3 +13,4 @@
 (define invert
   (λ (xs) (map - xs)))
 
+sc
