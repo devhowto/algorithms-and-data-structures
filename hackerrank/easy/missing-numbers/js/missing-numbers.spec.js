@@ -1,4 +1,4 @@
-import { missingNums } from './missing-numbers-v2.js';
+import { missingNums } from './missing-numbers-v3.js';
 
 //
 // • design tool
@@ -23,7 +23,7 @@ describe('missingNums(arr, brr)', () => {
   });
 
   describe('when the two arrays have the same elements', () => {
-    it('should return an empty array', () => {
+    it('should return an empty array !!!', () => {
       var arr = [1, 2, 3];
       var brr = [1, 2, 3];
 
@@ -71,6 +71,22 @@ describe('missingNums(arr, brr)', () => {
 
       expect(missingNums(arr, brr)).toEqual([3]);
     });
+  });
+
+  describe('input example from HackerRank', () => {
+    it('should return sorted array', () => {
+      var arr = [203, 204, 205, 206, 207, 208, 203, 204, 205, 206];
+      var brr = [203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204];
+
+      expect(missingNums(arr, brr)).toEqual([204, 205, 206]);
+    });
+  });
+
+  it('should sort by the number values', () => {
+    var arr = [11, 4, 11, 7, 13, 4, 12, 11, 10, 14];
+    var brr = [11, 4, 11, 7, 3, 7, 10, 13, 4, 8, 12, 11, 10, 14, 12];
+
+    expect(missingNums(arr, brr)).toEqual([3, 7, 8, 10, 12]);
   });
 });
 
