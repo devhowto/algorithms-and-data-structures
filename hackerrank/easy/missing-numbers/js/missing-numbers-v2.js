@@ -20,11 +20,8 @@ function countFreqs(xs) {
  *   difference).
  */
 function missingNums(arr, brr) {
-  var freqsArr,
-      freqsBrr;
-
-  freqsArr = countFreqs(arr);
-  freqsBrr = countFreqs(brr);
+  var freqsArr = countFreqs(arr);
+  var freqsBrr = countFreqs(brr);
 
   return Object.keys(freqsBrr).reduce((missing, key) => {
     if (freqsBrr[key] === freqsArr[key]) return missing;
