@@ -7,7 +7,7 @@
 def count_freqs(xs)
   freqs = {}
 
-  for x in xs
+  xs.each do |x|
     freqs[x] = freqs[x] ? freqs[x] + 1 : 1
   end
 
@@ -28,10 +28,8 @@ def missing_nums(arr, brr)
   missing = []
 
   freqs_brr.each_key do |key|
-    if freqs_brr[key] != freqs_arr[key]
-      missing << key
-    end
+    missing << key if freqs_brr[key] != freqs_arr[key]
   end
 
-  missing.sort()
+  missing.sort
 end
