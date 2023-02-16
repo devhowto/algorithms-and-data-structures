@@ -31,6 +31,7 @@ export { isStr } from './isStr.js';
 export { keys } from './keys.js';
 export { upcase } from './upcase.js';
 
+export { remove } from './remove.js';
 
 export { isEven } from './isEven.js';
 export { isOdd } from './isOdd.js';
