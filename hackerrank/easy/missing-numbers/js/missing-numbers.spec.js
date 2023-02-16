@@ -1,6 +1,8 @@
 import { missingNums } from './missing-numbers-v3.js';
 
 //
+// Think of “tests” like this:
+//
 // • design tool
 // • documentation
 // • testing
@@ -80,13 +82,13 @@ describe('missingNums(arr, brr)', () => {
 
       expect(missingNums(arr, brr)).toEqual([204, 205, 206]);
     });
-  });
 
-  it('should sort by the number values', () => {
-    var arr = [11, 4, 11, 7, 13, 4, 12, 11, 10, 14];
-    var brr = [11, 4, 11, 7, 3, 7, 10, 13, 4, 8, 12, 11, 10, 14, 12];
+    it('should sort by the number values', () => {
+      var arr = [11, 4, 11, 7, 13, 4, 12, 11, 10, 14];
+      var brr = [11, 4, 11, 7, 3, 7, 10, 13, 4, 8, 12, 11, 10, 14, 12];
 
-    expect(missingNums(arr, brr)).toEqual([3, 7, 8, 10, 12]);
+      expect(missingNums(arr, brr)).toEqual([3, 7, 8, 10, 12]);
+    });
   });
 });
 

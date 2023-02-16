@@ -27,7 +27,7 @@ function missingNums(arr, brr) {
 
   //
   // • Use sets to remove duplicates.
-  // • Convert back to array with spread notation.
+  // • Convert back to array with spread syntax.
   //
   return [...new Set(brr)].sort(sortAsc);
 }
