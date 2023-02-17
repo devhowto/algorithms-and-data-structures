@@ -52,7 +52,11 @@ Metrics/MethodLength:
 Metrics/BlockLength:
   Enabled: true
   Max: 24
-  Exclude: ['**/*.spec.rb']
+  Exclude: ['**/*.spec.rb', '**/*_test.rb']
+
+Metrics/ClassLength:
+  Enabled: true
+  Exclude: ['**/*.spec.rb', '**/*_test.rb']
 
 Lint/MissingCopEnableDirective:
   Enabled: false
