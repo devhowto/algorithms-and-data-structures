@@ -1,3 +1,7 @@
+#
+# tags: date, range
+#
+
 require 'date'
 
 class Meetup
