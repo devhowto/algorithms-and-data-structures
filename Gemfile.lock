@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    awesome_print (1.9.2)
     backport (1.2.0)
     benchmark (0.2.1)
     diff-lcs (1.5.0)
@@ -76,6 +77,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  awesome_print
   minitest
   rspec
   solargraph
