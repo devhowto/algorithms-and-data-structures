@@ -3,11 +3,14 @@
 #
 # • https://exercism.org/tracks/ruby/exercises/meetup/solutions/kkchu791
 #
+# What I did was to change some bits, but the main idea is the one from the
+# link above.
+#
 
 require 'date'
 
 class Meetup
-  attr_reader :month, :year, :days_in_month, :calendar
+  VERSION = 2
 
   def initialize(month, year)
     @month = month
@@ -20,15 +23,17 @@ class Meetup
       third: [*15..21],
       fourth: [*22..28],
       teenth: [*13..19],
-      last: [*(days_in_month - 6)..days_in_month],
+      last: [*(@days_in_month - 6)..@days_in_month],
     }
   end
 
   def day(weekday, schedule)
-    section_of_month = calendar[schedule]
+    section_of_month = @calendar[schedule]
 
-    Date.new(@year, @month, section_of_month.select do |x|
-      Date.new(year, month, x).strftime('%A') == weekday.to_s.capitalize
-    end.join.to_i)
+    is_weekday = lambda do |n|
+      Date.new(@year, @month, n).strftime('%A').downcase.to_sym == weekday
+    end
+
+    Date.new(@year, @month, section_of_month.find(&is_weekday))
   end
 end
