@@ -31,7 +31,7 @@ class Meetup
     section_of_month = @calendar[schedule]
 
     is_weekday = lambda do |n|
-      Date.new(@year, @month, n).strftime('%A').downcase.to_sym == weekday
+      Date.new(@year, @month, n).send("#{weekday}?")
     end
 
     Date.new(@year, @month, section_of_month.find(&is_weekday))
