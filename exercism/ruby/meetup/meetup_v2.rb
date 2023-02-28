@@ -1,17 +1,16 @@
+##
+# This solution is not mine. Got it here:
+#
+# • https://exercism.org/tracks/ruby/exercises/meetup/solutions/kkchu791
+#
+# What I did was to change some bits, but the main idea is the one from the
+# link above.
+#
+
 require 'date'
 
 class Meetup
-  VERSION = 3
-
-  DAYS_OF_WEEK = {
-    0 => :sunday,
-    1 => :monday,
-    2 => :tuesday,
-    3 => :wednesday,
-    4 => :thursday,
-    5 => :friday,
-    6 => :saturday,
-  }.freeze
+  VERSION = 2
 
   def initialize(month, year)
     @month = month
@@ -32,7 +31,7 @@ class Meetup
     section_of_month = @calendar[schedule]
 
     is_weekday = lambda do |n|
-      DAYS_OF_WEEK[Date.new(@year, @month, n).wday] == weekday
+      Date.new(@year, @month, n).send("#{weekday}?")
     end
 
     Date.new(@year, @month, section_of_month.find(&is_weekday))
