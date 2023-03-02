@@ -36,6 +36,8 @@ export { remove } from './remove.js';
 export { isEven } from './isEven.js';
 export { isOdd } from './isOdd.js';
 
+export { leftSlice } from './leftSlice.js';
+
 //
 // Numbers and digits related helpers.
 //
@@ -48,3 +50,4 @@ export { countDigits } from './countDigits.js';
 export { numToDigits } from './numToDigits.js';
 export { getLastDigit } from './getLastDigit.js';
 export { getDigit } from './getDigit.js';
+

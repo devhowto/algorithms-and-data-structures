@@ -2,7 +2,7 @@
   "deno.enable": false,
   "deno.importMap": "./import_map.json",
   "tsserver.enable": true,
-  "suggest.autoTrigger": "none",
+  "suggest.autoTrigger": "always",
   "clangd.disableDiagnostics": false,
   "inlayHint.enable": false,
   "codeLens.enable": true,

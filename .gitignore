@@ -68,3 +68,8 @@ jsdist
 *_rkt.zo
 *.rkt#
 .#*.rkt
+
+##
+# C compiled stuff.
+#
+c/**/*outdir
