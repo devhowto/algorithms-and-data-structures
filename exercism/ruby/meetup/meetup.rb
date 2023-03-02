@@ -1,40 +1,52 @@
+#
+# Solution by Lapizistik on Ruby Discord server.
+#
+# https://discord.com/channels/518658712081268738/650031651845308419/1080239306356035705
+#
+
 require 'date'
 
 class Meetup
-  VERSION = 3
+  VERSION = 5
 
-  DAYS_OF_WEEK = {
-    0 => :sunday,
-    1 => :monday,
-    2 => :tuesday,
-    3 => :wednesday,
-    4 => :thursday,
-    5 => :friday,
-    6 => :saturday,
+  CALENDAR_SCHEDULES = {
+    first: 1,
+    second: 8,
+    third: 15,
+    fourth: 22,
+    teenth: 13,
   }.freeze
+
+  DAYS_OF_WEEK = %i[
+    sunday monday tuesday wednesday thursday friday saturday
+  ].map.with_index { |d, i| [d, i] }.to_h
 
   def initialize(month, year)
     @month = month
     @year = year
-    @days_in_month = (Date.new(year, 12, 31) << (12 - month)).day
 
-    @calendar = {
-      first: [*1..7],
-      second: [*8..14],
-      third: [*15..21],
-      fourth: [*22..28],
-      teenth: [*13..19],
-      last: [*(@days_in_month - 6)..@days_in_month],
-    }
+    ##
+    # The last schedule is month-specific.
+    #
+    days_in_month = (Date.new(year, month).next_month - 1).day
+    @last_schedule = days_in_month - 6
   end
 
   def day(weekday, schedule)
-    section_of_month = @calendar[schedule]
+    wday = DAYS_OF_WEEK[weekday]
+    d = Date.new(@year, @month, schedule_start(schedule))
 
-    is_weekday = lambda do |n|
-      DAYS_OF_WEEK[Date.new(@year, @month, n).wday] == weekday
-    end
+    ##
+    # Jump forward one week if we would go back.
+    #
+    wday += 7 if wday < d.wday
+    d + (wday - d.wday)
+  end
 
-    Date.new(@year, @month, section_of_month.find(&is_weekday))
+  def schedule_start(schedule)
+    return @last_schedule if schedule == :last
+
+    CALENDAR_SCHEDULES[schedule] or
+      raise "Unknown schedule: “#{schedule.inspect}”"
   end
 end
