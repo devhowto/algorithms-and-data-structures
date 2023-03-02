@@ -1,5 +1,10 @@
 // @ts-check
 
+//
+// This version is correct does not satisfy the time constraints in
+// HackerRank. Execution times out.
+//
+
 /**
  * Gets the elements to the left of `idx`.
  *
