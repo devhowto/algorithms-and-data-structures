@@ -1,52 +1,31 @@
 #
-# Solution by Lapizistik on Ruby Discord server.
+# Solution by elGatoMantocko:
 #
-# https://discord.com/channels/518658712081268738/650031651845308419/1080239306356035705
+# • https://exercism.org/tracks/ruby/exercises/meetup/solutions/elGatoMantocko
 #
-
 require 'date'
 
 class Meetup
-  VERSION = 5
+  VERSION = 6
 
-  CALENDAR_SCHEDULES = {
-    first: 1,
-    second: 8,
-    third: 15,
-    fourth: 22,
-    teenth: 13,
-  }.freeze
-
-  DAYS_OF_WEEK = %i[
-    sunday monday tuesday wednesday thursday friday saturday
-  ].map.with_index { |d, i| [d, i] }.to_h
+  SCHEDULE = %i[first second third fourth].freeze
 
   def initialize(month, year)
-    @month = month
-    @year = year
-
-    ##
-    # The last schedule is month-specific.
-    #
-    days_in_month = (Date.new(year, month).next_month - 1).day
-    @last_schedule = days_in_month - 6
+    @days_of_month = Date.new(year, month, 1)..Date.new(year, month, -1)
   end
 
   def day(weekday, schedule)
-    wday = DAYS_OF_WEEK[weekday]
-    d = Date.new(@year, @month, schedule_start(schedule))
+    days = @days_of_month.select(&:"#{weekday}?")
 
-    ##
-    # Jump forward one week if we would go back.
-    #
-    wday += 7 if wday < d.wday
-    d + (wday - d.wday)
-  end
-
-  def schedule_start(schedule)
-    return @last_schedule if schedule == :last
-
-    CALENDAR_SCHEDULES[schedule] or
-      raise "Unknown schedule: “#{schedule.inspect}”"
+    case schedule
+    when :teenth
+      days.find do |date|
+        date.day.between?(13, 19)
+      end
+    when :last
+      days[-1]
+    else
+      days[SCHEDULE.index(schedule)]
+    end
   end
 end
