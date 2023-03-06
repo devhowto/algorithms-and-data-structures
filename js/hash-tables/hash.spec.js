@@ -47,5 +47,40 @@ describe('Hash', () => {
     });
   });
 
+  describe('get(key)', () => {
+    test('search for non-existing key', () => {
+      var h = new Hash();
+      expect(h.get('darkblue')).toBe(undefined);
+    });
 
+    test('search for existing key', () => {
+      //
+      // Using 51 as both 'darkblue' and 'salmon' keys will
+      // collide at index 20.
+      //
+      var h = new Hash(51);
+
+      h.set('darkblue', '#111192');
+      // var idxSalmon = h.set('salmon', '#fa8072');
+
+      expect(h.get('darkblue')).toEqual('#111192');
+    });
+
+    test('search for non-existing key', () => {
+      //
+      // Using 51 as both 'darkblue' and 'salmon' keys will
+      // collide at index 20.
+      //
+      var h = new Hash(51);
+
+      h.set('darkblue', '#111192');
+      // var idxSalmon = h.set('salmon', '#fa8072');
+
+      //
+      // But now try to get 'salmon', which should also be on index
+      // 20, except this is not there.
+      //
+      expect(h.get('salmon')).toBe(undefined);
+    });
+  });
 });

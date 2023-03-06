@@ -25,6 +25,18 @@ class Hash {
 
     return idx;
   }
+
+  get(key) {
+    var idx = this.#hash(key);
+    var arr = this.keyMap[idx];
+    var tup;
+
+    if (arr === undefined) return undefined;
+
+    tup = arr.find(([k]) => k === key);
+
+    return tup && tup[1];
+  }
 }
 
 export {
