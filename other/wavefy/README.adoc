@@ -1,0 +1,17 @@
+= Wavefy
+:icons: font
+:toc: left
+
+Write a function/method `wavefy(s)` which alternates the case of each character in a string.
+
+For example:
+
+[source,text]
+----
+wavefy('good bye cruel world')
+// => 'gOoD ByE CrUeL WoRlD'
+
+Wavefy('ruby on rails')
+// => 'rUbY On rAiLs'
+----
+
