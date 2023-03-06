@@ -14,7 +14,7 @@ describe('hash(s, l)', () => {
     expect(hash('no', 10)).toEqual(9);
   });
 
-  test('some strings with same hash result', () => {
+  test('strings which produce the same index', () => {
     expect(hash('pink', 10)).toEqual(0);
     expect(hash('blue', 10)).toEqual(0);
     expect(hash('orange', 10)).toEqual(0);
