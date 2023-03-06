@@ -14,34 +14,38 @@ describe('Hash', () => {
     expect(h.keyMap.length).toEqual(31);
   });
 
-  test('insert to empty slot', () => {
-    var h = new Hash(51);
+  describe('set(key, val)', () => {
+    test('insert to empty slot', () => {
+      var h = new Hash(51);
 
-    var idx = h.set('darkblue', '#111192');
+      var idx = h.set('darkblue', '#111192');
 
-    expect(idx).toBe(20);
+      expect(idx).toBe(20);
 
-    expect(h.keyMap[20]).toEqual([
-      ['darkblue', '#111192'],
-    ]);
+      expect(h.keyMap[20]).toEqual([
+        ['darkblue', '#111192'],
+      ]);
+    });
+
+    test('insert to slot with collision', () => {
+      //
+      // Using 51 as both 'darkblue' and 'salmon' keys will
+      // collide at index 20.
+      //
+      var h = new Hash(51);
+
+      var idxDarkBlue = h.set('darkblue', '#111192');
+      var idxSalmon = h.set('salmon', '#fa8072');
+
+      expect(idxDarkBlue).toBe(20);
+      expect(idxSalmon).toBe(20);
+
+      expect(h.keyMap[20]).toEqual([
+        ['darkblue', '#111192'],
+        ['salmon', '#fa8072'],
+      ]);
+    });
   });
 
-  test('insert to slot with collision', () => {
-    //
-    // Using 51 as both 'darkblue' and 'salmon' keys will
-    // collide at index 20.
-    //
-    var h = new Hash(51);
 
-    var idxDarkBlue = h.set('darkblue', '#111192');
-    var idxSalmon = h.set('salmon', '#fa8072');
-
-    expect(idxDarkBlue).toBe(20);
-    expect(idxSalmon).toBe(20);
-
-    expect(h.keyMap[20]).toEqual([
-      ['darkblue', '#111192'],
-      ['salmon', '#fa8072'],
-    ]);
-  });
 });
