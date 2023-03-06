@@ -37,6 +37,30 @@ class Hash {
 
     return tup && tup[1];
   }
+
+  keys() {
+    var i,
+        j,
+        tup,
+        keys = [];
+
+    //
+    // As our hash uses Array, which is a sparse data structure
+    // in ECMAScript, we have to be careful with empty slots. See:
+    //
+    // • https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#array_methods_and_empty_slots
+    //
+    for (i = 0; i < this.keyMap.length; ++i) {
+      tup = this.keyMap[i];
+
+      if (tup === undefined) continue;
+
+      for (j = 0; j < tup.length; ++j)
+        keys.push(tup[j][0]);
+    }
+
+    return keys;
+  }
 }
 
 export {
