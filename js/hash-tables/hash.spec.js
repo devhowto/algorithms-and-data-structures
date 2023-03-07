@@ -168,5 +168,58 @@ describe('Hash', () => {
         '#00ff00',
       ]);
     });
+
+    test('includes duplicates', () => {
+      //
+      // Using 51 as both 'darkblue' and 'salmon' keys will
+      // collide at index 20.
+      //
+      var h = new Hash(51);
+
+      h.set('black', '#000000');
+      h.set('dark', '#000000');
+
+      h.set('red', '#ff0000');
+      h.set('green', '#00ff00');
+      h.set('blue', '#0000ff');
+      h.set('darkblue', '#111192');
+      h.set('salmon', '#fa8072');
+
+      expect(h.values(false)).toEqual([
+        '#000000',
+        '#0000ff',
+        '#ff0000',
+        '#111192',
+        '#fa8072',
+        '#000000',
+        '#00ff00',
+      ]);
+    });
+
+    test('no duplicates', () => {
+      //
+      // Using 51 as both 'darkblue' and 'salmon' keys will
+      // collide at index 20.
+      //
+      var h = new Hash(51);
+
+      h.set('black', '#000000');
+      h.set('dark', '#000000');
+
+      h.set('red', '#ff0000');
+      h.set('green', '#00ff00');
+      h.set('blue', '#0000ff');
+      h.set('darkblue', '#111192');
+      h.set('salmon', '#fa8072');
+
+      expect(h.values()).toEqual([
+        '#000000',
+        '#0000ff',
+        '#ff0000',
+        '#111192',
+        '#fa8072',
+        '#00ff00',
+      ]);
+    });
   });
 });

@@ -62,10 +62,24 @@ class Hash {
     return keys;
   }
 
-  values() {
+  /**
+   * Gets the values present in the hash.
+   *
+   * By default, duplicate values are NOT included in the resulting
+   * array. If they are to be kept, pass `true` for the `dups`
+   * parameter.
+   *
+   * The order of the resulting array is not the same as the order
+   * in which the key/values are added to the hash table.
+   *
+   * @param {boolean} [dups=false]
+   * @returns {Array<unknown>}
+   */
+  values(noDups = true) {
     var i,
         j,
         tup,
+        val,
         vals = [];
 
     for (i = 0; i < this.keyMap.length; ++i) {
@@ -73,8 +87,13 @@ class Hash {
 
       if (tup === undefined) continue;
 
-      for (j = 0; j < tup.length; ++j)
-        vals.push(tup[j][1]);
+      for (j = 0; j < tup.length; ++j) {
+        val = tup[j][1];
+
+        if (noDups && vals.indexOf(val) !== -1) continue;
+
+        vals.push(val);
+      }
     }
 
     return vals;
