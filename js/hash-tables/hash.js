@@ -11,10 +11,26 @@ class Hash {
     this.keyMap = new Array(size);
   }
 
+  /**
+   * A hashing function to hash keys.
+   *
+   * @param {string} key
+   * @returns {number}
+   */
   #hash(key) {
     return hash(key, this.keyMap.length);
   }
 
+  /**
+   * Adds a key/val pair to the hash table.
+   *
+   * NOTE: The current implementation DOES NOT prevent adding the same
+   * key multiple times.
+   *
+   * @param {string} key
+   * @param {unknown} val
+   * @returns {number} The index at which the key/val pair was stored.
+   */
   set(key, val) {
     var idx = this.#hash(key);
 
@@ -26,6 +42,12 @@ class Hash {
     return idx;
   }
 
+  /**
+   * Gets a value at the given key.
+   *
+   * @param {string} key
+   * @returns {unknown}
+   */
   get(key) {
     var idx = this.#hash(key);
     var arr = this.keyMap[idx];
@@ -38,6 +60,11 @@ class Hash {
     return tup && tup[1];
   }
 
+  /**
+   * Returns all the keys currently stored in the hash table.
+   *
+   * @returns {Array<string>}
+   */
   keys() {
     var i,
         j,
@@ -63,16 +90,16 @@ class Hash {
   }
 
   /**
-   * Gets the values present in the hash.
+   * Returns the values present in the hash table.
    *
    * By default, duplicate values are NOT included in the resulting
-   * array. If they are to be kept, pass `true` for the `dups`
+   * array. If they are to be kept, pass `false` for the `noDups`
    * parameter.
    *
    * The order of the resulting array is not the same as the order
    * in which the key/values are added to the hash table.
    *
-   * @param {boolean} [dups=false]
+   * @param {boolean} [dups=true]
    * @returns {Array<unknown>}
    */
   values(noDups = true) {
