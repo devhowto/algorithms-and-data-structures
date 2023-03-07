@@ -61,6 +61,24 @@ class Hash {
 
     return keys;
   }
+
+  values() {
+    var i,
+        j,
+        tup,
+        vals = [];
+
+    for (i = 0; i < this.keyMap.length; ++i) {
+      tup = this.keyMap[i];
+
+      if (tup === undefined) continue;
+
+      for (j = 0; j < tup.length; ++j)
+        vals.push(tup[j][1]);
+    }
+
+    return vals;
+  }
 }
 
 export {

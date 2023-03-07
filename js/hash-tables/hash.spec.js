@@ -98,8 +98,8 @@ describe('Hash', () => {
       h.set('blue', '#0000ff');
 
       //
-      // The expect array order is different because of they
-      // key indices for each color when adding to the hash table.
+      // The expect array order is different because of the key indices
+      // for each color when adding to the hash table.
       //
       expect(h.keys()).toEqual(['green', 'blue', 'red']);
     });
@@ -123,6 +123,49 @@ describe('Hash', () => {
         'darkblue',
         'salmon',
         'green',
+      ]);
+    });
+  });
+
+  describe('values()', () => {
+    test('a hash with no data', () => {
+      var h = new Hash();
+      expect(h.values()).toEqual([]);
+    });
+
+    test('a hash with no colliding indexes', () => {
+      var h = new Hash(53);
+
+      h.set('red', '#ff0000');
+      h.set('green', '#00ff00');
+      h.set('blue', '#0000ff');
+
+      //
+      // The expect array order is different because of the key indices
+      // for each color when adding to the hash table.
+      //
+      expect(h.values()).toEqual(['#00ff00', '#0000ff', '#ff0000']);
+    });
+
+    test('a hash with coliding indexes', () => {
+      //
+      // Using 51 as both 'darkblue' and 'salmon' keys will
+      // collide at index 20.
+      //
+      var h = new Hash(51);
+
+      h.set('red', '#ff0000');
+      h.set('green', '#00ff00');
+      h.set('blue', '#0000ff');
+      h.set('darkblue', '#111192');
+      h.set('salmon', '#fa8072');
+
+      expect(h.values()).toEqual([
+        '#0000ff',
+        '#ff0000',
+        '#111192',
+        '#fa8072',
+        '#00ff00',
       ]);
     });
   });
