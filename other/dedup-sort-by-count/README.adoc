@@ -1,0 +1,21 @@
+= Deduplicate and Sort Nums by Count
+:page-tags: number, array, sort, count
+:icons: font
+:toc: left
+
+Given an array of integers, deduplicate and sort, descending (most count first) by count. E.g:
+
+[source,javascript]
+----
+var xs = [1, 2, 2, 1, 9 ,1, 7, 7, 7 ,1];
+//
+// Expected: [1, 7, 2, 9]
+//
+// • 1 occurs 4 times.
+// • 7 occurs 3 times.
+// • 2 occurs 2 times.
+// • 9 occurs 1 time.
+//
+----
+
+* link:https://github.com/ramda/ramda/discussions/3353[Question on Ramda repo^].
