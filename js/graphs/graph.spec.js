@@ -40,7 +40,7 @@ describe('Graph class', () => {
   });
 
   describe('addEdge(v1, v2)', () => {
-    describe('return false if vertices do not exist', () => {
+    test('return false if vertices do not exist', () => {
       var g0 = new Graph();
       var g1 = new Graph();
       var g2 = new Graph();
@@ -53,7 +53,7 @@ describe('Graph class', () => {
       expect(g2.addEdge('Shigaste', 'Lhasa')).toBe(false);
     });
 
-    describe('add edge to existing vertices', () => {
+    test('add edge to existing vertices', () => {
       var g = new Graph();
 
       g.addVertex('Lhasa');
@@ -64,6 +64,47 @@ describe('Graph class', () => {
       expect(res).toBe(true);
       expect(g.adj['Lhasa']).toContain('Shigaste');
       expect(g.adj['Shigaste']).toContain('Lhasa');
+    });
+  });
+
+  describe('removeEdge(v1, v2)', () => {
+    test('return false if vertices do not exist', () => {
+      var g0 = new Graph();
+      var g1 = new Graph();
+      var g2 = new Graph();
+
+      g1.addVertex('Lhasa');
+      g2.addVertex('Shigaste');
+
+      expect(g0.removeEdge('foo', 'bar')).toBe(false);
+      expect(g1.removeEdge('Lhasa', 'Shigaste')).toBe(false);
+      expect(g2.removeEdge('Shigaste', 'Lhasa')).toBe(false);
+    });
+
+    test('remove edge from existing vertices', () => {
+      var g = new Graph();
+
+      g.addVertex('Lhasa');
+      g.addVertex('Shigaste');
+      g.addVertex('Qamdo');
+
+      g.addEdge('Lhasa', 'Shigaste');
+      g.addEdge('Lhasa', 'Qamdo');
+
+      var res = g.removeEdge('Lhasa', 'Shigaste');
+
+      expect(res).toBe(true);
+
+      expect(g.adj['Qamdo']).toHaveLength(1);
+      expect(g.adj['Qamdo']).toEqual(['Lhasa']);
+
+      expect(g.adj['Lhasa']).not.toContain('Shigaste');
+      expect(g.adj['Lhasa']).toHaveLength(1);
+      expect(g.adj['Lhasa']).toEqual(['Qamdo']);
+
+      expect(g.adj['Shigaste']).not.toContain('Lhasa');
+      expect(g.adj['Shigaste']).toHaveLength(0);
+      expect(g.adj['Shigaste']).toEqual([]);
     });
   });
 });
