@@ -3,6 +3,10 @@
  */
 class Graph {
   constructor() {
+    /**
+     * A key/val storage for vertices. The vertices are string keys
+     * and the edges are arrays of strings referencing other vertices.
+     */
     this.adj = {};
   }
 
@@ -18,6 +22,25 @@ class Graph {
     if (this.adj[name]) return false;
 
     this.adj[name] = [];
+
+    return true;
+  }
+
+  /**
+   * Removes a vertex (including all of its connected edges).
+   *
+   * @param {string} name
+   * @return {boolean} Returns a boolean indicating whether or not it
+   *   was possible to remove the vertex.
+   */
+  removeVertex(name) {
+    if (!this.adj[name]) return false;
+
+    [...this.adj[name]].forEach(edge => {
+      var res = this.removeEdge(name, edge);
+    });
+
+    delete this.adj[name];
 
     return true;
   }
