@@ -76,6 +76,36 @@ class Graph {
 
     return true;
   }
+
+  /**
+   * Visits all nodes in a depth-first approach.
+   *
+   * @param {string} startVtx A valid vertex where to start traversal.
+   * @returns {Array<string>} An array of vertex names.
+   */
+  dfs(startVtx) {
+    var vtxs = [],
+        seen = {},
+        { adj } = this;
+
+    //
+    // If graph is empty.
+    //
+    if (Object.keys(adj).length === 0) return [];
+
+    (function go(vtx) {
+      if (!vtx) return null;
+
+      seen[vtx] = 1;
+      vtxs.push(vtx);
+
+      [...adj[vtx]].forEach(function eachNeighborVtx(neighborVtx) {
+        if (!seen[neighborVtx]) go(neighborVtx);
+      });
+    })(startVtx);
+
+    return vtxs;
+  }
 }
 
 export { Graph };
