@@ -8,7 +8,7 @@
 // Garbage in, Garbage out (GIGO).
 //
 
-import { camelcase } from './camelcase-v2.js';
+import { camelcase } from './camelcase-v3.js';
 
 describe('camelcase(s)', () => {
   describe('when the input is an empty string', () => {
