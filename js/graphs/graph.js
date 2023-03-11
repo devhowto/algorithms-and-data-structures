@@ -78,7 +78,7 @@ class Graph {
   }
 
   /**
-   * Visits all nodes in a depth-first approach.
+   * Recursively visits all nodes in a depth-first approach.
    *
    * @param {string} startVtx A valid vertex where to start traversal.
    * @returns {Array<string>} An array of vertex names.
@@ -103,6 +103,34 @@ class Graph {
         if (!seen[neighborVtx]) go(neighborVtx);
       });
     })(startVtx);
+
+    return vtxs;
+  }
+
+  /**
+   * Iteratively visits all nodes in a depth-first approach.
+   *
+   * @param {string} startVtx A valid vertex where to start traversal.
+   * @returns {Array<string>} An array of vertex names.
+   */
+  dfsIt(startVtx) {
+    var { adj } = this,
+        vtxs = [],
+        seen = { [startVtx]: 1 },
+        stack = [startVtx],
+        currVtx;
+
+    while (stack.length) {
+      currVtx = stack.pop();
+      vtxs.push(currVtx);
+
+      adj[currVtx].forEach(neighborVtx => {
+        if (!seen[neighborVtx]) {
+          seen[neighborVtx] = 1;
+          stack.push(neighborVtx);
+        }
+      });
+    }
 
     return vtxs;
   }
