@@ -134,6 +134,34 @@ class Graph {
 
     return vtxs;
   }
+
+  /**
+   * Iteratively visits all nodes in a depth-first approach.
+   *
+   * @param {string} startVtx A valid vertex where to start traversal.
+   * @returns {Array<string>} An array of vertex names.
+   */
+  bfsIt(startVtx) {
+    var { adj } = this,
+        vtxs = [],
+        seen = { [startVtx]: 1 },
+        queue = [startVtx],
+        currVtx;
+
+    while (queue.length) {
+      currVtx = queue.shift();
+      vtxs.push(currVtx);
+
+      adj[currVtx].forEach(neighborVtx => {
+        if (!seen[neighborVtx]) {
+          seen[neighborVtx] = 1;
+          queue.push(neighborVtx);
+        }
+      });
+    }
+
+    return vtxs;
+  }
 }
 
 export { Graph };

@@ -183,4 +183,27 @@ describe('Graph class', () => {
       expect(g.dfs('A')).toEqual(['A', 'B', 'D', 'E', 'C', 'F']);
     });
   });
+
+  describe('bfs(vtx)', () => {
+    test('a graph with more nodes and edges', () => {
+      var g = new Graph();
+
+      g.addVertex('A')
+      g.addVertex('B')
+      g.addVertex('C')
+      g.addVertex('D')
+      g.addVertex('E')
+      g.addVertex('F')
+
+      g.addEdge('A','B')
+      g.addEdge('A','C')
+      g.addEdge('B','D')
+      g.addEdge('C','E')
+      g.addEdge('D','E')
+      g.addEdge('D','F')
+      g.addEdge('E','F')
+
+      expect(g.bfsIt('A')).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+    });
+  });
 });
