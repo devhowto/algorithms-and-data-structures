@@ -184,7 +184,7 @@ describe('Graph class', () => {
     });
   });
 
-  describe('bfs(vtx)', () => {
+  describe.only('bfs(vtx)', () => {
     test('a graph with more nodes and edges', () => {
       var g = new Graph();
 
