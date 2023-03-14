@@ -147,6 +147,7 @@ class Graph {
         seen = { [startVtx]: 1 },
         queue = [startVtx],
         currVtx;
+    console.log(adj);
 
     while (queue.length) {
       currVtx = queue.shift();
@@ -160,6 +161,7 @@ class Graph {
       });
     }
 
+    console.log(vtxs);
     return vtxs;
   }
 }
