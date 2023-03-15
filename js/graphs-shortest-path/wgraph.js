@@ -65,7 +65,7 @@ class WGraph {
    */
   shortestPath(start, finish) {
     var { adj } = this,
-        nodes = new PQueue(),
+        pq = new PQueue(),
         dist = {},
         prev = {},
         path = [],
@@ -80,10 +80,10 @@ class WGraph {
     for (vtx in adj) {
       if (vtx === start) {
         dist[vtx] = 0;
-        nodes.enqueue(vtx, 0);
+        pq.enqueue(vtx, 0);
       } else {
         dist[vtx] = Infinity;
-        nodes.enqueue(vtx, Infinity);
+        pq.enqueue(vtx, Infinity);
       }
 
       prev[vtx] = null;
@@ -93,8 +93,8 @@ class WGraph {
     // As long as there are nodes to visit. Note that we may stop
     // looping as soon as we have an asnwer despite this check.
     //
-    while (nodes.values.length) {
-      smallest = nodes.dequeue().value;
+    while (pq.values.length) {
+      smallest = pq.dequeue().value;
 
       if (smallest === finish) {
         while (prev[smallest]) {
@@ -105,18 +105,18 @@ class WGraph {
         return path.concat(smallest).reverse();
       }
 
-      if (smallest && dist[smallest] !== Infinity) {
-        for (neighborIdx in adj[smallest]) {
-          nextNode = adj[smallest][neighborIdx];
-          candidate = dist[smallest] + nextNode.weight;
-          nextNeighbor = nextNode.node;
+      if (!smallest || dist[smallest] === Infinity) continue;
 
-          if (candidate < dist[nextNeighbor]) {
-            dist[nextNeighbor] = candidate;
-            prev[nextNeighbor] = smallest;
-            nodes.enqueue(nextNeighbor, candidate);
-          }
-        }
+      for (neighborIdx in adj[smallest]) {
+        nextNode = adj[smallest][neighborIdx];
+        candidate = dist[smallest] + nextNode.weight;
+        nextNeighbor = nextNode.node;
+
+        if (candidate >= dist[nextNeighbor]) continue;
+
+        dist[nextNeighbor] = candidate;
+        prev[nextNeighbor] = smallest;
+        pq.enqueue(nextNeighbor, candidate);
       }
     }
   }
