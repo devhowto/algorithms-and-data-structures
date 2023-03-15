@@ -55,8 +55,8 @@ class WGraph {
    * @param {number} weight
    */
   addEdge(vtx1, vtx2, weight) {
-    this.adj[vtx1].push({ node: vtx2, weight });
-    this.adj[vtx2].push({ node: vtx1, weight });
+    this.adj[vtx1].push({ name: vtx2, weight });
+    this.adj[vtx2].push({ name: vtx1, weight });
   }
 
   /**
@@ -70,11 +70,11 @@ class WGraph {
         prev = {},
         path = [],
         vtx,
-        smallest,
+        minVtxName,
         neighborIdx,
         nextNode,
         nextNeighbor,
-        candidate;
+        candidateDist;
 
     // Initialize state.
     for (vtx in adj) {
@@ -94,29 +94,30 @@ class WGraph {
     // looping as soon as we have an asnwer despite this check.
     //
     while (pq.values.length) {
-      smallest = pq.dequeue().value;
+      minVtxName = pq.dequeue().value;
+      console.log('=== minVtxName', minVtxName);
 
-      if (smallest === finish) {
-        while (prev[smallest]) {
-          path.push(smallest);
-          smallest = prev[smallest];
+      if (minVtxName === finish) {
+        while (prev[minVtxName]) {
+          path.push(minVtxName);
+          minVtxName = prev[minVtxName];
         }
 
-        return path.concat(smallest).reverse();
+        return path.concat(minVtxName).reverse();
       }
 
-      if (!smallest || dist[smallest] === Infinity) continue;
+      if (!minVtxName || dist[minVtxName] === Infinity) continue;
 
-      for (neighborIdx in adj[smallest]) {
-        nextNode = adj[smallest][neighborIdx];
-        candidate = dist[smallest] + nextNode.weight;
-        nextNeighbor = nextNode.node;
+      for (neighborIdx in adj[minVtxName]) {
+        nextNode = adj[minVtxName][neighborIdx];
+        candidateDist = dist[minVtxName] + nextNode.weight;
+        nextNeighbor = nextNode.name;
 
-        if (candidate >= dist[nextNeighbor]) continue;
+        if (candidateDist >= dist[nextNeighbor]) continue;
 
-        dist[nextNeighbor] = candidate;
-        prev[nextNeighbor] = smallest;
-        pq.enqueue(nextNeighbor, candidate);
+        dist[nextNeighbor] = candidateDist;
+        prev[nextNeighbor] = minVtxName;
+        pq.enqueue(nextNeighbor, candidateDist);
       }
     }
   }
