@@ -73,7 +73,7 @@ class WGraph {
         minVtxName,
         neighborIdx,
         nextNode,
-        nextNeighbor,
+        nextNeighborName,
         candidateDist;
 
     // Initialize state.
@@ -95,7 +95,6 @@ class WGraph {
     //
     while (pq.values.length) {
       minVtxName = pq.dequeue().value;
-      console.log('=== minVtxName', minVtxName);
 
       if (minVtxName === finish) {
         while (prev[minVtxName]) {
@@ -110,14 +109,14 @@ class WGraph {
 
       for (neighborIdx in adj[minVtxName]) {
         nextNode = adj[minVtxName][neighborIdx];
+        nextNeighborName = nextNode.name;
         candidateDist = dist[minVtxName] + nextNode.weight;
-        nextNeighbor = nextNode.name;
 
-        if (candidateDist >= dist[nextNeighbor]) continue;
+        if (candidateDist >= dist[nextNeighborName]) continue;
 
-        dist[nextNeighbor] = candidateDist;
-        prev[nextNeighbor] = minVtxName;
-        pq.enqueue(nextNeighbor, candidateDist);
+        dist[nextNeighborName] = candidateDist;
+        prev[nextNeighborName] = minVtxName;
+        pq.enqueue(nextNeighborName, candidateDist);
       }
     }
   }
