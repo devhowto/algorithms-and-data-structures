@@ -1,4 +1,4 @@
-import { fib } from './fib-v3.js';
+import { fib } from './fib-v4.js';
 
 describe('fib(n)', () => {
   test('1st term is 1 (base case)', () => {
