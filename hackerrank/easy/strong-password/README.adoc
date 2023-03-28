@@ -1,0 +1,6 @@
+= String Password :: HackerRank
+:toc: right
+:icons: font
+:stem: latexmath
+
+* link:https://www.hackerrank.com/challenges/strong-password[Strong Password :: HackerRank]
