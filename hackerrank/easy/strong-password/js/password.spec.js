@@ -1,4 +1,4 @@
-import { minNum } from './password-v1.js';
+import { minNum } from './password-v2.js';
 
 describe('minNum(n, s)', () => {
   test('empty input', () => {
