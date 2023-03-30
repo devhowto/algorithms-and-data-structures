@@ -1,4 +1,4 @@
-import { minNum } from './password-v2.js';
+import { minNum } from './password-v4.js';
 
 describe('minNum(n, s)', () => {
   test('empty input', () => {
@@ -31,7 +31,7 @@ describe('minNum(n, s)', () => {
     expect(minNum(6, 's3cR%t')).toEqual(0);
   });
 
-  test('when length is >= 6', () => {
-    expect(minNum(7, 'lUUU999'));
+  test('when length is >= 6 and missing 1', () => {
+    expect(minNum(7, 'lUUU999')).toEqual(1);
   });
 });
