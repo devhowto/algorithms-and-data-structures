@@ -1,5 +1,8 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
+--
+-- Using guards. Doing manual even check just for kicks.
+--
 evenOrOdd :: Integral a => a -> String
 evenOrOdd n
   | rem n 2 == 0 = "Even"

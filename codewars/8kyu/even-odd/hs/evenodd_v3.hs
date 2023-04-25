@@ -1,5 +1,8 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
+--
+-- Using guards and built-in even check.
+--
 evenOrOdd :: Integral a => a -> String
 evenOrOdd n
   | even n    = "Even"

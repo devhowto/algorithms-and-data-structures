@@ -1,5 +1,9 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
+--
+-- Pattern-matching and a recursive approach (even though this
+-- will recur at most once :)).
+--
 evenOrOdd :: Integral a => a -> String
 evenOrOdd 0    = "Even"
 evenOrOdd 1    = "Odd"

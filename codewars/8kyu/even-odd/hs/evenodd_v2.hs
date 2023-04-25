@@ -1,5 +1,8 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
+--
+-- Using case/of. Doing manual even check just for kicks.
+--
 evenOrOdd :: Integral a => a -> String
 evenOrOdd n = s
   where s :: String
