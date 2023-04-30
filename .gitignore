@@ -5,10 +5,17 @@
 *.html
 
 #
-# My playground directories.
+# My playground directories and random temp files.
 #
 0dev/
 0devcodewars/
+scratchpad.txt
+
+#
+# Emacs backup and temporary files.
+#
+\#*\#
+\.#*
 
 #
 # Some org-mode stuff.
