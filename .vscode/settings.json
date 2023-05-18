@@ -12,6 +12,7 @@
     //
     // "*.ts": "plaintext",
   },
+  "haskell.ghcupExecutablePath": "${HOME}/.ghcup/bin/ghcup",
   "solargraph.useBundler": true,
   "magicRacket.languageServer.enabled": true,
   "cSpell.words": [
