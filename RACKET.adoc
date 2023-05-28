@@ -4,6 +4,10 @@
 :source-highlighter: highlight.js
 :experimental:
 
+== Intro
+
+One challenge a day keeps the impostor syndrome away.
+
 == Tests
 
 [source,shell-session]

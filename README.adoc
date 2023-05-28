@@ -4,6 +4,10 @@
 
 A place where I take notes and store solutions for algorithms and data structres with TypeScript.
 
+And remember:
+
+> One challenge a day keeps the impostor syndrome away.
+
 [NOTE]
 ====
 The main repository where all the action takes place is the one on {url-gitlab-repo}[Gitlab^].
