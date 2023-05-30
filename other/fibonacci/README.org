@@ -1,0 +1,51 @@
+#+TITLE: Fibonacci Sequence
+#+STARTUP: content latexpreview
+
+* Intro
+
+- [[https://www.mathsisfun.com/numbers/fibonacci-sequence.html][Fibonacci Sequence (MathIsFun)]]
+- [[https://en.wikipedia.org/wiki/Fibonacci_sequence][Fibonacci Sequence (Wikipedia)]]
+
+The terms are numbered from 0 (zero) to ∞ (infinity).
+
+$$
+fib(n) = \begin{cases}
+   0 &\text{if } n = 0 \\
+   1 &\text{if } n = 1 \\
+   fib_{n - 1} + fib_{n - 2} &\text{if } n >= 2
+\end{cases}
+$$
+
+#+begin_example
+n  = 0   1   2   3   4   5   6   7   8   9  10  11  12
+Xₙ = 0   1   1   2   3   5   8  13  21  34  55  89 144
+#+end_example
+
+- The zeroth term is 0.
+- The first term is 1.
+- The second term is also 1 (1 + 0).
+- The third term is 2 (1 + 1).
+- The fourth term is 3 (2 + 1).
+- And so on and so forth.
+
+** JavaScript v1
+
+#+begin_src javascript
+/**
+ * Generates the first n terms of the Fibonacci sequence.
+ *
+ * Simple implementation using the “go function” pattern.
+ */
+function gen_fib_seq(n) {
+  return (function go(i, seq) {
+    if (i === n) return seq;
+
+    if ([0, 1].includes(i)) seq.push(i);
+
+    if (i >= 2)
+      seq.push(seq[i - 2] + seq[i - 1]);
+
+    return go(i + 1, seq);
+  })(0, []);
+}
+#+end_src
