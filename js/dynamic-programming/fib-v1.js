@@ -15,4 +15,8 @@ function fib(n) {
   return fib(n - 2) + fib(n - 1);
 }
 
+const log = console.log.bind(console);
+
+log(fib(45));
+
 export { fib };

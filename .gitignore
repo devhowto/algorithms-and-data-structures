@@ -24,7 +24,6 @@ scratchpad.txt
 \.#*\.org
 ltximg
 
-
 #
 # Exclude these Asciidoctor generated files in any subdirectory
 # from this root directory.
