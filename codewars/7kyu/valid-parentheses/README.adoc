@@ -1,4 +1,4 @@
-= Valid Parenthesis | 7kyu Codewars Challenge
+=
 :icons: font
 :sectlinks:
 :sectnums!:
