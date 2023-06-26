@@ -16,10 +16,10 @@ main = do
   print $ vowelCount ""
 
   -- No vowels in this string.
-  print $ vowelCount "xyz" -- 0
+  print $ vowelCount "xyz"
 
   -- All 5 chars are vowels.
-  print $ vowelCount "aeiou" -- 5
+  print $ vowelCount "aeiou"
 
   -- “y” is not considered a vowel in this challenge.
   print $ vowelCount "yaeiou"
