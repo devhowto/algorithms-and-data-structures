@@ -12,8 +12,14 @@ function getNextMultOf(multiplier, num) {
   return Math.ceil(num / multiplier) * multiplier;
 }
 
+function bind(fn, ...rest) {
+  return fn.bind(null, ...rest);
+}
+
+const nextMultOf5 = bind(getNextMultOf, 5);
+
 function round(grade) {
-  const newGrade = getNextMultOf(5, grade);
+  const newGrade = nextMultOf5(grade);
 
   return (newGrade - grade < 3)
     ? newGrade
@@ -21,17 +27,21 @@ function round(grade) {
 }
 
 function gradeStudents(grades) {
-  const newGrades = [];
+  const result = [];
 
   for (let i = 0; i < grades.length; ++i) {
-  // for (let i = 1, grade = grades[i]; i < grades.length; ++i) {
     const grade = grades[i];
 
-    newGrades.push(grade < 38 ? grade : round(grade));
+    if (grade < 40) {
+      result.push(grade);
+    } else {
+      result.push(round(grade));
+    }
   }
 
-  return newGrades;
+  return result;
 }
 
 export { round, gradeStudents };
+
 
