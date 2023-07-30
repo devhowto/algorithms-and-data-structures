@@ -32,7 +32,7 @@ function gradeStudents(grades) {
   for (let i = 0; i < grades.length; ++i) {
     const grade = grades[i];
 
-    if (grade < 40) {
+    if (grade < 38) {
       result.push(grade);
     } else {
       result.push(round(grade));

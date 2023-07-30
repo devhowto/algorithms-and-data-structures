@@ -1,7 +1,7 @@
 import {
   round,
   gradeStudents,
-} from './grade_v1';
+} from './grade_v2';
 
 describe('round()', () => {
   describe('when the difference is NOT less than 3', () => {
