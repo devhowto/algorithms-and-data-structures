@@ -5,8 +5,7 @@
 #define MAX_GRADES 100
 
 /**
- * Finds the next multiple of `n` given the
- * multiplier `m`.
+ * Finds the next multiple of `n` given the multiplier `m`.
  *
  * - T.C: O(1).
  * - S.C: O(1).
