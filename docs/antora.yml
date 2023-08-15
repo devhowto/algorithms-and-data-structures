@@ -1,5 +1,5 @@
 name: algdsts
-title: Algorithms and Data Structures in TypeScript
+title: Algorithms and Data Structures
 version: 0.0.1
 start_page: index.adoc
 asciidoc:
@@ -9,3 +9,4 @@ asciidoc:
     table-caption: false
 nav:
 - modules/ROOT/nav.adoc
+- modules/codewars/nav.adoc
