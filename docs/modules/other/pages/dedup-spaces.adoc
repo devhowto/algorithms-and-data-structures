@@ -1,0 +1,62 @@
+= Dedup Spaces and Dropcap
+
+Based on the link:https://www.codewars.com/kata/559e5b717dd758a3eb00005a[Dropcaps 7kyu Codewars challenge^], except we also remove excess spaces between words.
+For example, "  foo      bar  x " becomes "foo bar x"
+
+== Haskell
+
+=== Solution 1
+
+[source,haskell]
+----
+import Data.Char (toLower, toUpper, isSpace)
+import Data.List (dropWhileEnd)
+
+trim :: String -> String
+trim = dropWhileEnd isSpace . dropWhile isSpace
+
+trimAll :: String -> String
+trimAll = unwords . map trim . words
+
+upcaseFirst :: [Char] -> [Char]
+upcaseFirst "" = ""
+upcaseFirst (c : cs) = toUpper c : map toLower cs
+
+dropCap :: [Char] -> [Char]
+dropCap str = unwords . map trim $ go [] (words str)
+  where
+    go :: [String] -> [String] -> [String]
+    go acc [] = acc
+    go acc (s : ss)
+      | length s >= 3 = go (acc ++ [upcaseFirst s]) ss
+      | otherwise     = go (acc ++ [s]) ss
+----
+
+
+However, note the implementation of `trimAll`:
+
+[source,haskell]
+----
+trimAll :: String -> String
+trimAll = unwords . map trim . words
+----
+
+It turns out `works` already removes whitespace, which means, just by using `words` will already return an array of “trimmed” strings:
+
+[source,text]
+----
+λ> words "  May the force     be   with  you.     "
+["May","the","force","be","with","you."]
+----
+
+So we can implement `trim` in this kinda surprising simple and unexpected way:
+
+[source,haskell]
+----
+trimAll :: String -> String
+trimAll = unwords . words
+--
+-- λ> trimAll "  May the force     be   with  you.      "
+-- "May the force be with you."
+--
+----
