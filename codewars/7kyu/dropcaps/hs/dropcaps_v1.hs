@@ -1,27 +1,27 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+-- {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+-- {-# HLINT ignore "Use unwords" #-}
 
 import Data.Char (toLower, toUpper, isSpace)
-import Data.List (dropWhileEnd)
-
-trim :: String -> String
-trim = dropWhileEnd isSpace . dropWhile isSpace
-
-trimAll :: String -> String
-trimAll = unwords . words
+import Data.List (intercalate)
 
 upcaseFirst :: [Char] -> [Char]
-upcaseFirst "" = ""
-upcaseFirst (c : cs) = toUpper c : map toLower cs
+upcaseFirst (c:cs) = toUpper c : map toLower cs
 
-dropCap :: [Char] -> [Char]
-dropCap str = unwords $ go [] (words str)
+split :: Char -> String -> [String]
+split c s = case rest of
+              []     -> [chunk]
+              _:rest -> chunk : split c rest
+  where (chunk, rest) = break (== c) s
+
+dropCap :: String -> String
+dropCap str = intercalate " " $ go [] (split ' ' str)
   where
     go :: [String] -> [String] -> [String]
     go acc [] = acc
     go acc (s : ss)
-      | length s >= 3 = go (acc ++ [upcaseFirst s]) ss
-      | otherwise     = go (acc ++ [s]) ss
+      | length s >= 3 = upcaseFirst s : go acc ss
+      | otherwise     = s : go acc ss
 
 main :: IO ()
 main = do
