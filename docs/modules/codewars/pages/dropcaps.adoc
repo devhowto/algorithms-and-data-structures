@@ -1,65 +1,58 @@
-= Dropcaps :: 7kyu Codewars Challenge
+= Dropcaps
+:page-subtitle: 7kyu Codewars Challenge
 
 * link:https://www.codewars.com/kata/559e5b717dd758a3eb00005a[Dropcaps 7kyu Codewars challenge^]
 
-This challenge involves making sure every first character of a word whose length is greater than two is made uppercase, while all the remaining words should remain (or be made into) lowercase.
-
-It also requires trimming whitespace from the beginning and end of the string, and making sure other whitespace is no longer than one, so that a string like "  foo    bar " is spaced as "foo bar".
+One more or less implicit sub-challenge is actually _keeping the spaces_.
+We should not trim spaces from both sides of the string, neither _dedup_ spaces between words.
 
 == Haskell
+
+If we use `words` and `unwords` to extract the words and then join them back into a single string, we end up trimming each word, therefore _deduping_ the spaces.
+We need some sort of more standard splitting.
 
 === Solution 1
 
 [source,haskell]
 ----
-import Data.Char (toLower, toUpper, isSpace)
-import Data.List (dropWhileEnd)
-
-trim :: String -> String
-trim = dropWhileEnd isSpace . dropWhile isSpace
-
-trimAll :: String -> String
-trimAll = unwords . map trim . words
+import Data.Char (toLower, toUpper)
+import Data.List (intercalate)
 
 upcaseFirst :: [Char] -> [Char]
-upcaseFirst "" = ""
-upcaseFirst (c : cs) = toUpper c : map toLower cs
+upcaseFirst ""     = ""
+upcaseFirst (c:cs) = toUpper c : map toLower cs
 
-dropCap :: [Char] -> [Char]
-dropCap str = unwords . map trim $ go [] (words str)
+split :: Char -> String -> [String]
+split c s = case rest of
+              []     -> [chunk]
+              _:rest -> chunk : split c rest
+  where (chunk, rest) = break (== c) s
+
+dropCap :: String -> String
+dropCap str = intercalate " " $ go [] (split ' ' str)
   where
     go :: [String] -> [String] -> [String]
     go acc [] = acc
     go acc (s : ss)
-      | length s >= 3 = go (acc ++ [upcaseFirst s]) ss
-      | otherwise     = go (acc ++ [s]) ss
+      | length s >= 3 = upcaseFirst s : go acc ss
+      | otherwise     = s : go acc ss
 ----
 
+The `upcaseFirst` and `split` functions were created as helpers.
 
-However, note the implementation of `trimAll`:
+The `go` inner function properly capitalizes the first char strings of stem:[\text{length} >= 3].
 
-[source,haskell]
-----
-trimAll :: String -> String
-trimAll = unwords . map trim . words
-----
+At the very end, we apply `intercalate " "` to the result of `go` to turn the list of strings back into a single string.
 
-It turns out `works` already removes whitespace, which means, just by using `words` will already return an array of “trimmed” strings:
+`split` keeps an empty string in place of each place it could split on space, which later when `intercalate` comes into play, ends up adding back all the spaces from the original string.
+
+Here's how `split` is working:
 
 [source,text]
 ----
-λ> words "  May the force     be   with  you.     "
-["May","the","force","be","with","you."]
+λ> split ' ' "  abc de   f  "
+["","","abc","de","","","f","",""]
 ----
 
-So we can implement `trim` in this kinda surprising simple and unexpected way:
-
-[source,haskell]
-----
-trimAll :: String -> String
-trimAll = unwords . words
---
--- λ> trimAll "  May the force     be   with  you.      "
--- "May the force be with you."
---
-----
+Note how each whitespace is turned into a `""` empty string in the resulting array.
+That is what allows intercalate later to reconstruct the string with the original spaces in place.

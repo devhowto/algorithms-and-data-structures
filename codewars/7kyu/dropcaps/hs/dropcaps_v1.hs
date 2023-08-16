@@ -1,11 +1,12 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
--- {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
--- {-# HLINT ignore "Use unwords" #-}
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Use unwords" #-}
 
-import Data.Char (toLower, toUpper, isSpace)
+import Data.Char (toLower, toUpper)
 import Data.List (intercalate)
 
 upcaseFirst :: [Char] -> [Char]
+upcaseFirst ""     = ""
 upcaseFirst (c:cs) = toUpper c : map toLower cs
 
 split :: Char -> String -> [String]
