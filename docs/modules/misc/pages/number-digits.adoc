@@ -2,8 +2,6 @@
 :description: Ideas relating to extract digits from a number, like the first or last digit, etc. Includes some interesting math and division concepts.
 :page-subtitle: Algorithms and Data Structures
 
-/home/fernando/work/src/studies/devhowto/algds/jslib
-
 == Intro
 
 Some concepts, notes, tips and examples on how to extract digits from a number.
@@ -44,7 +42,7 @@ $ node --interactive
 We could also do `n | 0` or `~~n`.
 And of course, `Math.trunc()` and `Math.floor()`.
 
-I know PureScript uses `n | 0` (saw it in the source code).
+I know PureScript uses `n | 0` (link:https://github.com/purescript/purescript-prelude/blob/80b91b4edfb33a6ee143e54c718c4653c9653627/src/Data/Ring.js[saw it in the source code]).
 https://discord.com/channels/864614189094928394/865617619464749081/1015376935485968474[@natefaubion on PureScript Discord server] told me “it will wrap to an int32 range” and that “it was an old trick from asm.js.”
 
 [,js]
