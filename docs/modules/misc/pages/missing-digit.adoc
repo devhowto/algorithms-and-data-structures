@@ -1,0 +1,52 @@
+= Missing Digit
+:page-subtitle: Eval Math Expression
+
+== Intro
+
+Have seen this in a coding interview on Coderbyte.
+Also check the similar link:https://www.codewars.com/kata/find-the-unknown-digit[Find The Unknown Digit :: Codewars 4kyu].
+
+The input expression has this form:
+
+[,text]
+----
+operandA operator operandB = result
+----
+
+Assume the spaces will always be there.
+And we can simplify like this:
+
+[,text]
+----
+a o b = r
+----
+
+Some examples:
+
+[,text]
+----
+3 + 2 = x     //=> 5
+
+5 - x = 3     //=> 2
+
+x / 2 = 4     //=> 8
+
+12x + 2 = 125 //=> 3
+----
+
+== Thinking about the solution
+
+* When stem:[x] is on stem:[r], no matter the operation:
+** Apply the operation to stem:[a] and stem:[b] to find stem:[r].
+* Else, when the operation is addition or multiplication:
+** Apply the inverse operation on stem:[r] and the known operand.
+   For example, for stem:[x + 2 = 5], do stem:[5 - 2] to find stem:[a = 3], and for stem:[3 + x = 5], do stem:[5 - 3] to find stem:[b = 2].
+* Else, when the operation is subtraction or division:
+** When the known operand is on stem:[a]:
+*** Apply the operation on stem:[a] and stem:[r].
+    For example, for stem:[8 / x = 4], do stem:[8 / 4] to find stem:[b = 2].
+** Else, when the known operand is on stem:[b]:
+*** Apply the inverse operation on stem:[r] and stem:[b].
+    For example, for stem:[x - 2 = 3], do stem:[3 + 2] to find stem:[a = 5].
+
+image::find-missing-digit-ops.png[Find Missing Digit Operations and Inverse Operations]

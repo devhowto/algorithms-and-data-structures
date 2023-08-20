@@ -1,13 +1,18 @@
 //
 // Shorter names for Math methods.
 //
+var sign = Math.sign.bind(Math);
 var abs = Math.abs.bind(Math);
 var floor = Math.floor.bind(Math);
 var log10 = Math.log10.bind(Math);
 var pow = Math.pow.bind(Math);
 var sqrt = Math.sqrt.bind(Math);
 var max = Math.max.bind(Math);
+
+export { abs } from './abs.js';
+
 export {
+  sign,
   abs,
   pow,
   sqrt,
@@ -36,8 +41,6 @@ export { remove } from './remove.js';
 export { isEven } from './isEven.js';
 export { isOdd } from './isOdd.js';
 
-export { leftSlice } from './leftSlice.js';
-
 //
 // Numbers and digits related helpers.
 //
@@ -50,4 +53,3 @@ export { countDigits } from './countDigits.js';
 export { numToDigits } from './numToDigits.js';
 export { getLastDigit } from './getLastDigit.js';
 export { getDigit } from './getDigit.js';
-
