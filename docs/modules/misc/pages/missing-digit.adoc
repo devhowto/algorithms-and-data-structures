@@ -50,3 +50,65 @@ x / 2 = 4     //=> 8
     For example, for stem:[x - 2 = 3], do stem:[3 + 2] to find stem:[a = 5].
 
 image::find-missing-digit-ops.png[Find Missing Digit Operations and Inverse Operations]
+
+== JavaScript
+
+=== Solution 1
+
+We'll create four functions for the four operations, a lookup table which matches the operator with its function, and an inverse operations lookup table that knows about the inverse operations.
+
+Let's start with something like this:
+
+[source,javascript]
+----
+function int(val) {
+  return Number.parseInt(val, 10);
+}
+
+function str(val) {
+  return String(val);
+}
+
+const add = (x, y) => x + y;
+const sub = (x, y) => x - y;
+const mult = (x, y) => x * y;
+const div = (x, y) => x / y;
+
+const opTbl = {
+  '+': add,
+  '-': sub,
+  '*': mult,
+  '/': div,
+};
+
+const invOpTbl = {
+  '+': '-',
+  '-': '+',
+  '*': '/',
+  '/': '*',
+};
+
+function misDig(expr) {
+  const [a, op, b, _, r] = expr.split(' ');
+  let num;
+  let idx;
+
+  if (r.includes('x')) {
+    num = opTbl[op](int(a), int(b));
+    idx = r.indexOf('x');
+  } else if (b.includes('x') && ['-', '/'].includes(op)) {
+    num = opTbl[op](int(a), int(r));
+    idx = b.indexOf('x');
+  } else if (b.includes('x')) {
+    num = opTbl[invOpTbl[op]](int(r), int(a));
+    idx = b.indexOf('x');
+  } else {
+    num = opTbl[invOpTbl[op]](int(r), int(b));
+    idx = a.indexOf('x');
+  }
+
+  return int(str(num)[idx]);
+}
+----
+
+The order in which we handled the cases is significant.

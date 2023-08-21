@@ -27,6 +27,10 @@ const invOpTbl = {
   '/': '*',
 };
 
+function hasX(s) {
+  return s.includes('x');
+}
+
 /**
  * @param {string} expr
  * @returns {number}
@@ -53,31 +57,33 @@ function misDig(expr) {
   return int(str(num)[idx]);
 }
 
+export { misDig };
+
 // a op b = r
-log(misDig('2 + 3 = x')); // 5
-log(misDig('2 + x = 5')); // 3
-log(misDig('x + 3 = 5')); // 2
-log();
-
-log(misDig('5 - 4 = x')); // 1
-log(misDig('5 - x = 1')); // 4
-log(misDig('x - 4 = 1')); // 5
-log();
-
-log(misDig('2 * 4 = x')); // 8
-log(misDig('2 * x = 8')); // 4
-log(misDig('x * 4 = 8')); // 2
-log();
-
-log(misDig('8 / 4 = x')); // 2
-log(misDig('8 / x = 2')); // 4
-log(misDig('x / 4 = 2')); // 8
-log();
-
-log(misDig('12x + 2 = 125')); // 3
-//            3
-log(misDig('1x3 + 2 = 125')); // 2
-//           2
-log(misDig('x23 + 2 = 125')); // 1
-//          1
+// log(misDig('2 + 3 = x')); // 5
+// log(misDig('2 + x = 5')); // 3
+// log(misDig('x + 3 = 5')); // 2
+// log();
+//
+// log(misDig('5 - 4 = x')); // 1
+// log(misDig('5 - x = 1')); // 4
+// log(misDig('x - 4 = 1')); // 5
+// log();
+//
+// log(misDig('2 * 4 = x')); // 8
+// log(misDig('2 * x = 8')); // 4
+// log(misDig('x * 4 = 8')); // 2
+// log();
+//
+// log(misDig('8 / 4 = x')); // 2
+// log(misDig('8 / x = 2')); // 4
+// log(misDig('x / 4 = 2')); // 8
+// log();
+//
+// log(misDig('12x + 2 = 125')); // 3
+// //            3
+// log(misDig('1x3 + 2 = 125')); // 2
+// //           2
+// log(misDig('x23 + 2 = 125')); // 1
+// //          1
 
