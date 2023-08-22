@@ -5,7 +5,7 @@ start_page: index.adoc
 asciidoc:
   attributes:
     source-language: asciidoc@
-    stem: '@'
+    stem: 'latexmath'
     table-caption: false
 nav:
 - modules/ROOT/nav.adoc
