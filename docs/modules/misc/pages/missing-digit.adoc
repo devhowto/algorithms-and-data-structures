@@ -53,11 +53,7 @@ image::find-missing-digit-ops.png[Find Missing Digit Operations and Inverse Oper
 
 == JavaScript
 
-=== Solution 1
-
-We'll create four functions for the four operations, a lookup table which matches the operator with its function, and an inverse operations lookup table that knows about the inverse operations.
-
-Let's start with something like this:
+Assume these helper functions are in scope:
 
 [source,javascript]
 ----
@@ -73,7 +69,16 @@ const add = (x, y) => x + y;
 const sub = (x, y) => x - y;
 const mult = (x, y) => x * y;
 const div = (x, y) => x / y;
+----
 
+=== Solution 1
+
+We'll create four functions for the four operations, a lookup table which matches the operator with its function, and an inverse operations lookup table that knows about the inverse operations.
+
+Let's start with something like this, simply following the algorithm idea outlined above.
+
+[source,javascript]
+----
 const opTbl = {
   '+': add,
   '-': sub,
@@ -88,6 +93,48 @@ const invOpTbl = {
   '/': '*',
 };
 
+function misDig(expr) {
+  const [a, op, b, _, r] = expr.split(' ');
+  let num;
+  let idx;
+
+  if (r.includes('x')) {
+    num = opTbl[op](int(a), int(b));
+    idx = r.indexOf('x');
+  } else if (['+', '*'].includes(op)) {
+    if (a.includes('x')) { // <1>
+      num = opTbl[invOpTbl[op]](int(r), int(b));
+      idx = a.indexOf('x');
+    } else {
+      num = opTbl[invOpTbl[op]](int(r), int(a));
+      idx = b.indexOf('x');
+    }
+  } else {
+    if (a.includes('x')) { // <2>
+      num = opTbl[invOpTbl[op]](int(b), int(r));
+      idx = a.indexOf('x');
+    } else {
+      num = opTbl[op](int(a), int(r));
+      idx = b.indexOf('x');
+    }
+  }
+
+  return int(str(num)[idx]);
+}
+----
+
+The order in which we handled the cases is significant.
+For example, just by checking the fact that `“x”` appears on `r` (the resulting side of the expression), we know the following conditions can only possibly match the other situtations, e.g. when `“x”` shows up on `a` or `b`.
+
+<1> Note the callout 1...
+
+<2> ...and 2.
+
+They have the same condition and same code inside the block, which means there is probably a more clever way to check those conditions to reduce the number of them.
+So, we can instead do something like this, which also works just as well:
+
+[source,javascript]
+----
 function misDig(expr) {
   const [a, op, b, _, r] = expr.split(' ');
   let num;
@@ -111,4 +158,5 @@ function misDig(expr) {
 }
 ----
 
-The order in which we handled the cases is significant.
+The two identical conditions and code have now become the last `else`.
+The code for that case needs to show up only once with this new approach.

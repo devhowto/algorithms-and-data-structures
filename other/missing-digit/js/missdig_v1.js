@@ -27,10 +27,6 @@ const invOpTbl = {
   '/': '*',
 };
 
-function hasX(s) {
-  return s.includes('x');
-}
-
 /**
  * @param {string} expr
  * @returns {number}
@@ -43,15 +39,22 @@ function misDig(expr) {
   if (r.includes('x')) {
     num = opTbl[op](int(a), int(b));
     idx = r.indexOf('x');
-  } else if (b.includes('x') && ['-', '/'].includes(op)) {
-    num = opTbl[op](int(a), int(r));
-    idx = b.indexOf('x');
-  } else if (b.includes('x')) {
-    num = opTbl[invOpTbl[op]](int(r), int(a));
-    idx = b.indexOf('x');
+  } else if (['+', '*'].includes(op)) {
+    if (a.includes('x')) {
+      num = opTbl[invOpTbl[op]](int(r), int(b));
+      idx = a.indexOf('x');
+    } else {
+      num = opTbl[invOpTbl[op]](int(r), int(a));
+      idx = b.indexOf('x');
+    }
   } else {
-    num = opTbl[invOpTbl[op]](int(r), int(b));
-    idx = a.indexOf('x');
+    if (a.includes('x')) {
+      num = opTbl[invOpTbl[op]](int(b), int(r));
+      idx = a.indexOf('x');
+    } else {
+      num = opTbl[op](int(a), int(r));
+      idx = b.indexOf('x');
+    }
   }
 
   return int(str(num)[idx]);
