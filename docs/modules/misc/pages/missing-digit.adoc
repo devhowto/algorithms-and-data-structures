@@ -1,5 +1,6 @@
 = Missing Digit
 :page-subtitle: Eval Math Expression
+:stem: latexmath
 
 == Intro
 
