@@ -4,6 +4,13 @@
 
 == Intro
 
+[stem]
+++++
+sumToN(n) = \frac{n (n + 1)}{2}
+++++
+
+Then also see stem:[x = 1].
+
 Have seen this in a coding interview on Coderbyte.
 Also check the similar link:https://www.codewars.com/kata/find-the-unknown-digit[Find The Unknown Digit :: Codewars 4kyu].
 
