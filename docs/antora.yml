@@ -10,4 +10,5 @@ asciidoc:
 nav:
 - modules/ROOT/nav.adoc
 - modules/codewars/nav.adoc
+- modules/leetcode/nav.adoc
 - modules/misc/nav.adoc
