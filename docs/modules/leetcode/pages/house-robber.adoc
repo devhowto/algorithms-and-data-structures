@@ -1,5 +1,5 @@
 = House Robber
-:page-subtitle: Medium
+:page-subtitle: LeetCode Medium :: Algorithms and Data Structures
 :page-tags: dynamic-programming, array, max
 
 * link:https://leetcode.com/problems/house-robber[House Robber :: Medium LeetCode Challenge^]

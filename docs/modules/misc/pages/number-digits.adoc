@@ -1,6 +1,6 @@
 = Operations on Digits of a Number
-:description: Ideas relating to extract digits from a number, like the first or last digit, etc. Includes some interesting math and division concepts.
 :page-subtitle: Algorithms and Data Structures
+:description: Ideas relating to extract digits from a number, like the first or last digit, etc. Includes some interesting math and division concepts.
 
 == Intro
 
